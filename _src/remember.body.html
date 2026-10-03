@@ -1,0 +1,140 @@
+<!--TITLE:Agentic Brain-->
+<!--DESC:The memory tells its own story, and shows how it works, chapter by chapter.-->
+<!--SCRIPTS:app.js story.js-->
+<!--REPLACE:<p class="eyebrow">A set of loops, not a chat product</p>|||<p class="eyebrow">How I work</p>-->
+<!--REPLACE:Purpose-built parsers read Claude Code, Codex, Antigravity, Gemini CLI and Cursor sessions.
+          File watchers pick up new sessions near-live, into one local SQLite store.|||I read your Claude Code, Codex, Antigravity, Gemini CLI and Cursor sessions as they happen,
+          into one local SQLite store on your machine.-->
+<!--REPLACE:<code>brain dream</code> turns raw observations into a compounding wiki that gets revised, not
+          appended. Resolved struggles become reusable learnings you approve.|||While you sleep, <code>brain dream</code> turns what I heard into a wiki I keep rewriting.
+          When you finally fix something hard, I draft the lesson for you to approve.-->
+<!--REPLACE:BM25 over SQLite FTS, plus outcome scores: how often a learning was injected and whether
+          you marked it helpful. Proven usefulness, not keyword overlap alone.|||I rank by relevance, then by proof: how often a memory was used, and whether you said it helped.
+          What misleads you sinks.-->
+<!--REPLACE:One assembler builds a ~2k-token block into <code>CLAUDE.md</code>, <code>AGENTS.md</code> and
+          <code>GEMINI.md</code>, inside managed markers. Your own text is never touched.|||Before you type, I write a ~2,000-token briefing into <code>CLAUDE.md</code>, <code>AGENTS.md</code> and
+          <code>GEMINI.md</code>, inside my own markers. I never touch your text.-->
+<!--REPLACE:<code>brain eval</code> asks questions about your own history and scores whether retrieval
+          surfaced the answer. Every ranking change is gated on that number.|||<code>brain eval</code> quizzes me on your own history. If a change makes me remember worse,
+          it doesn't ship.-->
+<!--REPLACE:<p class="eyebrow">One store, many tools</p>|||<p class="eyebrow">Where I live</p>-->
+<!--REPLACE:<h2 class="reveal">Every tool plugs into the same brain.</h2>|||<h2 class="reveal">Every tool you use plugs into me.</h2>-->
+<!--REPLACE:<p class="eyebrow">You own the store</p>|||<p class="eyebrow">Who I belong to</p>-->
+<!--REPLACE:<h2 class="reveal">Encrypted with your key. Parked in your repo.</h2>|||<h2 class="reveal">Sealed with your key. Kept in your repo.</h2>-->
+<!--REPLACE:The memory is an <code>age</code>-encrypted blob in a GitHub Release asset on your private repo.
+      The key lives only in each machine's Keychain. A leaked repo or a leaked token exposes nothing readable.|||I travel as one <code>age</code>-encrypted blob, a Release asset on your private repo.
+      My key lives only in your Keychain. A leaked repo or a leaked token exposes nothing readable.-->
+<!--REPLACE:<p class="eyebrow rail-title">And the rest of the brain</p>|||<p class="eyebrow rail-title">A few more things about me</p>-->
+<!--REPLACE:<p class="eyebrow">Hosted memory vs. Agentic Brain</p>|||<p class="eyebrow">Hosted memory vs. me</p>-->
+<!--REPLACE:<p class="eyebrow">Known limits</p>|||<p class="eyebrow">What I can't do yet</p>-->
+
+<!-- Opening: the brain introduces itself -->
+<section class="story voice" data-story="4" data-b="0.5 0.5 0.6 0.6 1">
+  <div class="story-pin center">
+    <div class="orbit" data-show="1">
+      <span style="--x:24%;--y:30%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>Claude Code</span>
+    </div>
+    <div class="orbit" data-show="2-3">
+      <span style="--x:24%;--y:30%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>Claude Code</span>
+      <span style="--x:78%;--y:26%;--i:1"><svg><use href="#l-codex"/></svg>Codex</span>
+      <span style="--x:14%;--y:62%;--i:2"><svg><use href="#l-cursor"/></svg>Cursor</span>
+      <span style="--x:86%;--y:64%;--i:3;--brand:#4796e3"><svg><use href="#l-geminicli"/></svg>Gemini CLI</span>
+      <span style="--x:50%;--y:16%;--i:4;--brand:#4f8dfd"><svg><use href="#l-antigravity"/></svg>Antigravity</span>
+    </div>
+    <div class="narr">
+      <div class="beat" data-b="0.5 0.5 0.6 0.16 0">
+        <h2 class="line decode-on">I start empty.</h2>
+        <p class="note">No memories. No context. A shape waiting to be filled.</p>
+        <p class="scrollcue" style="justify-content:center"><i></i>Scroll</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.45 0.6 2">
+        <h2 class="line decode-on">Then you open Claude Code, and I listen.</h2>
+        <p class="note">Every decision, every fix, every "no, not like that".</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.85 2.2 2">
+        <h2 class="line decode-on">Codex. Cursor. Gemini. Antigravity. I listen to all of them.</h2>
+        <p class="note">One memory, shared by every AI coding tool you use.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.62 1 1.6">
+        <span class="pill"><i class="pulse"></i>Open source · Self-hosted · Encrypted</span>
+        <h2 class="line decode-on">I'm Agentic Brain. Your AI's memory, in <span class="sig">your</span> GitHub.</h2>
+        <p class="note">I capture what your sessions established, distill it, rank it, and brief every tool before you type. Move your cursor over me. Click to make me fire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interlude marquee-wrap" data-b="0.5 0.5 0.6 0.3 1">
+  <div class="marquee static" aria-label="Works with">
+    <div class="marquee-track">
+      <span><svg><use href="#l-claudecode"/></svg>Claude Code</span>
+      <span><svg><use href="#l-codex"/></svg>Codex</span>
+      <span><svg><use href="#l-antigravity"/></svg>Antigravity</span>
+      <span><svg><use href="#l-geminicli"/></svg>Gemini CLI</span>
+      <span><svg><use href="#l-cursor"/></svg>Cursor</span>
+      <span><svg><use href="#l-claude"/></svg>Claude Desktop</span>
+      <span><svg><use href="#l-openai"/></svg>ChatGPT desktop</span>
+      <span><svg><use href="#l-github"/></svg>GitHub</span>
+      <span><svg><use href="#l-sqlite"/></svg>SQLite</span>
+    </div>
+  </div>
+</section>
+
+<section class="interlude" data-b="0.5 0.5 0.62 0.32 0.25 0">
+  <h2 class="line decode-in">At night, I dream.</h2>
+  <p class="note fade">By morning I know more than I did, and I've thrown away what didn't matter. Here's the loop I run, every day.</p>
+</section>
+
+<!--INDEX:2-->
+
+<section class="interlude" data-b="0.5 0.5 0.6 0.7 1 4">
+  <h2 class="line decode-in">I check my own work.</h2>
+  <p class="note fade">On a public long-term memory benchmark, this is how I score.</p>
+</section>
+
+<!--INDEX:3-->
+
+<section class="interlude" data-b="0.5 0.5 0.64 1 3">
+  <h2 class="line decode-in">Open a new tool tomorrow. I'm already there.</h2>
+  <p class="note fade">But "supported" can mean three different things. Here they are, kept apart.</p>
+</section>
+
+<!--INDEX:4-->
+
+<section class="interlude" data-b="0.5 0.5 0.6 0.22 0.4">
+  <h2 class="line decode-in">Only you can read me.</h2>
+  <p class="note fade">I know your decisions, your code and your mistakes. That shouldn't sit on anyone else's server.</p>
+</section>
+
+<!--INDEX:5-->
+
+<!--INDEX:6-->
+
+<section class="interlude" data-b="0.5 0.5 0.6 0.4 0.6">
+  <h2 class="line decode-in">I'll be straight with you.</h2>
+  <p class="note fade">Hosted memory products are good, and easier to set up. Here's the trade, and what I can't do yet.</p>
+</section>
+
+<!--INDEX:7-->
+
+<!--INDEX:8-->
+
+<section class="story voice" data-story="2" id="soon" data-b="0.5 0.5 0.62 0.6 1">
+  <div class="story-pin center">
+    <div class="narr">
+      <div class="beat" data-b="0.5 0.5 0.62 0.9 2">
+        <h2 class="line decode-on">Say it once. I'll remember it everywhere.</h2>
+        <p class="note">Setup will be one command that wires every tool on your machine, creates your private data repo and generates my key.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.66 1 2.8">
+        <span class="soon-pill big"><i></i>Coming soon</span>
+        <h2 class="line decode-on">I'm almost awake.</h2>
+        <div class="works">
+          <span><svg><use href="#l-apple"/></svg>macOS</span>
+          <span><svg><use href="#l-node"/></svg>Node 22+</span>
+          <span><svg><use href="#l-github"/></svg>A GitHub account</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

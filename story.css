@@ -187,3 +187,20 @@
 .trio .codeblk { white-space: pre; overflow-x: auto; }
 .narr .line, .narr .note, .narr .stamp { text-shadow: 0 0 24px #000, 0 0 48px #000, 0 2px 4px #000; }
 @media (max-width: 760px) { .closed { bottom: -34px; white-space: nowrap; } }
+
+/* combined page: short first-person interludes between the overview chapters */
+.interlude { min-height: 75vh; display: grid; align-content: center; justify-items: center; text-align: center; padding: 100px var(--col); }
+.interlude .line { font-size: clamp(36px, 5.6vw, 76px); max-width: 16ch; }
+.interlude .note { font-size: 19px; max-width: 560px; }
+.interlude .line, .interlude .note { text-shadow: 0 0 24px #000, 0 0 48px #000, 0 2px 4px #000; }
+.interlude.marquee-wrap { min-height: 0; padding: 0; display: block; }
+.marquee.static { position: relative; top: auto; bottom: auto; }
+.voice .pill { margin-bottom: 22px; }
+.voice .works { margin-top: 30px; }
+@media (max-width: 760px) { .interlude { min-height: 60vh; padding: 70px 20px; } .interlude .line { font-size: 36px; } }
+.switch + .foot { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+@media (max-width: 760px) {
+  .story-pin.center { grid-template-rows: none; align-items: center; }
+  /* keep orbiting labels in the lower half, clear of the centred line */
+  .voice .orbit span { top: calc(60% + var(--y) * .35); }
+}

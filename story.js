@@ -94,7 +94,7 @@
   for (const el of $$(".decode")) decode(el);
   requestAnimationFrame(() => document.body.classList.add("ready"));
   const mt = $(".marquee-track");
-  if (mt) mt.innerHTML += mt.innerHTML.replace(/<span>/g, '<span aria-hidden="true">');
+  if (mt && !mt.dataset.dup) { mt.dataset.dup = 1; mt.innerHTML += mt.innerHTML.replace(/<span>/g, '<span aria-hidden="true">'); }
   addEventListener("pointermove", (e) => {
     const el = e.target.closest && e.target.closest(".spot");
     if (!el) return;

@@ -66,7 +66,7 @@
 
   // Logo strip loops seamlessly: two copies of the same row.
   const mt = $(".marquee-track");
-  if (mt) mt.innerHTML += mt.innerHTML.replace(/<span>/g, '<span aria-hidden="true">');
+  if (mt && !mt.dataset.dup) { mt.dataset.dup = 1; mt.innerHTML += mt.innerHTML.replace(/<span>/g, '<span aria-hidden="true">'); }
 
   // Cursor spotlight on surfaces, a little tilt on the rail cards.
   addEventListener("pointermove", (e) => {
@@ -216,12 +216,16 @@
     }
 
     // Brain: follow whichever section holds the middle of the screen.
-    let mode = "hero";
+    // A page may also carry story sections (data-b); then the brain is only steered here while a
+    // data-brain section holds the middle of the screen.
+    let mode = document.querySelector("[data-b]") ? null : "hero";
     for (const s of $$("[data-brain]")) {
       const r = s.getBoundingClientRect();
       if (r.top <= innerHeight * 0.5 && r.bottom > innerHeight * 0.5) { mode = s.dataset.brain; break; }
     }
-    if (mode === "tools") {
+    if (!mode) {
+      // story.js has the brain
+    } else if (mode === "tools") {
       const core = $(".core");
       const r = core.getBoundingClientRect();
       Brain.setTarget({ x: (r.left + r.width / 2) / innerWidth, y: (r.top + r.height / 2) / innerHeight,
