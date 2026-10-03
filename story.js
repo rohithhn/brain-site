@@ -167,10 +167,30 @@
       if (r.top <= innerHeight * 0.5 && r.bottom > innerHeight * 0.5) {
         const active = $(".beat.on[data-b]", sec);
         brain = brainFor(active || sec);
+        if (brain && small() && $(".orbit", sec)) brain = fitPhone(sec, brain);
         break;
       }
     }
     if (brain) Brain.setTarget(brain);
+  };
+
+  // Phones: scenes with orbiting logos measure where their text actually ends (screens and browser
+  // bars vary), then fit the brain and the logo ring into the larger free band above or below it.
+  const fitPhone = (sec, brain) => {
+    const beat = $(".beat.on", sec);
+    if (!beat) return brain;
+    const box = (beat.closest(".caption") || beat).getBoundingClientRect();
+    const navH = ($(".nav") || { offsetHeight: 60 }).offsetHeight;
+    const bottomGap = $(".switch") ? 76 : 16;
+    const above = [navH + 8, box.top - 18], below = [box.bottom + 18, innerHeight - bottomGap];
+    const [a0, a1] = above[1] - above[0] > below[1] - below[0] ? above : below;
+    const h = Math.max(120, a1 - a0);
+    sec.style.setProperty("--ot", a0 + "px");
+    sec.style.setProperty("--oh", h + "px");
+    // brain half-width is about 1.05R and half-height about 0.8R; leave room for the logo ring
+    // the top and bottom logo rows take ~30px each, so the brain fits between them
+    const R = Math.min(innerWidth * 0.29 / 1.05, Math.max(30, h / 2 - 34) / 0.8);
+    return { ...brain, x: 0.5, y: (a0 + h / 2) / innerHeight, scale: R / Math.min(innerWidth, innerHeight * 1.25) };
   };
 
   let ticking = false;
@@ -181,6 +201,8 @@
   }, { passive: true });
   addEventListener("resize", update);
   update();
+  // Text can reflow after a beat appears (headlines unscramble, fonts load), so phones re-measure.
+  setInterval(() => { if (small()) update(); }, 250);
 
   // Count-ups (data-countup) run when their data-show block becomes visible; see update().
   const countUp = (el) => {
