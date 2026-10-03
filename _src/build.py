@@ -6,7 +6,7 @@ root = pathlib.Path(__file__).resolve().parent.parent
 index = (root / "overview.html").read_text()  # the overview page supplies reusable sections
 sprite = re.search(r'<svg width="0" height="0".*?</svg>', index, re.S).group(0)
 fonts = '\n'.join(l for l in index.splitlines() if 'fonts.g' in l)
-icon = re.search(r'<link rel="icon"[^>]*>', index).group(0)
+icon = re.search(r'<link rel="icon".*?<link rel="apple-touch-icon"[^>]*>', index).group(0)
 CUR = ' aria-current="page"'
 PAGES = [("index", "Main"), ("week", "A week"), ("voice", "I remember"), ("journey", "One memory")]
 TABS = [("blog", "Blog"), ("privacy", "Privacy"), ("contact", "Contact")]
@@ -54,7 +54,7 @@ for name, label in pages:
 <div class="grain" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"><span></span></div>
 <header class="nav">
-  <a class="brand" href="{home}"><svg class="mark"><use href="#i-mark"/></svg>Agentic Brain</a>
+  <a class="brand" href="{home}"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Agentic Brain</a>
   <nav>{tabs}<span class="soon-pill"><i></i>Coming soon</span></nav>
 </header>
 <main>

@@ -345,3 +345,16 @@ main, .foot { position: relative; z-index: 2; }
 
 .credit.inline { display: block; margin: 22px 0 0; font: 12px var(--mono); letter-spacing: .06em; color: var(--muted); }
 .credit.inline b { color: var(--fg); font-weight: 500; }
+
+/* the product's logo tile (same treatment as the Agentic Brain control panel) */
+.brand .logo { position: relative; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; flex: none;
+  background: linear-gradient(180deg, #17181c, #0e0f11); box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 0 4px rgba(139,141,252,.05); }
+.brand .logo::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none; padding: 1px;
+  background: conic-gradient(from var(--a, 0deg), transparent 0 70%, rgba(139,141,252,.55) 85%, transparent);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: logo-spin 6s linear infinite; }
+@property --a { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@keyframes logo-spin { to { --a: 360deg; } }
+.brand .logo .mark { width: 24px; height: 24px; }
+.brand.small .mark { width: 20px; height: 20px; }
+@media (prefers-reduced-motion: reduce) { .brand .logo::after { animation: none; } }
