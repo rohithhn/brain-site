@@ -174,14 +174,12 @@
   {
     const g = glow.getContext("2d"), r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
     r.addColorStop(0, "rgba(255,255,255,1)");
-    r.addColorStop(0.18, "rgba(200,190,255,.75)");
-    r.addColorStop(0.45, "rgba(140,110,255,.22)");
-    r.addColorStop(1, "rgba(120,90,255,0)");
+    r.addColorStop(0.18, "rgba(200,230,255,.75)");
+    r.addColorStop(0.45, "rgba(143,211,255,.2)");
+    r.addColorStop(1, "rgba(143,211,255,0)");
     g.fillStyle = r; g.fillRect(0, 0, 64, 64);
   }
 
-  // Colour across the brain: cyan at the front → violet → pink at the back.
-  const hueAt = (hx) => (hx < 0 ? lerp(188, 262, (hx + 1) / 1) : lerp(262, 318, hx));
 
   // ── Signals.
   const pulses = [];
@@ -303,8 +301,8 @@
 
     // Soft aura behind the brain.
     const aura = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 1.25);
-    aura.addColorStop(0, `rgba(110,80,255,${0.12 * A})`);
-    aura.addColorStop(0.5, `rgba(40,180,255,${0.05 * A})`);
+    aura.addColorStop(0, `rgba(143,211,255,${0.06 * A})`);
+    aura.addColorStop(0.5, `rgba(255,255,255,${0.015 * A})`);
     aura.addColorStop(1, "rgba(0,0,0,0)");
     ctx.fillStyle = aura; ctx.fillRect(0, 0, W, H);
 
@@ -321,14 +319,14 @@
     }
     ctx.lineWidth = 0.7;
     for (let v = 0; v < B; v++) {
-      ctx.strokeStyle = `rgba(160,150,255,${(0.05 + v * 0.055) * A})`;
+      ctx.strokeStyle = `rgba(215,222,235,${(0.04 + v * 0.05) * A})`;
       ctx.stroke(buckets[v]);
     }
     ctx.lineWidth = 1.1;
     for (const [a, b, act] of hot) {
       const g = ctx.createLinearGradient(a.sx, a.sy, b.sx, b.sy);
-      g.addColorStop(0, `hsla(${hueAt(a.hx)},100%,72%,${act * 0.75 * A})`);
-      g.addColorStop(1, `hsla(${hueAt(b.hx)},100%,72%,${act * 0.75 * A})`);
+      g.addColorStop(0, `hsla(204,100%,72%,${act * 0.75 * A})`);
+      g.addColorStop(1, `hsla(204,100%,72%,${act * 0.75 * A})`);
       ctx.strokeStyle = g;
       ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(b.sx, b.sy); ctx.stroke();
     }
@@ -340,7 +338,7 @@
         const n = nodes[i], s = 1 - d / R_MOUSE;
         const g = ctx.createLinearGradient(mouse.x, mouse.y, n.sx, n.sy);
         g.addColorStop(0, `rgba(255,255,255,${0.55 * s * A})`);
-        g.addColorStop(1, `hsla(${hueAt(n.hx)},100%,70%,${0.35 * s * A})`);
+        g.addColorStop(1, `hsla(204,100%,70%,${0.35 * s * A})`);
         ctx.strokeStyle = g; ctx.lineWidth = 0.6 + s * 1.2;
         ctx.beginPath();
         // A slight curve reads more like a dendrite than a straight ruler line.
@@ -359,7 +357,7 @@
     for (const n of nodes) {
       if (n.minor && n.act < 0.15) continue;
       const r = (0.8 + n.sd * 1.3) * (n.part === 2 ? 0.8 : 1) * (n.minor ? 0.7 : 1);
-      ctx.fillStyle = `hsla(${hueAt(n.hx)},90%,${62 + n.act * 30}%,${(0.25 + n.sd * 0.55 + n.act * 0.4) * A})`;
+      ctx.fillStyle = `hsla(204,${Math.round(n.act * 100)}%,${86 - n.act * 4}%,${(0.25 + n.sd * 0.55 + n.act * 0.4) * A})`;
       ctx.beginPath(); ctx.arc(n.sx, n.sy, r + n.act * 1.6, 0, Math.PI * 2); ctx.fill();
       if (n.act > 0.2) {
         const s = 14 + n.act * 26;
@@ -382,7 +380,7 @@
       }
       const x = lerp(a.sx, b.sx, q.t), y = lerp(a.sy, b.sy, q.t);
       const tx = lerp(a.sx, b.sx, Math.max(0, q.t - 0.25)), ty = lerp(a.sy, b.sy, Math.max(0, q.t - 0.25));
-      ctx.strokeStyle = `hsla(${hueAt(a.hx)},100%,80%,${0.8 * A})`;
+      ctx.strokeStyle = `hsla(204,100%,80%,${0.8 * A})`;
       ctx.lineWidth = 1.6;
       ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(x, y); ctx.stroke();
       ctx.globalAlpha = 0.9 * A;
