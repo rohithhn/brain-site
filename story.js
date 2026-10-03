@@ -47,7 +47,7 @@
       if (run !== el._run) return;
       let busy = false;
       chars.forEach(([sp, c], i) => {
-        if (t < t0 + 200 + i * 22) {
+        if (t < t0 + 160 + i * 12) {
           busy = true;
           sp.textContent = t < t0 + i * 8 ? " " : GLYPHS[(Math.random() * GLYPHS.length) | 0];
           sp.classList.add("scr");

@@ -353,3 +353,6 @@
   .credit { bottom: 120px; font-size: 11px; }
   .doc { padding: 110px 20px 80px; }
 }
+.interlude.marquee-wrap { width: 100%; max-width: 100%; overflow: hidden; }
+.marquee.static { width: 100%; max-width: 100%; }
+@media (max-width: 760px) { .voice .orbit { display: none; } }

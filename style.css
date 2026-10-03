@@ -13,9 +13,9 @@
   --col: max(20px, calc(50% - 600px));
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: var(--bg); }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: var(--bg); overflow-x: clip; }
 body {
-  margin: 0; background: var(--bg); color: var(--fg); overflow-x: hidden;
+  margin: 0; background: var(--bg); color: var(--fg); overflow-x: clip;
   font: 400 17px/1.6 var(--sans); -webkit-font-smoothing: antialiased; letter-spacing: -.005em;
 }
 a { color: var(--fg); }
