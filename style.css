@@ -1,6 +1,6 @@
 /* Agentic Brain site. No CDN, no web fonts, no libraries: brain.js draws the neural background on a
    canvas, app.js drives scroll progress into CSS custom properties. */
-:root {
+:root { color-scheme: dark;
   --bg: #04050a; --bg2: #0a0b14; --fg: #eeeef8; --muted: #8b8ca6; --line: rgba(160,150,255,.14);
   --card: rgba(16,16,30,.62); --card-solid: #10101c;
   --cyan: #38d9f5; --violet: #8b6cff; --pink: #ff5cc8; --green: #3ee08f; --amber: #ffbf47; --red: #ff5f6d;
