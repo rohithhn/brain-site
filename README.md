@@ -5,7 +5,7 @@ Landing page for Agentic Brain, served by GitHub Pages.
 Plain static files, no build step and no libraries:
 
 - `index.html` – the main page (built from `_src/index.body.html`): the brain tells its story, chapter by chapter
-- `overview.html` – the original overview page; its sections are reused by the main page
+- `_src/overview.html` – the original landing page (live version on the `original-landing` branch); the main page reuses its sections
 - `week.html`, `voice.html`, `journey.html` – alternative story pages
 - `blog.html`, `privacy.html`, `contact.html` – header pages
 - `_src/` – page sources; run `python3 _src/build.py` after editing them

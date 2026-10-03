@@ -3,7 +3,7 @@ Run from the repo root: python3 _src/build.py [--artifact OUTDIR]"""
 import re, sys, pathlib
 
 root = pathlib.Path(__file__).resolve().parent.parent
-index = (root / "overview.html").read_text()  # the overview page supplies reusable sections
+index = (root / "_src" / "overview.html").read_text()  # the overview page supplies reusable sections
 sprite = re.search(r'<svg width="0" height="0".*?</svg>', index, re.S).group(0)
 fonts = '\n'.join(l for l in index.splitlines() if 'fonts.g' in l)
 icon = re.search(r'<link rel="icon".*?<link rel="apple-touch-icon"[^>]*>', index).group(0)
@@ -40,7 +40,7 @@ for name, label in pages:
     home = "./" if artifact else "index.html"
     tabs = "".join(f'<a href="{n}.html"{CUR if n == name else ""}>{l}</a>' for n, l in TABS)
     switch = "" if artifact or name in dict(TABS) or name == "index" else '<nav class="switch" aria-label="Stories">' + "".join(
-        f'<a href="{n}.html"{CUR if n == name else ""}>{l}</a>' for n, l in PAGES[:1] + [("overview", "Overview")] + PAGES[1:]) + "</nav>"
+        f'<a href="{n}.html"{CUR if n == name else ""}>{l}</a>' for n, l in PAGES) + "</nav>"
     head = f"""<title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#000000">
