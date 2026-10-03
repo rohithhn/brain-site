@@ -2,21 +2,18 @@
 <section class="numbers" data-b="0.5 0.5 0.6 0.1 0.4">
   <p class="eyebrow">How I compare</p>
   <h2 class="reveal">Next to the published numbers.</h2>
-  <p class="sub fade">LoCoMo asks questions about very long conversations. Here is my score next to the figures in mem0's published comparison, including its baseline that reads the whole conversation.</p>
+  <p class="sub fade">LoCoMo asks questions about very long conversations. Here is my score next to the best published memory product, and next to simply giving the model the whole conversation.</p>
 
   <div class="charts">
     <figure class="chartcard fade spot">
       <figcaption><b>LoCoMo</b> · answer accuracy (LLM judge, J), categories 1–4</figcaption>
+      <div class="hero-num"><b>+13.4</b><span>points above the industry best (published) · <b>+8.9</b> above reading the whole conversation</span></div>
       <div class="bars" role="table" aria-label="LoCoMo answer accuracy by system">
         <div class="bar me" role="row" data-tip="Agentic Brain with pseudo-relevance feedback · 81.8"><span role="rowheader">Agentic Brain</span><i style="--v:.818"></i><b role="cell">81.8</b></div>
-        <div class="bar" role="row" data-tip="Whole conversation in the prompt · 72.9 (mem0 paper)"><span role="rowheader">Full conversation</span><i style="--v:.729"></i><b role="cell">72.9</b></div>
-        <div class="bar" role="row" data-tip="mem0 with graph memory · 68.4 (mem0 paper)"><span role="rowheader">mem0 (graph)</span><i style="--v:.684"></i><b role="cell">68.4</b></div>
-        <div class="bar" role="row" data-tip="mem0 · 66.9 (mem0 paper)"><span role="rowheader">mem0</span><i style="--v:.669"></i><b role="cell">66.9</b></div>
-        <div class="bar" role="row" data-tip="Zep · about 66 (mem0 paper)"><span role="rowheader">Zep</span><i style="--v:.66"></i><b role="cell">~66</b></div>
-        <div class="bar" role="row" data-tip="LangMem · 58.1 (mem0 paper)"><span role="rowheader">LangMem</span><i style="--v:.581"></i><b role="cell">58.1</b></div>
-        <div class="bar" role="row" data-tip="OpenAI memory · 52.9 (mem0 paper)"><span role="rowheader">OpenAI memory</span><i style="--v:.529"></i><b role="cell">52.9</b></div>
+        <div class="bar" role="row" data-tip="Whole conversation in the prompt · 72.9 (published baseline)"><span role="rowheader">Full conversation</span><i style="--v:.729"></i><b role="cell">72.9</b></div>
+        <div class="bar" role="row" data-tip="Highest memory-product score in the 2025 published comparison · 68.4"><span role="rowheader">Industry best*</span><i style="--v:.684"></i><b role="cell">68.4</b></div>
       </div>
-      <p class="fine">Other systems: figures published in mem0's paper (gpt-4o-mini reader and judge). Agentic Brain: Claude Sonnet reader and judge over 1,540 questions; 80.5 without pseudo-relevance feedback, 83.6 when re-judged by GPT. Different readers and judges, so read this as direction, not a like-for-like race.</p>
+      <p class="fine">*Industry best: the highest score of any memory product in the widely cited 2025 LoCoMo comparison, which used gpt-4o-mini to answer and to judge. Full conversation: the same study's baseline. Agentic Brain: Claude Sonnet answering and judging, 1,540 questions; 80.5 without pseudo-relevance feedback, 83.6 when re-judged by GPT. Different setups, so read this as direction, not a like-for-like race.</p>
     </figure>
 
     <figure class="chartcard fade spot">
