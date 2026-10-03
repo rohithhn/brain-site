@@ -1,0 +1,124 @@
+<!--TITLE:Agentic Brain · One memory-->
+<!--DESC:Follow one decision from a Claude Code session to a different tool on a different laptop.-->
+
+<section class="opener" data-b="0.72 0.5 0.3 0.5 0.6">
+  <p class="stamp">One decision · seven stops</p>
+  <h1 class="decode">Follow a single memory.</h1>
+  <p class="note">Monday, 10:14. You tell Claude Code one sentence. Scroll to follow it from your terminal to a different tool on a different laptop.</p>
+  <p class="scrollcue"><i></i>Scroll</p>
+</section>
+
+<section class="story journey" data-story="7" data-b="0.5 0.55 0.55 0.3 0.5">
+  <div class="story-pin">
+    <div class="route" aria-hidden="true">
+      <span data-step="0">Said</span><span data-step="1">Captured</span><span data-step="2">Distilled</span><span data-step="3">Ranked</span>
+      <span data-step="4">Sealed</span><span data-step="5">Synced</span><span data-step="6">Recalled</span>
+    </div>
+    <div class="narr">
+      <div class="beat" data-b="0.5 0.55 0.55 0.15 0.3">
+        <p class="stamp">Stop 1 · <b>Mon 10:14</b></p>
+        <h2 class="line">It starts as one sentence.</h2>
+        <p class="note">In the middle of a Claude Code session, you settle something that matters.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.55 0.55 0.8 2.6 2">
+        <p class="stamp">Stop 2 · <b>Mon 10:14</b></p>
+        <h2 class="line">The brain hears it.</h2>
+        <p class="note">A parser reads the session and stores the decision as an observation in a local SQLite database.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.55 0.58 0.4 0.3 0">
+        <p class="stamp">Stop 3 · <b>Tue 02:00</b></p>
+        <h2 class="line">Overnight, it becomes knowledge.</h2>
+        <p class="note"><code>brain dream</code> folds it into a wiki page that gets revised as the project changes.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.55 0.55 0.8 1.6 1">
+        <p class="stamp">Stop 4 · <b>Wed 16:40</b></p>
+        <h2 class="line">When it's needed, it rises to the top.</h2>
+        <p class="note">Ask anything near the topic, and relevance plus a record of being helpful put it first.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.55 0.55 0.12 0.2">
+        <p class="stamp">Stop 5 · <b>Wed 23:00</b></p>
+        <h2 class="line">Before it leaves your machine, it's sealed.</h2>
+        <p class="note">The whole store is packed and encrypted with your <code>age</code> key. The key never leaves your Keychain.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.55 0.55 0.25 0.5">
+        <p class="stamp">Stop 6 · <b>Wed 23:01</b></p>
+        <h2 class="line">It travels to your private repo.</h2>
+        <p class="note"><code>brain sync</code> uploads one encrypted blob as a GitHub Release asset. No one else's server is involved.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.55 0.6 1 3.2 3">
+        <p class="stamp">Stop 7 · <b>Fri 11:30</b></p>
+        <h2 class="line">Another laptop. Another tool. <span class="sig">Same memory.</span></h2>
+        <p class="note">Cursor opens with Monday's decision already in its briefing. You didn't repeat yourself.</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="card spot" data-show="0" style="--brand:#d97757">
+        <div class="card-head"><svg><use href="#l-claudecode"/></svg>Claude Code · api<em>Mon 10:14</em></div>
+        <div class="card-body">
+          <div class="msg you"><span class="who">You</span><p class="quote type" data-speed="30">Sessions live in SQLite. Redis was only for the old job queue.</p></div>
+        </div>
+      </div>
+      <div class="card spot" data-show="1">
+        <div class="card-head"><svg><use href="#l-sqlite"/></svg>~/.claude-brain/brain.db<em>observation #4812</em></div>
+        <div class="card-body">
+<pre class="codeblk type" data-speed="8">{
+  "tool": "claude-code",
+  "type": "decision",
+  "project": "api",
+  "text": "Sessions live in SQLite; Redis only served the old job queue",
+  "at": "2026-10-05T10:14"
+}</pre>
+        </div>
+      </div>
+      <div class="card spot" data-show="2">
+        <div class="card-head"><svg><use href="#i-archive"/></svg>wiki/infra.md<em>revised</em></div>
+        <div class="card-body">
+<pre class="codeblk">## Sessions &amp; caching
+<span class="good">+ Sessions live in SQLite (decided Mon 10:14).</span><span class="good">+ Redis only served the old job queue. It's gone.</span>  Postgres stays the system of record.</pre>
+        </div>
+      </div>
+      <div class="card spot" data-show="3">
+        <div class="card-head"><svg><use href="#i-db"/></svg>brain recall<em>3 results</em></div>
+        <div class="card-body">
+          <pre class="codeblk"><span class="mk">$</span> brain recall "cache sessions in redis?"</pre>
+          <div class="res top"><b>0.92</b>Sessions live in SQLite; Redis only served the old queue</div>
+          <div class="res"><b>0.61</b>Deploy health checks: what each one covers</div>
+          <div class="res"><b>0.44</b>wiki/infra.md § Postgres</div>
+        </div>
+      </div>
+      <div class="card spot" data-show="4">
+        <div class="card-head"><svg><use href="#i-lock"/></svg>age encrypt<em>sealed</em></div>
+        <div class="card-body">
+          <div class="cipher" data-cipher="112"></div>
+          <span class="flag sig">key: OS Keychain only</span>
+        </div>
+      </div>
+      <div class="card spot" data-show="5">
+        <div class="card-head"><svg><use href="#l-github"/></svg>your-private-brain<em>Release</em></div>
+        <div class="card-body">
+          <div class="release"><svg><use href="#l-github"/></svg><div>brain.age<small>38.2 MB · replaced in place</small></div><em>latest</em></div>
+          <pre class="codeblk"><span class="mk">$</span> brain restore   # on your other laptop</pre>
+        </div>
+      </div>
+      <div class="card spot" data-show="6">
+        <div class="card-head"><svg><use href="#l-cursor"/></svg>Cursor · api<em>Fri 11:30</em></div>
+        <div class="card-body">
+<pre class="codeblk"><span class="mk">&lt;!-- BRAIN:START --&gt;</span>
+<span class="inj">- Sessions live in SQLite, not Redis (Mon)</span><span class="mk">&lt;!-- BRAIN:END --&gt;</span></pre>
+          <div class="msg ai"><span class="who">Cursor</span><p class="type" data-delay="300">Keeping sessions in SQLite, as decided on Monday. No Redis client needed.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soon" data-b="0.5 0.5 0.5 0.45 1.2">
+  <span class="soon-pill big"><i></i>Coming soon</span>
+  <h2 class="decode-in">Say it once.</h2>
+  <p class="sub fade">Agentic Brain is in private testing. One memory for Claude Code, Codex, Cursor, Gemini CLI and Antigravity, stored in your own GitHub.</p>
+  <div class="works fade">
+    <span><svg><use href="#l-apple"/></svg>macOS</span>
+    <span><svg><use href="#l-node"/></svg>Node 22+</span>
+    <span><svg><use href="#l-github"/></svg>A GitHub account</span>
+  </div>
+</section>

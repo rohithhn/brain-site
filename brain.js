@@ -158,7 +158,8 @@
 
   // ── Viewport + where the brain should sit (set by app.js per scene).
   let W = 0, H = 0, dpr = 1;
-  const state = { x: 0.7, y: 0.5, scale: 0.42, alpha: 1, region: -1 };
+  // rate scales spontaneous firing: 0 is a sleeping brain, 1 normal, 2+ a busy one.
+  const state = { x: 0.7, y: 0.5, scale: 0.42, alpha: 1, region: -1, rate: 1 };
   const target = { ...state };
   const resize = () => {
     dpr = Math.min(devicePixelRatio || 1, 2);
@@ -276,8 +277,9 @@
     }
 
     // Spontaneous thought.
-    if (!reduce) {
-      spont -= dt;
+    state.rate = lerp(state.rate, target.rate, k);
+    if (!reduce && state.rate > 0.03) {
+      spont -= dt * state.rate;
       if (spont <= 0) {
         spont = rand(0.12, 0.35);
         let pool = nodes;

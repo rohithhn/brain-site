@@ -1,0 +1,218 @@
+<!--TITLE:Agentic Brain · A week-->
+<!--DESC:A developer's week with five AI tools that forget, until they share one brain.-->
+
+<section class="opener" data-b="0.72 0.5 0.3 0.22 0">
+  <p class="stamp">A story in five days</p>
+  <h1 class="decode">This is a story about forgetting.</h1>
+  <p class="note">You use five AI coding tools. None of them remember what the others learned. Scroll through one week.</p>
+  <p class="scrollcue"><i></i>Scroll</p>
+</section>
+
+<!-- Monday -->
+<section class="story" data-story="3" data-b="0.5 0.5 0.6 0.14 0.2">
+  <div class="story-pin">
+    <div class="narr">
+      <div class="beat">
+        <p class="stamp">Monday <b>10:14</b></p>
+        <h2 class="line">You make a call.</h2>
+        <p class="note">Sessions live in SQLite. Redis was only there for the old job queue. It takes twenty minutes of back and forth to land on it.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">Monday <b>10:34</b></p>
+        <h2 class="line">It's the right call.</h2>
+        <p class="note">Claude Code agrees. The tradeoff is settled, the reasoning is sound, and you move on.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.05 0">
+        <p class="stamp">Monday <b>18:02</b></p>
+        <h2 class="line">Then you close the terminal. <span class="mute">The decision goes with it.</span></h2>
+        <p class="note">Nothing carries the reasoning forward. The next session, in any tool, starts from zero.</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="win fades spot" data-show="0-2" style="--brand:#d97757">
+        <div class="win-head"><svg><use href="#l-claudecode"/></svg>Claude Code · api<span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="win-body">
+          <div class="msg you"><span class="who">You</span><p class="type">Let's drop Redis. Sessions live in SQLite; Redis was only for the old job queue.</p></div>
+          <div class="msg ai"><span class="who">Claude</span><p class="type" data-delay="2300">Agreed. I'll keep sessions in SQLite and remove the Redis client from the API.</p></div>
+          <span class="flag ok" data-show="1-2">decision made</span>
+        </div>
+      </div>
+      <p class="closed" data-show="2">session closed · context gone</p>
+    </div>
+  </div>
+</section>
+
+<!-- Tuesday -->
+<section class="story" data-story="2" data-b="0.5 0.5 0.6 0.1 0.1">
+  <div class="story-pin">
+    <div class="narr">
+      <div class="beat">
+        <p class="stamp">Tuesday <b>09:02</b></p>
+        <h2 class="line">New day. New tool.</h2>
+        <p class="note">You open Cursor to build the session endpoint. It has never heard of Monday.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">Tuesday <b>09:05</b></p>
+        <h2 class="line">It suggests <span class="sig">Redis.</span></h2>
+        <p class="note">Confidently, with a code sample, because nothing told it otherwise.</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="win spot" data-show="0-1">
+        <div class="win-head"><svg><use href="#l-cursor"/></svg>Cursor · sessions.ts<span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="win-body">
+<pre class="codeblk">import { db } from "./sqlite";
+
+export async function getSession(id) {
+<span class="add" data-show="1">+ import Redis from "ioredis";</span><span class="add" data-show="1">+ const cache = new Redis(); // cache sessions</span>  return db.get("sessions", id);
+}</pre>
+          <span class="flag bad" data-show="1">contradicts Monday's decision</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wednesday -->
+<section class="story" data-story="2" data-b="0.5 0.5 0.6 0.1 0.1">
+  <div class="story-pin">
+    <div class="narr">
+      <div class="beat">
+        <p class="stamp">Wednesday <b>16:40</b></p>
+        <h2 class="line">You explain it. Again.</h2>
+        <p class="note">This time to Codex, which wants to add a Redis health check to the deploy script.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">Wednesday <b>16:52</b></p>
+        <h2 class="line">Three tools. <span class="mute">Three explanations.</span></h2>
+        <p class="note">Every tool starts from zero, so you become the memory. You're the only thing connecting them.</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="stack3" data-show="0">
+        <div class="win"><div class="win-head"><svg><use href="#l-claudecode"/></svg>Claude Code</div><div class="win-body"><div class="msg you"><span class="who">You · Mon</span><p>Sessions live in SQLite, not Redis.</p></div></div></div>
+        <div class="win"><div class="win-head"><svg><use href="#l-cursor"/></svg>Cursor</div><div class="win-body"><div class="msg you"><span class="who">You · Tue</span><p>No Redis. Sessions are in SQLite.</p></div></div></div>
+        <div class="win spot"><div class="win-head"><svg><use href="#l-codex"/></svg>Codex · deploy.sh</div><div class="win-body"><div class="msg you"><span class="who">You · Wed</span><p class="type">Remove the Redis health check. We don't use Redis anymore. Sessions are in SQLite.</p></div></div></div>
+      </div>
+      <div class="tally" data-show="1"><b>3×</b><span>the same decision, explained this week</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- The brain wakes -->
+<section class="story" data-story="5" data-b="0.5 0.42 0.42 1 1.5">
+  <div class="story-pin center">
+    <div class="orbit" data-show="1-4">
+      <span style="--x:22%;--y:24%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>Claude Code</span>
+      <span style="--x:78%;--y:22%;--i:1"><svg><use href="#l-codex"/></svg>Codex</span>
+      <span style="--x:14%;--y:50%;--i:2"><svg><use href="#l-cursor"/></svg>Cursor</span>
+      <span style="--x:86%;--y:48%;--i:3;--brand:#4796e3"><svg><use href="#l-geminicli"/></svg>Gemini CLI</span>
+      <span style="--x:50%;--y:12%;--i:4;--brand:#4f8dfd"><svg><use href="#l-antigravity"/></svg>Antigravity</span>
+    </div>
+    <div class="caption">
+      <div class="narr">
+        <div class="beat" data-b="0.5 0.42 0.42 1 2.5">
+          <p class="stage-label">Thursday · 02:00</p>
+          <h2 class="line">So you give them one shared brain.</h2>
+        </div>
+        <div class="beat" data-b="0.5 0.42 0.42 1 2 2">
+          <p class="stage-label">Capture</p>
+          <h2 class="line">It listens to every tool.</h2>
+          <p class="note">Parsers and file watchers read each session as it happens.</p>
+        </div>
+        <div class="beat" data-b="0.5 0.42 0.42 1 1.2 0">
+          <p class="stage-label">Distill</p>
+          <h2 class="line">It writes down what you settled.</h2>
+          <p class="note"><code>wiki/infra.md</code> · Sessions live in SQLite (decided Monday).</p>
+        </div>
+        <div class="beat" data-b="0.5 0.42 0.42 1 1.4 1">
+          <p class="stage-label">Rank</p>
+          <h2 class="line">It knows what matters.</h2>
+          <p class="note">Search relevance plus how often a memory actually helped you.</p>
+        </div>
+        <div class="beat" data-b="0.5 0.42 0.42 1 2.5 3">
+          <p class="stage-label">Inject</p>
+          <h2 class="line">It briefs every tool before you type.</h2>
+          <p class="note">A ~2,000-token digest in <code>CLAUDE.md</code>, <code>AGENTS.md</code> and <code>GEMINI.md</code>.</p>
+        </div>
+      </div>
+      <div class="phase" aria-hidden="true"><i data-show="1-4"></i><i data-show="2-4"></i><i data-show="3-4"></i><i data-show="4-4"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- Friday -->
+<section class="story" data-story="2" data-b="0.5 0.5 0.6 0.28 1.2">
+  <div class="story-pin">
+    <div class="narr">
+      <div class="beat">
+        <p class="stamp">Friday <b>11:30</b></p>
+        <h2 class="line">Any tool. <span class="sig">It already knows.</span></h2>
+        <p class="note">Open Cursor, Codex or Gemini CLI. Monday's decision is in the briefing before your first message.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">Friday <b>17:45</b></p>
+        <h2 class="line">You never explained it a fourth time.</h2>
+        <p class="note">Decisions, fixes and the reasons behind them now carry across every tool you use.</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="trio" data-show="0-1">
+        <div class="win spot"><div class="win-head"><svg><use href="#l-cursor"/></svg>Cursor</div><div class="win-body">
+<pre class="codeblk"><span class="mk">&lt;!-- BRAIN:START --&gt;</span>
+<span class="inj">SQLite sessions, no Redis</span><span class="mk">&lt;!-- BRAIN:END --&gt;</span></pre>
+          <div class="msg ai"><span class="who">Cursor</span><p class="type">Using the SQLite session store.</p></div></div></div>
+        <div class="win spot"><div class="win-head"><svg><use href="#l-codex"/></svg>Codex</div><div class="win-body">
+<pre class="codeblk"><span class="mk">## from memory</span>
+<span class="inj">No Redis in deploy (Mon)</span></pre>
+          <div class="msg ai"><span class="who">Codex</span><p class="type" data-delay="500">Skipping the Redis health check.</p></div></div></div>
+        <div class="win spot" style="--brand:#4796e3"><div class="win-head"><svg><use href="#l-geminicli"/></svg>Gemini CLI</div><div class="win-body">
+<pre class="codeblk"><span class="mk"># GEMINI.md</span>
+<span class="inj">Sessions: SQLite (Mon)</span></pre>
+          <div class="msg ai"><span class="who">Gemini</span><p class="type" data-delay="1000">Sessions are in SQLite, so no cache layer.</p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Whose memory -->
+<section class="story" data-story="3" data-b="0.5 0.5 0.6 0.16 0.6">
+  <div class="story-pin">
+    <div class="narr">
+      <div class="beat">
+        <p class="stamp">One more thing</p>
+        <h2 class="line">A brain like this knows a lot about you.</h2>
+        <p class="note">Your decisions, your code, your mistakes. That shouldn't sit on someone else's server.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">Encryption</p>
+        <h2 class="line">So it's sealed with <span class="sig">your</span> key.</h2>
+        <p class="note"><code>age</code> encryption. The key lives only in your Mac's Keychain and never leaves it.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">Storage</p>
+        <h2 class="line">And it lives in <span class="sig">your</span> GitHub.</h2>
+        <p class="note">A Release asset on your own private repo. A leaked repo or a leaked token exposes nothing readable.</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="vaultcard">
+        <div class="row" data-show="0-2"><svg><use href="#l-sqlite"/></svg>Your memory<small>4,812 observations</small></div>
+        <div class="cipher" data-show="1-2" data-cipher="96"></div>
+        <div class="row" data-show="1-2"><svg><use href="#i-lock"/></svg>age key<small>Keychain only</small></div>
+        <div class="row" data-show="2"><svg><use href="#l-github"/></svg>Release asset<small>your private repo</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soon" data-b="0.5 0.5 0.5 0.45 1.2">
+  <span class="soon-pill big"><i></i>Coming soon</span>
+  <h2 class="decode-in">Next week, your tools remember.</h2>
+  <p class="sub fade">Agentic Brain is in private testing. One command will wire every tool on your machine, create your private data repo and generate your key.</p>
+  <div class="works fade">
+    <span><svg><use href="#l-apple"/></svg>macOS</span>
+    <span><svg><use href="#l-node"/></svg>Node 22+</span>
+    <span><svg><use href="#l-github"/></svg>A GitHub account</span>
+  </div>
+</section>
