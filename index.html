@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic Brain: one memory for every AI coding tool</title>
+<meta name="description" content="Open-source, self-hosted memory for Claude Code, Codex, Cursor, Gemini and Antigravity. Your AI's memory lives in your own private GitHub repo, encrypted with a key that never leaves your machine.">
+<link rel="canonical" href="https://rohithhn.github.io/brain-site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Agentic Brain">
+<meta property="og:title" content="Agentic Brain: your AI's memory, in your GitHub">
+<meta property="og:description" content="One encrypted memory for every AI coding tool. Self-hosted, open source, no vendor server in the path.">
+<meta property="og:url" content="https://rohithhn.github.io/brain-site/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04050a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- The brain: a canvas of neurons behind everything. brain.js draws it; app.js tells it where to sit. -->
+<canvas id="brain" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="nav">
+  <a class="brand" href="#top"><span class="logo" aria-hidden="true">🧠</span>Agentic Brain</a>
+  <nav>
+    <a href="#loop">How it works</a>
+    <a href="#tools">Tools</a>
+    <a href="#vault">Security</a>
+    <a href="#install">Install</a>
+    <a class="gh" href="https://github.com/rohithhn/ultra-agentic-memory-public" target="_blank" rel="noopener">GitHub ↗</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- 1 · Hero -->
+<section class="hero" data-scene="hero" data-brain="hero">
+  <div class="hero-sticky">
+    <div class="hero-copy">
+      <span class="pill"><i class="pulse"></i>Open source · Self-hosted · Encrypted</span>
+      <h1 class="split">Your AI's memory, in <em>your</em> GitHub.</h1>
+      <p class="lede">You tell Claude Code a decision. Tomorrow you're in Cursor, and it has no idea.
+      Agentic Brain captures what your coding sessions established, distills it, ranks it, and injects
+      it back into every tool you use, from one store encrypted with your key.</p>
+      <div class="cta">
+        <a class="btn primary" href="#install">Get started <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="https://github.com/rohithhn/ultra-agentic-memory-public" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <p class="hint"><span aria-hidden="true">✦</span> Move your cursor over the brain. It fires.</p>
+    </div>
+    <a class="cue" href="#loop">Scroll <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
+
+<!-- 2 · Pinned: the loop -->
+<section class="loop" id="loop" data-scene="loop" data-brain="loop">
+  <div class="loop-sticky">
+    <div class="loop-copy">
+      <p class="eyebrow">A set of loops, not a chat product</p>
+      <ol class="steps">
+        <li class="on" data-step="0">
+          <span class="num">01</span>
+          <h3>Capture.</h3>
+          <p>Purpose-built parsers read Claude Code, Codex, Antigravity, Gemini CLI and Cursor sessions.
+          File watchers pick up new sessions near-live, into one local SQLite store.</p>
+        </li>
+        <li data-step="1">
+          <span class="num">02</span>
+          <h3>Distill.</h3>
+          <p><code>brain dream</code> turns raw observations into a compounding wiki that gets revised, not
+          appended. Resolved struggles become reusable "learnings" you approve.</p>
+        </li>
+        <li data-step="2">
+          <span class="num">03</span>
+          <h3>Rank.</h3>
+          <p>BM25 over SQLite FTS, plus outcome scores: how often a learning was injected and whether
+          you marked it helpful. Proven usefulness, not keyword overlap alone.</p>
+        </li>
+        <li data-step="3">
+          <span class="num">04</span>
+          <h3>Inject.</h3>
+          <p>One assembler builds a ~2k-token block into <code>CLAUDE.md</code>, <code>AGENTS.md</code> and
+          <code>GEMINI.md</code>, inside managed markers. Your own text is never touched.</p>
+        </li>
+        <li data-step="4">
+          <span class="num">05</span>
+          <h3>Measure.</h3>
+          <p><code>brain eval</code> asks questions about your own history and scores whether retrieval
+          surfaced the answer. Every ranking change is gated on that number, not on vibes.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="term loop-term" aria-hidden="true">
+      <div class="term-bar"><i></i><i></i><i></i><span>~/project · zsh</span></div>
+      <div class="term-body">
+        <div class="pane on">
+          <p><b class="p">$</b> brain ingest</p>
+          <p class="dim">scanning ~/.claude, ~/.codex, ~/.gemini, cursor…</p>
+          <p><span class="ok">✓</span> Claude Code   <span class="dim">212 sessions</span></p>
+          <p><span class="ok">✓</span> Codex CLI     <span class="dim">87 sessions</span></p>
+          <p><span class="ok">✓</span> Gemini CLI    <span class="dim">31 sessions</span></p>
+          <p><span class="ok">✓</span> Cursor        <span class="dim">54 sessions</span></p>
+          <p class="hl">→ 4,812 observations · watchers on</p>
+        </div>
+        <div class="pane">
+          <p><b class="p">$</b> brain dream</p>
+          <p class="dim">revising wiki from 318 new observations…</p>
+          <p><span class="ok">~</span> wiki/auth.md        <span class="dim">revised</span></p>
+          <p><span class="ok">~</span> wiki/deploy.md      <span class="dim">revised</span></p>
+          <p><span class="ok">+</span> wiki/sqlite-fts.md  <span class="dim">new page</span></p>
+          <p><b class="p">$</b> brain distill</p>
+          <p class="hl">→ 2 learnings drafted · awaiting your approval</p>
+        </div>
+        <div class="pane">
+          <p><b class="p">$</b> brain recall "why did we drop redis"</p>
+          <div class="rank">
+            <p><span class="sc">0.92</span> decision · <span class="dim">sessions are sqlite, redis was only for…</span></p>
+            <p><span class="sc">0.81</span> learning · <span class="dim">👍 ×6 · cache invalidation on deploy…</span></p>
+            <p><span class="sc">0.64</span> wiki/infra.md · <span class="dim">§ caching</span></p>
+          </div>
+          <p class="hl">→ BM25 + outcome scores</p>
+        </div>
+        <div class="pane">
+          <p class="dim"># ~/.claude/CLAUDE.md</p>
+          <p>## My rules</p>
+          <p class="dim">- prefer small PRs (yours, untouched)</p>
+          <p class="mk">&lt;!-- BRAIN:START --&gt;</p>
+          <p class="inj">learnings → observations → workflows → wiki</p>
+          <p class="inj">deduped · ~2,000 tokens</p>
+          <p class="mk">&lt;!-- BRAIN:END --&gt;</p>
+        </div>
+        <div class="pane">
+          <p><b class="p">$</b> brain eval</p>
+          <p class="dim">20 questions about your own history…</p>
+          <div class="meter"><span style="--w:15%"></span><em>recency order · 15%</em></div>
+          <div class="meter good"><span style="--w:65%"></span><em>BM25 relevance · 65%</em></div>
+          <p class="hl">→ change gated on the number</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · Numbers -->
+<section class="stats" data-brain="dim">
+  <div class="stat"><b data-count="94.2" data-dec="1" data-suffix="%">0</b><span>end-to-end QA accuracy on LongMemEval-S (500 questions)</span></div>
+  <div class="stat"><b data-count="98.3" data-dec="1" data-suffix="%">0</b><span>answer session in the top 5 retrieved</span></div>
+  <div class="stat"><b data-count="5">0</b><span>coding tools captured into one store</span></div>
+  <div class="stat"><b data-count="0">0</b><span>vendor servers between you and your memory</span></div>
+  <p class="stats-note">Numbers from <a href="https://github.com/rohithhn/ultra-agentic-memory-public/blob/main/evals/longmemeval/RESULTS.md" target="_blank" rel="noopener">evals/longmemeval/RESULTS.md</a>: k=40 rounds, PRF + deep recall, Claude judge. Method and caveats are in the file.</p>
+</section>
+
+<!-- 4 · Pinned: tools wire into the brain -->
+<section class="tools" id="tools" data-scene="tools" data-brain="tools">
+  <div class="tools-sticky">
+    <div class="tools-head">
+      <p class="eyebrow">One store, many tools</p>
+      <h2>Every tool plugs into the same brain.</h2>
+      <p class="sub">"Supported" means three different things. Here they are, kept apart.</p>
+    </div>
+    <div class="wire" aria-hidden="true">
+      <svg class="wires" viewBox="0 0 1000 560" preserveAspectRatio="none"></svg>
+      <div class="core"><span>🧠</span><small>brain.db</small></div>
+    </div>
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead><tr><th>Tool</th><th>Capture</th><th>Push</th><th>Pull</th></tr></thead>
+        <tbody>
+          <tr><td>Claude Code</td><td class="y">native</td><td class="y"><code>CLAUDE.md</code></td><td class="y">MCP</td></tr>
+          <tr><td>Codex CLI + desktop</td><td class="y">parser + watcher</td><td class="y"><code>AGENTS.md</code></td><td class="y">MCP</td></tr>
+          <tr><td>Antigravity CLI</td><td class="y">history + watcher</td><td class="y"><code>GEMINI.md</code></td><td class="y">MCP</td></tr>
+          <tr><td>Gemini CLI</td><td class="y">session parser</td><td class="y"><code>GEMINI.md</code></td><td class="y">MCP</td></tr>
+          <tr><td>Cursor</td><td class="y">local store</td><td class="w">per-repo <code>AGENTS.md</code></td><td class="y">MCP</td></tr>
+          <tr><td>Claude Desktop</td><td class="n">server-side</td><td class="n">—</td><td class="y">MCP</td></tr>
+          <tr><td>ChatGPT desktop</td><td class="n">by choice</td><td class="n">—</td><td class="y">MCP</td></tr>
+        </tbody>
+      </table>
+      <p class="legend"><b>Capture</b> sessions flow back in. <b>Push</b> a digest the tool auto-loads, always present.
+      <b>Pull</b> the model can search memory when it decides to.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Pinned: the vault -->
+<section class="vault" id="vault" data-scene="vault" data-brain="vault">
+  <div class="vault-sticky">
+    <div class="vault-copy">
+      <p class="eyebrow">You own the store</p>
+      <h2>Encrypted with your key. Parked in <em>your</em> repo.</h2>
+      <p>The memory is an <code>age</code>-encrypted blob in a GitHub Release asset on your private repo.
+      The key lives only in each machine's Keychain. A leaked repo or a leaked token exposes nothing readable.</p>
+      <p class="fine">Why a Release asset and not git? The blob is replaced on every sync. Release assets are
+      replaced in place and don't touch the LFS quota.</p>
+    </div>
+    <div class="pipe" aria-hidden="true">
+      <div class="stage" data-i="0"><span class="ico">🗄️</span><b>SQLite memory</b><small>observations + FTS</small></div>
+      <div class="stage" data-i="1"><span class="ico">🧹</span><b>VACUUM INTO</b><small>compact snapshot</small></div>
+      <div class="stage" data-i="2"><span class="ico">📦</span><b>tar</b><small>wiki · learnings · db</small></div>
+      <div class="stage lock" data-i="3"><span class="ico">🔐</span><b>age encrypt</b><small>key in OS Keychain only</small></div>
+      <div class="stage" data-i="4"><span class="ico">🏷️</span><b>Release asset</b><small>on YOUR private repo</small></div>
+      <div class="stage" data-i="5"><span class="ico">💻</span><b>Your other machines</b><small>brain restore</small></div>
+      <div class="packet"><span>a2f9·c41e·07bd</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Horizontal rail -->
+<section class="rail" data-scene="rail" data-brain="dim">
+  <div class="rail-sticky">
+    <p class="eyebrow rail-title">And the rest of the brain</p>
+    <div class="track">
+      <article class="panel">
+        <h3>A control panel on localhost.</h3>
+        <p>Search memory, browse the wiki, approve learnings, 👍/👎 what got injected, and watch capture freshness and sync age.</p>
+        <img class="demo" src="img/demo.gif" alt="Agentic Brain control panel demo" loading="lazy">
+      </article>
+      <article class="panel">
+        <h3>Coming from claude-mem?</h3>
+        <p>One command imports your whole history (read-only, verified), wires every tool, and mutes the duplicate startup dump.</p>
+        <pre class="snip"><span class="dim"># preview, writes nothing</span>
+brain switch-from-claude-mem
+brain switch-from-claude-mem --apply
+brain switch-from-claude-mem --undo</pre>
+      </article>
+      <article class="panel">
+        <h3>Skills that use the memory.</h3>
+        <p>Shipped skills that pull context before work and write decisions back after it.</p>
+        <div class="tags">
+          <span>brain-recall</span><span>capture-decision</span><span>debug-systematically</span>
+          <span>onboard-codebase</span><span>review-changes</span><span>write-tests</span>
+        </div>
+      </article>
+      <article class="panel">
+        <h3>Many machines, one brain.</h3>
+        <p><code>brain sync</code> on one laptop, <code>brain restore</code> on the next. <code>brain merge</code> reconciles memory from more than one.</p>
+        <div class="machines"><span>💻</span><i></i><span>☁️</span><i></i><span>🖥️</span></div>
+      </article>
+      <article class="panel">
+        <h3>It never eats your files.</h3>
+        <p>Every write path is idempotent. Injection lives inside <code>BRAIN:START/END</code> markers, and MCP wiring is additive: it never touches entries it didn't create.</p>
+      </article>
+      <article class="panel">
+        <h3>Secrets scrubbed before storage.</h3>
+        <p>Settings are redacted before commit, and memory, wiki and learnings are encrypted. Skills and agents stay plaintext so they stay portable.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · Compare -->
+<section class="compare" data-brain="dim">
+  <p class="eyebrow">Hosted memory vs. Agentic Brain</p>
+  <h2 class="fade">The difference is architecture.</h2>
+  <p class="sub fade">Hosted products solve a real problem well, and with zero setup. Here is the trade, including the rows where this side pays.</p>
+  <div class="cmp fade">
+    <div class="cmp-row head"><span></span><span>Hosted service</span><span>Agentic Brain</span></div>
+    <div class="cmp-row"><span>Where memory lives</span><span>Vendor's database</span><span>Release asset on your private repo</span></div>
+    <div class="cmp-row"><span>Who can read it</span><span>Vendor infrastructure</span><span>Whoever holds your <code>age</code> key</span></div>
+    <div class="cmp-row"><span>Key custody</span><span>Vendor-managed</span><span>Your OS Keychain, never transmitted</span></div>
+    <div class="cmp-row"><span>Cost</span><span>Per-seat subscription</span><span>Free</span></div>
+    <div class="cmp-row"><span>If the vendor shuts down</span><span>Export, if offered</span><span>Nothing happens</span></div>
+    <div class="cmp-row cost"><span>Sync</span><span>Continuous, incremental</span><span>You run sync, whole-blob</span></div>
+    <div class="cmp-row cost"><span>Setup</span><span>Sign up, install</span><span>CLI, a key, a repo</span></div>
+    <div class="cmp-row cost"><span>Uptime</span><span>Theirs</span><span>None. It's your machine.</span></div>
+  </div>
+</section>
+
+<!-- 8 · Known limits -->
+<section class="limits" data-brain="dim">
+  <p class="eyebrow">Known limits</p>
+  <h2 class="fade">Stated plainly.</h2>
+  <ul class="lim fade">
+    <li><b>One user.</b> Tested, not battle tested.</li>
+    <li><b>macOS first.</b> Keychain and <code>launchd</code> are the blockers; neither is fundamental.</li>
+    <li><b>Whole-blob sync.</b> Fine at tens of megabytes, not elegant.</li>
+    <li><b>Merge-based multi-machine.</b> No live conflict resolution.</li>
+    <li><b>Two tools are pull-only forever.</b> Claude Desktop and ChatGPT desktop, for architectural reasons.</li>
+    <li><b>Cursor push is per-repo.</b> A new Cursor project starts without the digest until you wire it.</li>
+  </ul>
+</section>
+
+<!-- 9 · Install -->
+<section class="install" id="install" data-brain="install">
+  <p class="eyebrow">Install</p>
+  <h2 class="fade">Grow your brain.</h2>
+  <p class="sub fade">Requires <code>git</code>, <code>node</code> 22+ and a GitHub account. The installer fetches <code>age</code>, <code>tar</code> and <code>gh</code> if missing.</p>
+  <div class="code fade">
+    <button class="copy" type="button" data-copy="curl -fsSL https://raw.githubusercontent.com/rohithhn/ultra-agentic-memory-public/main/install.sh | bash">Copy</button>
+    <pre><span class="p">$</span> curl -fsSL https://raw.githubusercontent.com/rohithhn/ultra-agentic-memory-public/main/install.sh | bash</pre>
+  </div>
+  <div class="modes fade">
+    <div><b>INIT</b><p>No brain yet. Creates your own private data repo, generates your <code>age</code> key into the Keychain, runs the first sync.</p></div>
+    <div><b>RESTORE</b><p>A brain on another machine. Clones your data repo, takes your key, decrypts and rebuilds everything.</p></div>
+  </div>
+  <div class="code fade">
+    <button class="copy" type="button" data-copy="node bin/brain.mjs onboard
+node bin/brain.mjs ingest
+node bin/brain.mjs dream
+node bin/brain.mjs eval
+npm run serve">Copy</button>
+<pre><span class="p">$</span> node bin/brain.mjs onboard   <span class="dim"># wire this machine: MCP, profiles, watchers, daily sync</span>
+<span class="p">$</span> node bin/brain.mjs ingest    <span class="dim"># pull in existing sessions</span>
+<span class="p">$</span> node bin/brain.mjs dream     <span class="dim"># distill observations into the wiki</span>
+<span class="p">$</span> node bin/brain.mjs eval      <span class="dim"># score retrieval on your own history</span>
+<span class="p">$</span> npm run serve                <span class="dim"># control panel on 127.0.0.1:37800</span></pre>
+  </div>
+  <div class="cta center fade">
+    <a class="btn primary" href="https://github.com/rohithhn/ultra-agentic-memory-public" target="_blank" rel="noopener">Star on GitHub <span aria-hidden="true">★</span></a>
+    <a class="btn ghost" href="https://github.com/rohithhn/ultra-agentic-memory-public#readme" target="_blank" rel="noopener">Read the README</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <span>🧠 Agentic Brain · open source, self-hosted memory for AI coding tools</span>
+  <a href="https://github.com/rohithhn/ultra-agentic-memory-public" target="_blank" rel="noopener">GitHub</a>
+</footer>
+
+<script src="brain.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
