@@ -4,16 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Agentic Brain</title>
-<meta name="description" content="The memory tells its own story, and shows how it works, chapter by chapter.">
+<meta name="description" content="One encrypted memory for every AI coding tool. Claude Code, Codex, Cursor, Gemini CLI and Antigravity read and write the same brain, stored in your own private GitHub repo. Coming soon.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Agentic Brain">
+<meta property="og:title" content="Agentic Brain: your AI's memory, in your GitHub">
+<meta property="og:description" content="One encrypted memory for every AI coding tool. Self-hosted, open source. Coming soon.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#000000">
 <link rel="icon" type="image/svg+xml" href="img/icon.svg"><link rel="icon" type="image/png" sizes="32x32" href="img/icon-32.png"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="story.css">
 </head>
 <body>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="i-mark" viewBox="112 122 288 288" fill="none"><linearGradient id="ab-ink" x1="96" y1="96" x2="416" y2="416" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c3c4ff"/><stop offset="1" stop-color="#7f81f7"/></linearGradient><g transform="translate(256 266) scale(.86) translate(-256 -266)"><g stroke="url(#ab-ink)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"><path d="M244 118c-34-22-86-10-98 32-40 6-62 46-46 82-26 22-26 66 2 88-6 42 28 76 70 72 14 26 46 36 72 22"/><path d="M268 118c34-22 86-10 98 32 40 6 62 46 46 82 26 22 26 66-2 88 6 42-28 76-70 72-14 26-46 36-72 22"/></g><path d="M256 150v236" stroke="url(#ab-ink)" stroke-width="26" stroke-linecap="round" opacity=".9"/><path d="M190 232L322 232L256 324Z" stroke="#ededef" stroke-opacity=".85" stroke-width="16" stroke-linejoin="round"/><g fill="#ffffff"><circle cx="190" cy="232" r="26"/><circle cx="322" cy="232" r="26"/><circle cx="256" cy="324" r="26"/></g></g></symbol>
 <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
@@ -38,56 +43,43 @@
 <symbol id="l-apple" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
 <symbol id="l-node" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/></symbol>
 </defs></svg>
+
+<!-- The brain: a canvas of neurons behind everything. brain.js draws it; app.js tells it where to sit. -->
 <canvas id="brain" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
+
 <div class="progress" aria-hidden="true"><span></span></div>
 <header class="nav">
-  <a class="brand" href="index.html"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Agentic Brain</a>
-  <nav><a href="blog.html">Blog</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a><span class="soon-pill"><i></i>Coming soon</span></nav>
+  <a class="brand" href="#top"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Agentic Brain</a>
+  <nav>
+    <a href="blog.html">Blog</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="contact.html">Contact</a>
+    <span class="soon-pill"><i></i>Coming soon</span>
+  </nav>
 </header>
-<main>
 
-<!-- Opening: the brain introduces itself -->
-<section class="story voice" data-story="4" data-b="0.5 0.5 0.6 0.6 1">
-  <div class="story-pin center">
-    <p class="credit">Built by <b>Rohith</b>, <b>Chandhan</b> and <b>Sushmita</b></p>
-    <div class="orbit" data-show="1">
-      <span style="--x:24%;--y:30%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>Claude Code</span>
-    </div>
-    <div class="orbit" data-show="2-3">
-      <span style="--x:24%;--y:30%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>Claude Code</span>
-      <span style="--x:78%;--y:26%;--i:1"><svg><use href="#l-codex"/></svg>Codex</span>
-      <span style="--x:14%;--y:62%;--i:2"><svg><use href="#l-cursor"/></svg>Cursor</span>
-      <span style="--x:86%;--y:64%;--i:3;--brand:#4796e3"><svg><use href="#l-geminicli"/></svg>Gemini CLI</span>
-      <span style="--x:50%;--y:16%;--i:4;--brand:#4f8dfd"><svg><use href="#l-antigravity"/></svg>Antigravity</span>
-    </div>
-    <div class="narr">
-      <div class="beat" data-b="0.5 0.5 0.6 0.16 0" data-bm="0.5 0.70 0.27 0.16 0">
-        <h2 class="line decode-on">I start empty.</h2>
-        <p class="note">No memories. No context. A shape waiting to be filled.</p>
-        <p class="scrollcue" style="justify-content:center"><i></i>Scroll</p>
+<main id="top">
+
+<!-- 1 · Hero -->
+<section class="hero" data-scene="hero" data-brain="hero">
+  <div class="hero-sticky">
+    <div class="hero-copy">
+      <span class="pill"><i class="pulse"></i>Open source · Self-hosted · Encrypted</span>
+      <h1 class="decode" aria-label="Your AI's memory, in your GitHub.">Your AI's memory,<br>in <u>your</u> GitHub.</h1>
+      <p class="lede">You tell Claude Code a decision. Tomorrow you're in Cursor, and it has no idea.
+      Agentic Brain captures what your coding sessions established, distills it, ranks it, and injects
+      it back into every tool you use, from one store encrypted with your key.</p>
+      <div class="cta">
+        <a class="btn primary magnet" href="#soon">Coming soon <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn ghost magnet" href="#loop">See how it works</a>
       </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.45 0.6 2" data-bm="0.5 0.70 0.27 0.5 0.6 2">
-        <h2 class="line decode-on">Then you open Claude Code, and I listen.</h2>
-        <p class="note">Every decision, every fix, every "no, not like that".</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.85 2.2 2" data-bm="0.5 0.70 0.27 0.9 2.2 2">
-        <h2 class="line decode-on">Codex. Cursor. Gemini. Antigravity. I listen to all of them.</h2>
-        <p class="note">One memory, shared by every AI coding tool you use.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.62 1 1.6" data-bm="0.5 0.70 0.27 1 1.6">
-        <span class="pill"><i class="pulse"></i>Open source · Self-hosted · Encrypted</span>
-        <h2 class="line decode-on">I'm Agentic Brain. Your AI's memory, in <span class="sig">your</span> GitHub.</h2>
-        <p class="note">I capture what your sessions established, distill it, rank it, and brief every tool before you type. Move your cursor over me. Click to make me fire.</p>
-        <p class="credit inline phone-only">Built by <b>Rohith</b>, <b>Chandhan</b> and <b>Sushmita</b></p>
-      </div>
+      <p class="credit inline">Built by <b>Rohith</b>, <b>Chandhan</b> and <b>Sushmita</b></p>
+      <p class="hint"><svg><use href="#i-pointer"/></svg>Move your cursor over the brain. Click to fire it.</p>
     </div>
   </div>
-</section>
-
-<section class="interlude marquee-wrap" data-b="0.5 0.5 0.6 0.3 1">
-  <div class="marquee static" aria-label="Works with">
+  <div class="marquee" aria-label="Works with">
     <div class="marquee-track">
       <span><svg><use href="#l-claudecode"/></svg>Claude Code</span>
       <span><svg><use href="#l-codex"/></svg>Codex</span>
@@ -102,45 +94,41 @@
   </div>
 </section>
 
-<section class="interlude" data-b="0.5 0.5 0.62 0.32 0.25 0">
-  <h2 class="line decode-in">At night, I dream.</h2>
-  <p class="note fade">By morning I know more than I did, and I've thrown away what didn't matter. Here's the loop I run, every day.</p>
-</section>
-
+<!-- 2 · Pinned: the loop -->
 <section class="loop" id="loop" data-scene="loop" data-brain="loop">
   <div class="loop-sticky">
     <div class="loop-copy">
-      <p class="eyebrow">How I work</p>
+      <p class="eyebrow">A set of loops, not a chat product</p>
       <ol class="steps">
         <li class="on" data-step="0">
           <span class="num">01</span>
           <h3>Capture</h3>
-          <p>I read your Claude Code, Codex, Antigravity, Gemini CLI and Cursor sessions as they happen,
-          into one local SQLite store on your machine.</p>
+          <p>Purpose-built parsers read Claude Code, Codex, Antigravity, Gemini CLI and Cursor sessions.
+          File watchers pick up new sessions near-live, into one local SQLite store.</p>
         </li>
         <li data-step="1">
           <span class="num">02</span>
           <h3>Distill</h3>
-          <p>While you sleep, <code>brain dream</code> turns what I heard into a wiki I keep rewriting.
-          When you finally fix something hard, I draft the lesson for you to approve.</p>
+          <p><code>brain dream</code> turns raw observations into a compounding wiki that gets revised, not
+          appended. Resolved struggles become reusable learnings you approve.</p>
         </li>
         <li data-step="2">
           <span class="num">03</span>
           <h3>Rank</h3>
-          <p>I rank by relevance, then by proof: how often a memory was used, and whether you said it helped.
-          What misleads you sinks.</p>
+          <p>BM25 over SQLite FTS, plus outcome scores: how often a learning was injected and whether
+          you marked it helpful. Proven usefulness, not keyword overlap alone.</p>
         </li>
         <li data-step="3">
           <span class="num">04</span>
           <h3>Inject</h3>
-          <p>Before you type, I write a ~2,000-token briefing into <code>CLAUDE.md</code>, <code>AGENTS.md</code> and
-          <code>GEMINI.md</code>, inside my own markers. I never touch your text.</p>
+          <p>One assembler builds a ~2k-token block into <code>CLAUDE.md</code>, <code>AGENTS.md</code> and
+          <code>GEMINI.md</code>, inside managed markers. Your own text is never touched.</p>
         </li>
         <li data-step="4">
           <span class="num">05</span>
           <h3>Measure</h3>
-          <p><code>brain eval</code> quizzes me on your own history. If a change makes me remember worse,
-          it doesn't ship.</p>
+          <p><code>brain eval</code> asks questions about your own history and scores whether retrieval
+          surfaced the answer. Every ranking change is gated on that number.</p>
         </li>
       </ol>
     </div>
@@ -193,135 +181,7 @@
   </div>
 </section>
 
-
-<!-- ═══ Loading into every conversation ═══ -->
-<section class="interlude" data-b="0.5 0.5 0.6 0.55 1.4">
-  <h2 class="line decode-in">Every new conversation starts with me.</h2>
-  <p class="note fade">Most AI tools forget everything when the chat window closes. I don't.</p>
-</section>
-
-<section class="story" data-story="4" data-b="0.5 0.5 0.6 0.18 0.6">
-  <div class="story-pin">
-    <div class="narr">
-      <div class="beat" data-b="0.5 0.5 0.6 0.12 0.3">
-        <p class="stamp">Conversation 1 · <b>Mon 10:14</b></p>
-        <h2 class="line">The chat ends. I keep what mattered.</h2>
-        <p class="note">Decisions, fixes and preferences become memories, tagged with the project they belong to.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.5 2 2">
-        <p class="stamp">Conversation 2 · <b>Tue 09:02</b></p>
-        <h2 class="line">A new chat opens. I'm loaded before you type.</h2>
-        <p class="note">A start-up hook hands the model a briefing of this project's recent history: at most 2,000 tokens, ready in 84 ms (p50).</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.5 1.4 1">
-        <p class="stamp">Conversation 2 · <b>Tue 09:20</b></p>
-        <h2 class="line">Need something older? The model asks me.</h2>
-        <p class="note">Over MCP, any connected tool can recall, save and load context on demand. A recall over 10,000 memories takes 28 ms (p50).</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.4 1">
-        <p class="stamp">Conversation 3 · <b>Wed · other laptop</b></p>
-        <h2 class="line">Even on another machine.</h2>
-        <p class="note">At start-up I quietly merge in what your other machines learned, so the briefing is the same everywhere.</p>
-      </div>
-    </div>
-    <div class="set">
-      <div class="win spot" data-show="0" style="--brand:#d97757">
-        <div class="win-head"><svg><use href="#l-claudecode"/></svg>Claude Code · api · conversation 1<span class="dots"><i></i><i></i><i></i></span></div>
-        <div class="win-body">
-          <div class="msg you"><span class="who">You</span><p>Let's drop Redis. Sessions live in SQLite.</p></div>
-          <div class="msg ai"><span class="who">Claude</span><p>Agreed. Removing the Redis client.</p></div>
-          <div class="msg you"><span class="who">You</span><p>Also, always use pnpm in this repo.</p></div>
-          <div class="filed">
-            <span class="flag sig">saved · decision · api</span>
-            <span class="flag sig">saved · preference · api</span>
-          </div>
-        </div>
-      </div>
-      <div class="win spot" data-show="1">
-        <div class="win-head"><svg><use href="#l-claudecode"/></svg>Claude Code · api · conversation 2<span class="dots"><i></i><i></i><i></i></span></div>
-        <div class="win-body">
-<pre class="codeblk"><span class="mk">SessionStart · agentic-brain · 84 ms</span>
-<span class="type" data-speed="10">What happened in api (newest first):
-- Tue  bugfix   token refresh race in auth.ts
-- Mon  decision sessions live in SQLite, no Redis
-- Mon  pref     always use pnpm in this repo
-Pinned: deploy runs from main only</span></pre>
-          <div class="budget"><span style="--v:.9975"></span><em>1,995 of 2,000 tokens</em></div>
-        </div>
-      </div>
-      <div class="win spot" data-show="2">
-        <div class="win-head"><svg><use href="#l-cursor"/></svg>Cursor · MCP · agentic-brain<span class="dots"><i></i><i></i><i></i></span></div>
-        <div class="win-body">
-<pre class="codeblk"><span class="mk">→ brain_recall</span>("why did we drop redis", project: "api")</pre>
-          <div class="res top"><b>0.92</b>Sessions live in SQLite; Redis only served the old job queue</div>
-          <div class="res"><b>0.61</b>Deploy health checks: what each one covers</div>
-          <div class="tools-row"><code>brain_recall</code><code>brain_remember</code><code>brain_context</code><code>load-my-brain</code></div>
-        </div>
-      </div>
-      <div class="win spot" data-show="3">
-        <div class="win-head"><svg><use href="#i-laptop"/></svg>MacBook Air · ~/code/api<span class="dots"><i></i><i></i><i></i></span></div>
-        <div class="win-body">
-<pre class="codeblk"><span class="mk">SessionStart</span>
-<span class="type" data-speed="16">brain merge   pulling from your private repo…
-              + 38 memories from MacBook Pro
-briefing      same as your other machine</span></pre>
-          <div class="machines"><svg><use href="#i-laptop"/></svg><i></i><svg><use href="#l-github"/></svg><i></i><svg><use href="#i-laptop"/></svg></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ Folders ═══ -->
-<section class="story" data-story="3" data-b="0.5 0.5 0.6 0.18 0.6">
-  <div class="story-pin">
-    <div class="narr">
-      <div class="beat" data-b="0.5 0.5 0.6 0.3 0.8 0">
-        <p class="stamp">Folders</p>
-        <h2 class="line">I file every memory by project.</h2>
-        <p class="note">Each memory is tagged with the repo it came from, found by walking up to the nearest <code>.git</code>. It works the same in every tool.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.45 1.2 2">
-        <p class="stamp">You open <b>~/code/web</b></p>
-        <h2 class="line">Open a folder and you get <span class="sig">its</span> history first.</h2>
-        <p class="note">The briefing is "what happened in this repo". Its pinned items come first, then pins from anywhere.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.6 1.6 1">
-        <p class="stamp">Across folders</p>
-        <h2 class="line">But nothing is walled off.</h2>
-        <p class="note">A map of up to 20 projects lives in your global <code>CLAUDE.md</code>, <code>AGENTS.md</code> and <code>GEMINI.md</code>. Recall can search one project or all of them. A brand-new repo hears: "Other projects are still searchable."</p>
-      </div>
-    </div>
-    <div class="set">
-      <div class="tree spot" data-show="0-2">
-        <div class="tree-head"><svg><use href="#i-archive"/></svg>~/code<em class="eg">example</em></div>
-        <div class="node"><span class="fold">api/</span><em>1,204 memories</em></div>
-        <div class="node cur"><span class="fold">web/</span><em>842 memories</em></div>
-        <div class="node"><span class="fold">infra/</span><em>391 memories</em></div>
-        <div class="node"><span class="fold">new-idea/</span><em>no memory yet</em></div>
-        <div class="tree-out" data-show="1">
-<pre class="codeblk"><span class="mk">What happened in web</span>
-- Wed  decision  move forms to server actions
-- Tue  bugfix    hydration error on /pricing
-Pinned (web): staging deploys need a VPN</pre>
-        </div>
-        <div class="tree-out" data-show="2">
-<pre class="codeblk"><span class="mk"># ~/.claude/CLAUDE.md · BRAIN:START</span>
-Projects: api · web · infra · 17 more
-Active this week: web, api
-Recurring: auth, deploys, SQLite</pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="interlude" data-b="0.5 0.5 0.6 0.7 1 4">
-  <h2 class="line decode-in">I check my own work.</h2>
-  <p class="note fade">On a public long-term memory benchmark, this is how I score.</p>
-</section>
-
+<!-- 3 · Numbers -->
 <section class="stats" data-brain="dim">
   <div class="stat spot"><b data-count="94.2" data-dec="1" data-suffix="%">0</b><span>end-to-end QA accuracy on LongMemEval-S, 500 questions</span><i class="bar" style="--w:.942"></i></div>
   <div class="stat spot"><b data-count="98.3" data-dec="1" data-suffix="%">0</b><span>of questions find the answer session in the top 5</span><i class="bar" style="--w:.983"></i></div>
@@ -330,146 +190,12 @@ Recurring: auth, deploys, SQLite</pre>
   <p class="stats-note">LongMemEval-S, k=40 rounds with pseudo-relevance feedback and deep recall, Claude judge.</p>
 </section>
 
-
-<!-- ═══ How I compare ═══ -->
-<section class="numbers" data-b="0.5 0.5 0.6 0.1 0.4">
-  <p class="eyebrow">How I compare</p>
-  <h2 class="reveal">Next to the published numbers.</h2>
-  <p class="sub fade">LoCoMo asks questions about very long conversations. Here is my score next to the best published memory product, and next to simply giving the model the whole conversation.</p>
-
-  <div class="charts">
-    <figure class="chartcard fade spot">
-      <figcaption><b>LoCoMo</b> · answer accuracy (LLM judge, J), categories 1–4</figcaption>
-      <div class="hero-num"><b>+13.4</b><span>points above the industry best (published) · <b>+8.9</b> above reading the whole conversation</span></div>
-      <div class="bars" role="table" aria-label="LoCoMo answer accuracy by system">
-        <div class="bar me" role="row" data-tip="Agentic Brain with pseudo-relevance feedback · 81.8"><span role="rowheader">Agentic Brain</span><i style="--v:.818"></i><b role="cell">81.8</b></div>
-        <div class="bar" role="row" data-tip="Whole conversation in the prompt · 72.9 (published baseline)"><span role="rowheader">Full conversation</span><i style="--v:.729"></i><b role="cell">72.9</b></div>
-        <div class="bar" role="row" data-tip="Highest memory-product score in the 2025 published comparison · 68.4"><span role="rowheader">Industry best*</span><i style="--v:.684"></i><b role="cell">68.4</b></div>
-      </div>
-      <p class="fine">*Industry best: the highest score of any memory product in the widely cited 2025 LoCoMo comparison, which used gpt-4o-mini to answer and to judge. Full conversation: the same study's baseline. Agentic Brain: Claude Sonnet answering and judging, 1,540 questions; 80.5 without pseudo-relevance feedback, 83.6 when re-judged by GPT. Different setups, so read this as direction, not a like-for-like race.</p>
-    </figure>
-
-    <figure class="chartcard fade spot">
-      <figcaption><b>LongMemEval-S</b> · answer accuracy by question type, 500 questions</figcaption>
-      <div class="hero-num"><b>94.2%</b><span>overall (Claude judge) · <b>93.4%</b> with a GPT judge · judges agree on 98.8%</span></div>
-      <div class="bars compact" role="table" aria-label="LongMemEval-S accuracy by question type">
-        <div class="bar me" role="row" data-tip="Single-session, user facts · 100"><span role="rowheader">Facts you stated</span><i style="--v:1"></i><b role="cell">100</b></div>
-        <div class="bar me" role="row" data-tip="Single-session, assistant facts · 100"><span role="rowheader">Things the AI said</span><i style="--v:1"></i><b role="cell">100</b></div>
-        <div class="bar me" role="row" data-tip="Single-session preferences · 100"><span role="rowheader">Your preferences</span><i style="--v:1"></i><b role="cell">100</b></div>
-        <div class="bar me" role="row" data-tip="Knowledge updates · 96.2"><span role="rowheader">Updated facts</span><i style="--v:.962"></i><b role="cell">96.2</b></div>
-        <div class="bar me" role="row" data-tip="Temporal reasoning · 91.7"><span role="rowheader">When things happened</span><i style="--v:.917"></i><b role="cell">91.7</b></div>
-        <div class="bar me" role="row" data-tip="Abstention: knowing it doesn't know · 90.0"><span role="rowheader">Saying "I don't know"</span><i style="--v:.9"></i><b role="cell">90.0</b></div>
-        <div class="bar me" role="row" data-tip="Multi-session reasoning · 88.7"><span role="rowheader">Across many chats</span><i style="--v:.887"></i><b role="cell">88.7</b></div>
-      </div>
-      <p class="fine">Claude Sonnet reader, LongMemEval's own judge prompts, k=40 rounds with pseudo-relevance feedback and deep recall. The right evidence was in the model's context for 99.6% of questions.</p>
-    </figure>
-  </div>
-</section>
-
-<!-- ═══ How I got better ═══ -->
-<section class="numbers" data-b="0.5 0.5 0.6 0.1 0.4">
-  <p class="eyebrow">How I got better</p>
-  <h2 class="reveal">Every change has to beat the last number.</h2>
-  <p class="sub fade">Nothing about how I search ships on a hunch. Each of these was measured before and after, on the same questions.</p>
-  <div class="dumbbells fade spot" role="table" aria-label="Before and after measurements">
-    <div class="db" role="row" data-tip="Own-history eval: recency ordering 15% → BM25 relevance 65%">
-      <span role="rowheader">Searching by relevance, not recency<small>recall on your own history</small></span>
-      <div class="dtrack"><i class="from" style="--v:.15"></i><i class="line" style="--a:.15;--b:.65"></i><i class="to" style="--v:.65"></i></div>
-      <b role="cell">15% → 65%</b>
-    </div>
-    <div class="db" role="row" data-tip="brain eval: 96/139 → 121/139 questions answered from retrieved context">
-      <span role="rowheader">Better briefing query<small>brain eval, 139 questions</small></span>
-      <div class="dtrack"><i class="from" style="--v:.69"></i><i class="line" style="--a:.69;--b:.87"></i><i class="to" style="--v:.87"></i></div>
-      <b role="cell">69% → 87%</b>
-    </div>
-    <div class="db" role="row" data-tip="LongMemEval-S QA accuracy: 88.2 (k=20) → 94.2 (k=40, PRF, deep recall)">
-      <span role="rowheader">Deeper recall<small>LongMemEval-S answer accuracy</small></span>
-      <div class="dtrack"><i class="from" style="--v:.882"></i><i class="line" style="--a:.882;--b:.942"></i><i class="to" style="--v:.942"></i></div>
-      <b role="cell">88.2% → 94.2%</b>
-    </div>
-    <div class="db" role="row" data-tip="Cross-encoder rerank: every evidence session in the top 5, 85.5 → 94.9">
-      <span role="rowheader">Re-ranking the shortlist<small>all evidence in the top 5</small></span>
-      <div class="dtrack"><i class="from" style="--v:.855"></i><i class="line" style="--a:.855;--b:.949"></i><i class="to" style="--v:.949"></i></div>
-      <b role="cell">85.5% → 94.9%</b>
-    </div>
-    <div class="db" role="row" data-tip="Pseudo-relevance feedback on LoCoMo multi-hop: 59.6 → 66.7">
-      <span role="rowheader">Following the thread<small>LoCoMo multi-hop questions</small></span>
-      <div class="dtrack"><i class="from" style="--v:.596"></i><i class="line" style="--a:.596;--b:.667"></i><i class="to" style="--v:.667"></i></div>
-      <b role="cell">59.6 → 66.7</b>
-    </div>
-    <div class="db-legend"><span><i class="from"></i>before</span><span><i class="to"></i>after</span><span class="axis">0 ──────────── 100</span></div>
-  </div>
-</section>
-
-<!-- ═══ Tokens ═══ -->
-<section class="interlude" data-b="0.5 0.5 0.6 0.35 0.6">
-  <h2 class="line decode-in">And I'm cheap to remember with.</h2>
-  <p class="note fade">Better answers from fewer tokens: the model reads what matters, not everything.</p>
-</section>
-
-<section class="story" data-story="4" data-b="0.5 0.5 0.6 0.14 0.5">
-  <div class="story-pin">
-    <div class="narr">
-      <div class="beat">
-        <p class="stamp">LongMemEval-S</p>
-        <h2 class="line"><span class="sig">75% fewer</span> tokens per question.</h2>
-        <p class="note">About 31.7k tokens of retrieved memory instead of the 127.6k-token history, and 94.2% of answers still right.</p>
-      </div>
-      <div class="beat">
-        <p class="stamp">LoCoMo</p>
-        <h2 class="line"><span class="sig">86% fewer</span> tokens per question.</h2>
-        <p class="note">About 3.6k tokens instead of the 26k-token conversation, at 81.8% answer accuracy.</p>
-      </div>
-      <div class="beat">
-        <p class="stamp">Every session start</p>
-        <h2 class="line">A briefing, <span class="sig">not a dump.</span></h2>
-        <p class="note">With 10,000 memories, pasting everything would cost 1.13 million tokens. The context I hand over is about 1,300: 99.88% smaller. The start-up briefing is capped at 2,000, so tools that cut off long start-up messages never drop the end.</p>
-      </div>
-      <div class="beat">
-        <p class="stamp">Savings meter</p>
-        <h2 class="line">I keep score.</h2>
-        <p class="note">Each time a memory saves a tool from redoing work, I log the tokens that work cost, minus what reading the memory cost. Each memory counts once a day, and never below zero.</p>
-      </div>
-    </div>
-    <div class="set">
-      <div class="tokens spot" data-show="0">
-        <div class="tk"><span>Whole history</span><i style="--v:1"></i><b>127.6k</b></div>
-        <div class="tk me"><span>My memories</span><i style="--v:.248"></i><b>31.7k</b></div>
-        <p class="fine">Tokens read per question · same 500 questions</p>
-      </div>
-      <div class="tokens spot" data-show="1">
-        <div class="tk"><span>Whole conversation</span><i style="--v:1"></i><b>26k</b></div>
-        <div class="tk me"><span>My memories</span><i style="--v:.138"></i><b>3.6k</b></div>
-        <p class="fine">Tokens read per question · 1,540 questions</p>
-      </div>
-      <div class="tokens spot" data-show="2">
-        <div class="tk"><span>Dump all memories</span><i style="--v:1"></i><b>1,131,367</b></div>
-        <div class="tk me"><span>My context</span><i style="--v:.0012"></i><b>1,325</b></div>
-        <p class="fine">Tokens to load context · 10,000-memory store</p>
-      </div>
-      <div class="meter-card spot" data-show="3">
-        <div class="win-head"><svg class="mark"><use href="#i-mark"/></svg>Control panel · savings<em class="eg">example</em></div>
-        <div class="meter-body">
-          <b class="big-saved"><span data-countup="412">0</span>k</b>
-          <span>tokens saved so far (estimate)</span>
-          <div class="mini"><span>today <b>18k</b></span><span>this week <b>96k</b></span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="interlude" data-b="0.5 0.5 0.64 1 3">
-  <h2 class="line decode-in">Open a new tool tomorrow. I'm already there.</h2>
-  <p class="note fade">But "supported" can mean three different things. Here they are, kept apart.</p>
-</section>
-
+<!-- 4 · Pinned: tools wire into the brain -->
 <section class="tools" id="tools" data-scene="tools" data-brain="tools">
   <div class="tools-sticky">
     <div class="tools-head">
-      <p class="eyebrow">Where I live</p>
-      <h2 class="reveal">Every tool you use plugs into me.</h2>
+      <p class="eyebrow">One store, many tools</p>
+      <h2 class="reveal">Every tool plugs into the same brain.</h2>
       <p class="sub">"Supported" means three different things. Here they are, kept apart.</p>
     </div>
     <div class="wire" aria-hidden="true">
@@ -495,19 +221,14 @@ Recurring: auth, deploys, SQLite</pre>
   </div>
 </section>
 
-
-<section class="interlude" data-b="0.5 0.5 0.6 0.22 0.4">
-  <h2 class="line decode-in">Only you can read me.</h2>
-  <p class="note fade">I know your decisions, your code and your mistakes. That shouldn't sit on anyone else's server.</p>
-</section>
-
+<!-- 5 · Pinned: the vault -->
 <section class="vault" id="vault" data-scene="vault" data-brain="vault">
   <div class="vault-sticky">
     <div class="vault-copy">
-      <p class="eyebrow">Who I belong to</p>
-      <h2 class="reveal">Sealed with your key. Kept in your repo.</h2>
-      <p>I travel as one <code>age</code>-encrypted blob, a Release asset on your private repo.
-      My key lives only in your Keychain. A leaked repo or a leaked token exposes nothing readable.</p>
+      <p class="eyebrow">You own the store</p>
+      <h2 class="reveal">Encrypted with your key. Parked in your repo.</h2>
+      <p>The memory is an <code>age</code>-encrypted blob in a GitHub Release asset on your private repo.
+      The key lives only in each machine's Keychain. A leaked repo or a leaked token exposes nothing readable.</p>
       <p class="fine">Why a Release asset and not git? The blob is replaced on every sync. Release assets are
       replaced in place and don't touch the LFS quota.</p>
     </div>
@@ -523,51 +244,10 @@ Recurring: auth, deploys, SQLite</pre>
   </div>
 </section>
 
-
-<!-- ═══ You can read all of me ═══ -->
-<section class="interlude" data-b="0.5 0.5 0.6 0.4 0.8">
-  <h2 class="line decode-in">But you can read all of me.</h2>
-  <p class="note fade">Every memory, from every tool and every project, in one place on your own machine.</p>
-</section>
-
-<section class="access" data-b="0.5 0.5 0.6 0.1 0.4">
-  <div class="panelui fade spot">
-    <div class="pu-head"><svg class="mark"><use href="#i-mark"/></svg>Agentic Brain · localhost<em class="eg">example</em></div>
-    <div class="pu-body">
-      <div class="pu-search"><svg><use href="#i-pointer"/></svg><span class="type" data-speed="60">redis</span></div>
-      <div class="pu-filters"><span class="on">All projects</span><span>api</span><span>web</span><span>infra</span></div>
-      <div class="pu-row">
-        <span class="tag">api · decision</span><p>Sessions live in SQLite; Redis only served the old job queue</p>
-        <span class="acts"><i>Edit</i><i class="pin">Pinned</i><i>Delete</i></span>
-      </div>
-      <div class="pu-row">
-        <span class="tag">infra · bugfix</span><p>Removed Redis health check from deploy.sh</p>
-        <span class="acts"><i>Edit</i><i>Pin</i><i>Delete</i></span>
-      </div>
-      <div class="pu-row draft">
-        <span class="tag">learning · draft</span><p>When a cache layer is removed, also remove its health checks and env vars</p>
-        <span class="acts"><i class="ok">Approve</i><i>Dismiss</i></span>
-      </div>
-      <div class="pu-row">
-        <span class="tag">learning</span><p>Run migrations before seeding in CI</p>
-        <span class="acts"><i class="ok">Helpful ×6</i><i>Not helpful</i></span>
-      </div>
-    </div>
-  </div>
-  <ul class="access-list">
-    <li class="fade"><b>Search everything</b>All projects and all tools in one place, or filter to one.</li>
-    <li class="fade"><b>Edit, pin, delete, restore</b>Correct a memory, pin what every session should see, or remove it. Deletes can be undone.</li>
-    <li class="fade"><b>Approve what I learn</b>I draft lessons from problems you solved. Nothing is used until you approve it.</li>
-    <li class="fade"><b>Rate what I inject</b>Marking a memory helpful or not helpful changes how it ranks.</li>
-    <li class="fade"><b>Tell me directly</b><code>brain remember</code> saves something by hand. <code>brain recall</code> searches from the terminal.</li>
-    <li class="fade"><b>Take it with you</b><code>brain export</code> writes every project to plain JSONL with a README.</li>
-  </ul>
-</section>
-
-
+<!-- 6 · Horizontal rail -->
 <section class="rail" data-scene="rail" data-brain="dim">
   <div class="rail-sticky">
-    <p class="eyebrow rail-title">A few more things about me</p>
+    <p class="eyebrow rail-title">And the rest of the brain</p>
     <div class="track">
       <article class="panel spot">
         <h3>A control panel on localhost.</h3>
@@ -603,14 +283,9 @@ Recurring: auth, deploys, SQLite</pre>
   </div>
 </section>
 
-
-<section class="interlude" data-b="0.5 0.5 0.6 0.4 0.6">
-  <h2 class="line decode-in">I'll be straight with you.</h2>
-  <p class="note fade">Hosted memory products are good, and easier to set up. Here's the trade, and what I can't do yet.</p>
-</section>
-
+<!-- 7 · Compare -->
 <section class="compare" data-brain="dim">
-  <p class="eyebrow">Hosted memory vs. me</p>
+  <p class="eyebrow">Hosted memory vs. Agentic Brain</p>
   <h2 class="reveal">The difference is architecture.</h2>
   <p class="sub fade">Hosted products solve a real problem well, with zero setup. Here is the trade, including the rows where this side pays.</p>
   <div class="cmp fade">
@@ -626,9 +301,9 @@ Recurring: auth, deploys, SQLite</pre>
   </div>
 </section>
 
-
+<!-- 8 · Known limits -->
 <section class="limits" data-brain="dim">
-  <p class="eyebrow">What I can't do yet</p>
+  <p class="eyebrow">Known limits</p>
   <h2 class="reveal">Stated plainly.</h2>
   <ul class="lim">
     <li class="spot fade"><b>macOS first.</b> Keychain and <code>launchd</code> are the blockers; neither is fundamental.</li>
@@ -639,24 +314,22 @@ Recurring: auth, deploys, SQLite</pre>
   </ul>
 </section>
 
-
-<section class="story voice" data-story="2" id="soon" data-b="0.5 0.5 0.62 0.6 1">
-  <div class="story-pin center">
-    <div class="narr">
-      <div class="beat" data-b="0.5 0.5 0.62 0.9 2">
-        <h2 class="line decode-on">Say it once. I'll remember it everywhere.</h2>
-        <p class="note">Setup will be one command that wires every tool on your machine, creates your private data repo and generates my key.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.66 1 2.8">
-        <span class="soon-pill big"><i></i>Coming soon</span>
-        <h2 class="line decode-on">I'm almost awake.</h2>
-        <div class="works">
-          <span><svg><use href="#l-apple"/></svg>macOS</span>
-          <span><svg><use href="#l-node"/></svg>Node 22+</span>
-          <span><svg><use href="#l-github"/></svg>A GitHub account</span>
-        </div>
-      </div>
-    </div>
+<!-- 9 · Coming soon -->
+<section class="soon" id="soon" data-brain="install">
+  <span class="soon-pill big"><i></i>Coming soon</span>
+  <h2 class="reveal">The brain is almost awake.</h2>
+  <p class="sub fade">Agentic Brain is almost ready. Setup will be one command that wires every tool on your machine,
+  creates your private data repo and generates your key.</p>
+  <div class="code fade">
+<pre><span class="p">$</span> brain onboard   <span class="dim"># wire this machine: MCP, profiles, watchers, daily sync</span>
+<span class="p">$</span> brain ingest    <span class="dim"># pull in existing sessions</span>
+<span class="p">$</span> brain dream     <span class="dim"># distill observations into the wiki</span>
+<span class="p">$</span> brain eval      <span class="dim"># score retrieval on your own history</span></pre>
+  </div>
+  <div class="works fade" aria-label="Requirements">
+    <span><svg><use href="#l-apple"/></svg>macOS</span>
+    <span><svg><use href="#l-node"/></svg>Node 22+</span>
+    <span><svg><use href="#l-github"/></svg>A GitHub account</span>
   </div>
 </section>
 
@@ -667,8 +340,8 @@ Recurring: auth, deploys, SQLite</pre>
   <span>Built by Rohith, Chandhan and Sushmita</span>
   <span>Open source, self-hosted memory for AI coding tools. Coming soon.</span>
 </footer>
+
 <script src="brain.js"></script>
 <script src="app.js"></script>
-<script src="story.js"></script>
 </body>
 </html>

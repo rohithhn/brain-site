@@ -1,4 +1,7 @@
-# brain-site
+# brain-site · original landing
+
+This branch holds the first Agentic Brain landing page as `index.html`. The live site is built from `gh-pages`.
+
 
 Landing page for Agentic Brain, served by GitHub Pages.
 
