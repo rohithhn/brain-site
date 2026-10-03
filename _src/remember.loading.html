@@ -1,0 +1,121 @@
+<!-- ═══ Loading into every conversation ═══ -->
+<section class="interlude" data-b="0.5 0.5 0.6 0.55 1.4">
+  <h2 class="line decode-in">Every new conversation starts with me.</h2>
+  <p class="note fade">Most AI tools forget everything when the chat window closes. I don't.</p>
+</section>
+
+<section class="story" data-story="4" data-b="0.5 0.5 0.6 0.18 0.6">
+  <div class="story-pin">
+    <div class="narr">
+      <div class="beat" data-b="0.5 0.5 0.6 0.12 0.3">
+        <p class="stamp">Conversation 1 · <b>Mon 10:14</b></p>
+        <h2 class="line">The chat ends. I keep what mattered.</h2>
+        <p class="note">Decisions, fixes and preferences become memories, tagged with the project they belong to.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.5 2 2">
+        <p class="stamp">Conversation 2 · <b>Tue 09:02</b></p>
+        <h2 class="line">A new chat opens. I'm loaded before you type.</h2>
+        <p class="note">A start-up hook hands the model a briefing of this project's recent history: at most 2,000 tokens, ready in 84 ms (p50).</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.5 1.4 1">
+        <p class="stamp">Conversation 2 · <b>Tue 09:20</b></p>
+        <h2 class="line">Need something older? The model asks me.</h2>
+        <p class="note">Over MCP, any connected tool can recall, save and load context on demand. A recall over 10,000 memories takes 28 ms (p50).</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.4 1">
+        <p class="stamp">Conversation 3 · <b>Wed · other laptop</b></p>
+        <h2 class="line">Even on another machine.</h2>
+        <p class="note">At start-up I quietly merge in what your other machines learned, so the briefing is the same everywhere.</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="win spot" data-show="0" style="--brand:#d97757">
+        <div class="win-head"><svg><use href="#l-claudecode"/></svg>Claude Code · api · conversation 1<span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="win-body">
+          <div class="msg you"><span class="who">You</span><p>Let's drop Redis. Sessions live in SQLite.</p></div>
+          <div class="msg ai"><span class="who">Claude</span><p>Agreed. Removing the Redis client.</p></div>
+          <div class="msg you"><span class="who">You</span><p>Also, always use pnpm in this repo.</p></div>
+          <div class="filed">
+            <span class="flag sig">saved · decision · api</span>
+            <span class="flag sig">saved · preference · api</span>
+          </div>
+        </div>
+      </div>
+      <div class="win spot" data-show="1">
+        <div class="win-head"><svg><use href="#l-claudecode"/></svg>Claude Code · api · conversation 2<span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="win-body">
+<pre class="codeblk"><span class="mk">SessionStart · agentic-brain · 84 ms</span>
+<span class="type" data-speed="10">What happened in api (newest first):
+- Tue  bugfix   token refresh race in auth.ts
+- Mon  decision sessions live in SQLite, no Redis
+- Mon  pref     always use pnpm in this repo
+Pinned: deploy runs from main only</span></pre>
+          <div class="budget"><span style="--v:.9975"></span><em>1,995 of 2,000 tokens</em></div>
+        </div>
+      </div>
+      <div class="win spot" data-show="2">
+        <div class="win-head"><svg><use href="#l-cursor"/></svg>Cursor · MCP · agentic-brain<span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="win-body">
+<pre class="codeblk"><span class="mk">→ brain_recall</span>("why did we drop redis", project: "api")</pre>
+          <div class="res top"><b>0.92</b>Sessions live in SQLite; Redis only served the old job queue</div>
+          <div class="res"><b>0.61</b>Deploy health checks: what each one covers</div>
+          <div class="tools-row"><code>brain_recall</code><code>brain_remember</code><code>brain_context</code><code>load-my-brain</code></div>
+        </div>
+      </div>
+      <div class="win spot" data-show="3">
+        <div class="win-head"><svg><use href="#i-laptop"/></svg>MacBook Air · ~/code/api<span class="dots"><i></i><i></i><i></i></span></div>
+        <div class="win-body">
+<pre class="codeblk"><span class="mk">SessionStart</span>
+<span class="type" data-speed="16">brain merge   pulling from your private repo…
+              + 38 memories from MacBook Pro
+briefing      same as your other machine</span></pre>
+          <div class="machines"><svg><use href="#i-laptop"/></svg><i></i><svg><use href="#l-github"/></svg><i></i><svg><use href="#i-laptop"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Folders ═══ -->
+<section class="story" data-story="3" data-b="0.5 0.5 0.6 0.18 0.6">
+  <div class="story-pin">
+    <div class="narr">
+      <div class="beat" data-b="0.5 0.5 0.6 0.3 0.8 0">
+        <p class="stamp">Folders</p>
+        <h2 class="line">I file every memory by project.</h2>
+        <p class="note">Each memory is tagged with the repo it came from, found by walking up to the nearest <code>.git</code>. It works the same in every tool.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.45 1.2 2">
+        <p class="stamp">You open <b>~/code/web</b></p>
+        <h2 class="line">Open a folder and you get <span class="sig">its</span> history first.</h2>
+        <p class="note">The briefing is "what happened in this repo". Its pinned items come first, then pins from anywhere.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.6 1.6 1">
+        <p class="stamp">Across folders</p>
+        <h2 class="line">But nothing is walled off.</h2>
+        <p class="note">A map of up to 20 projects lives in your global <code>CLAUDE.md</code>, <code>AGENTS.md</code> and <code>GEMINI.md</code>. Recall can search one project or all of them. A brand-new repo hears: "Other projects are still searchable."</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="tree spot" data-show="0-2">
+        <div class="tree-head"><svg><use href="#i-archive"/></svg>~/code<em class="eg">example</em></div>
+        <div class="node"><span class="fold">api/</span><em>1,204 memories</em></div>
+        <div class="node cur"><span class="fold">web/</span><em>842 memories</em></div>
+        <div class="node"><span class="fold">infra/</span><em>391 memories</em></div>
+        <div class="node"><span class="fold">new-idea/</span><em>no memory yet</em></div>
+        <div class="tree-out" data-show="1">
+<pre class="codeblk"><span class="mk">What happened in web</span>
+- Wed  decision  move forms to server actions
+- Tue  bugfix    hydration error on /pricing
+Pinned (web): staging deploys need a VPN</pre>
+        </div>
+        <div class="tree-out" data-show="2">
+<pre class="codeblk"><span class="mk"># ~/.claude/CLAUDE.md · BRAIN:START</span>
+Projects: api · web · infra · 17 more
+Active this week: web, api
+Recurring: auth, deploys, SQLite</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

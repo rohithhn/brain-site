@@ -1,0 +1,130 @@
+<!-- ═══ How I compare ═══ -->
+<section class="numbers" data-b="0.5 0.5 0.6 0.1 0.4">
+  <p class="eyebrow">How I compare</p>
+  <h2 class="reveal">Next to the published numbers.</h2>
+  <p class="sub fade">LoCoMo asks questions about very long conversations. Here is my score next to the figures in mem0's published comparison, including its baseline that reads the whole conversation.</p>
+
+  <div class="charts">
+    <figure class="chartcard fade spot">
+      <figcaption><b>LoCoMo</b> · answer accuracy (LLM judge, J), categories 1–4</figcaption>
+      <div class="bars" role="table" aria-label="LoCoMo answer accuracy by system">
+        <div class="bar me" role="row" data-tip="Agentic Brain with pseudo-relevance feedback · 81.8"><span role="rowheader">Agentic Brain</span><i style="--v:.818"></i><b role="cell">81.8</b></div>
+        <div class="bar" role="row" data-tip="Whole conversation in the prompt · 72.9 (mem0 paper)"><span role="rowheader">Full conversation</span><i style="--v:.729"></i><b role="cell">72.9</b></div>
+        <div class="bar" role="row" data-tip="mem0 with graph memory · 68.4 (mem0 paper)"><span role="rowheader">mem0 (graph)</span><i style="--v:.684"></i><b role="cell">68.4</b></div>
+        <div class="bar" role="row" data-tip="mem0 · 66.9 (mem0 paper)"><span role="rowheader">mem0</span><i style="--v:.669"></i><b role="cell">66.9</b></div>
+        <div class="bar" role="row" data-tip="Zep · about 66 (mem0 paper)"><span role="rowheader">Zep</span><i style="--v:.66"></i><b role="cell">~66</b></div>
+        <div class="bar" role="row" data-tip="LangMem · 58.1 (mem0 paper)"><span role="rowheader">LangMem</span><i style="--v:.581"></i><b role="cell">58.1</b></div>
+        <div class="bar" role="row" data-tip="OpenAI memory · 52.9 (mem0 paper)"><span role="rowheader">OpenAI memory</span><i style="--v:.529"></i><b role="cell">52.9</b></div>
+      </div>
+      <p class="fine">Other systems: figures published in mem0's paper (gpt-4o-mini reader and judge). Agentic Brain: Claude Sonnet reader and judge over 1,540 questions; 80.5 without pseudo-relevance feedback, 83.6 when re-judged by GPT. Different readers and judges, so read this as direction, not a like-for-like race.</p>
+    </figure>
+
+    <figure class="chartcard fade spot">
+      <figcaption><b>LongMemEval-S</b> · answer accuracy by question type, 500 questions</figcaption>
+      <div class="hero-num"><b>94.2%</b><span>overall (Claude judge) · <b>93.4%</b> with a GPT judge · judges agree on 98.8%</span></div>
+      <div class="bars compact" role="table" aria-label="LongMemEval-S accuracy by question type">
+        <div class="bar me" role="row" data-tip="Single-session, user facts · 100"><span role="rowheader">Facts you stated</span><i style="--v:1"></i><b role="cell">100</b></div>
+        <div class="bar me" role="row" data-tip="Single-session, assistant facts · 100"><span role="rowheader">Things the AI said</span><i style="--v:1"></i><b role="cell">100</b></div>
+        <div class="bar me" role="row" data-tip="Single-session preferences · 100"><span role="rowheader">Your preferences</span><i style="--v:1"></i><b role="cell">100</b></div>
+        <div class="bar me" role="row" data-tip="Knowledge updates · 96.2"><span role="rowheader">Updated facts</span><i style="--v:.962"></i><b role="cell">96.2</b></div>
+        <div class="bar me" role="row" data-tip="Temporal reasoning · 91.7"><span role="rowheader">When things happened</span><i style="--v:.917"></i><b role="cell">91.7</b></div>
+        <div class="bar me" role="row" data-tip="Abstention: knowing it doesn't know · 90.0"><span role="rowheader">Saying "I don't know"</span><i style="--v:.9"></i><b role="cell">90.0</b></div>
+        <div class="bar me" role="row" data-tip="Multi-session reasoning · 88.7"><span role="rowheader">Across many chats</span><i style="--v:.887"></i><b role="cell">88.7</b></div>
+      </div>
+      <p class="fine">Claude Sonnet reader, LongMemEval's own judge prompts, k=40 rounds with pseudo-relevance feedback and deep recall. The right evidence was in the model's context for 99.6% of questions.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ How I got better ═══ -->
+<section class="numbers" data-b="0.5 0.5 0.6 0.1 0.4">
+  <p class="eyebrow">How I got better</p>
+  <h2 class="reveal">Every change has to beat the last number.</h2>
+  <p class="sub fade">Nothing about how I search ships on a hunch. Each of these was measured before and after, on the same questions.</p>
+  <div class="dumbbells fade spot" role="table" aria-label="Before and after measurements">
+    <div class="db" role="row" data-tip="Own-history eval: recency ordering 15% → BM25 relevance 65%">
+      <span role="rowheader">Searching by relevance, not recency<small>recall on your own history</small></span>
+      <div class="dtrack"><i class="from" style="--v:.15"></i><i class="line" style="--a:.15;--b:.65"></i><i class="to" style="--v:.65"></i></div>
+      <b role="cell">15% → 65%</b>
+    </div>
+    <div class="db" role="row" data-tip="brain eval: 96/139 → 121/139 questions answered from retrieved context">
+      <span role="rowheader">Better briefing query<small>brain eval, 139 questions</small></span>
+      <div class="dtrack"><i class="from" style="--v:.69"></i><i class="line" style="--a:.69;--b:.87"></i><i class="to" style="--v:.87"></i></div>
+      <b role="cell">69% → 87%</b>
+    </div>
+    <div class="db" role="row" data-tip="LongMemEval-S QA accuracy: 88.2 (k=20) → 94.2 (k=40, PRF, deep recall)">
+      <span role="rowheader">Deeper recall<small>LongMemEval-S answer accuracy</small></span>
+      <div class="dtrack"><i class="from" style="--v:.882"></i><i class="line" style="--a:.882;--b:.942"></i><i class="to" style="--v:.942"></i></div>
+      <b role="cell">88.2% → 94.2%</b>
+    </div>
+    <div class="db" role="row" data-tip="Cross-encoder rerank: every evidence session in the top 5, 85.5 → 94.9">
+      <span role="rowheader">Re-ranking the shortlist<small>all evidence in the top 5</small></span>
+      <div class="dtrack"><i class="from" style="--v:.855"></i><i class="line" style="--a:.855;--b:.949"></i><i class="to" style="--v:.949"></i></div>
+      <b role="cell">85.5% → 94.9%</b>
+    </div>
+    <div class="db" role="row" data-tip="Pseudo-relevance feedback on LoCoMo multi-hop: 59.6 → 66.7">
+      <span role="rowheader">Following the thread<small>LoCoMo multi-hop questions</small></span>
+      <div class="dtrack"><i class="from" style="--v:.596"></i><i class="line" style="--a:.596;--b:.667"></i><i class="to" style="--v:.667"></i></div>
+      <b role="cell">59.6 → 66.7</b>
+    </div>
+    <div class="db-legend"><span><i class="from"></i>before</span><span><i class="to"></i>after</span><span class="axis">0 ──────────── 100</span></div>
+  </div>
+</section>
+
+<!-- ═══ Tokens ═══ -->
+<section class="interlude" data-b="0.5 0.5 0.6 0.35 0.6">
+  <h2 class="line decode-in">And I'm cheap to remember with.</h2>
+  <p class="note fade">Better answers from fewer tokens: the model reads what matters, not everything.</p>
+</section>
+
+<section class="story" data-story="4" data-b="0.5 0.5 0.6 0.14 0.5">
+  <div class="story-pin">
+    <div class="narr">
+      <div class="beat">
+        <p class="stamp">LongMemEval-S</p>
+        <h2 class="line"><span class="sig">75% fewer</span> tokens per question.</h2>
+        <p class="note">About 31.7k tokens of retrieved memory instead of the 127.6k-token history, and 94.2% of answers still right.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">LoCoMo</p>
+        <h2 class="line"><span class="sig">86% fewer</span> tokens per question.</h2>
+        <p class="note">About 3.6k tokens instead of the 26k-token conversation, at 81.8% answer accuracy.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">Every session start</p>
+        <h2 class="line">A briefing, <span class="sig">not a dump.</span></h2>
+        <p class="note">With 10,000 memories, pasting everything would cost 1.13 million tokens. The context I hand over is about 1,300: 99.88% smaller. The start-up briefing is capped at 2,000, so tools that cut off long start-up messages never drop the end.</p>
+      </div>
+      <div class="beat">
+        <p class="stamp">Savings meter</p>
+        <h2 class="line">I keep score.</h2>
+        <p class="note">Each time a memory saves a tool from redoing work, I log the tokens that work cost, minus what reading the memory cost. Each memory counts once a day, and never below zero.</p>
+      </div>
+    </div>
+    <div class="set">
+      <div class="tokens spot" data-show="0">
+        <div class="tk"><span>Whole history</span><i style="--v:1"></i><b>127.6k</b></div>
+        <div class="tk me"><span>My memories</span><i style="--v:.248"></i><b>31.7k</b></div>
+        <p class="fine">Tokens read per question · same 500 questions</p>
+      </div>
+      <div class="tokens spot" data-show="1">
+        <div class="tk"><span>Whole conversation</span><i style="--v:1"></i><b>26k</b></div>
+        <div class="tk me"><span>My memories</span><i style="--v:.138"></i><b>3.6k</b></div>
+        <p class="fine">Tokens read per question · 1,540 questions</p>
+      </div>
+      <div class="tokens spot" data-show="2">
+        <div class="tk"><span>Dump all memories</span><i style="--v:1"></i><b>1,131,367</b></div>
+        <div class="tk me"><span>My context</span><i style="--v:.0012"></i><b>1,325</b></div>
+        <p class="fine">Tokens to load context · 10,000-memory store</p>
+      </div>
+      <div class="meter-card spot" data-show="3">
+        <div class="win-head"><svg class="mark"><use href="#i-mark"/></svg>Control panel · savings<em class="eg">example</em></div>
+        <div class="meter-body">
+          <b class="big-saved"><span data-countup="412">0</span>k</b>
+          <span>tokens saved so far (estimate)</span>
+          <div class="mini"><span>today <b>18k</b></span><span>this week <b>96k</b></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

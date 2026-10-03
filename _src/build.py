@@ -25,6 +25,7 @@ for name, label in PAGES:
     desc = re.search(r"<!--DESC:(.*?)-->", body).group(1)
     m = re.search(r"<!--SCRIPTS:(.*?)-->", body)
     scripts = m.group(1).split() if m else ["story.js"]
+    body = re.sub(r"<!--PART:([\w.-]+)-->", lambda m: (root / "_src" / f"{m.group(1)}.html").read_text(), body)
     body = re.sub(r"<!--INDEX:(\d+)-->", lambda m: index_section(m.group(1)), body)
     for old, new in re.findall(r"<!--REPLACE:(.*?)\|\|\|(.*?)-->", body, re.S):
         assert body.count(old) >= 2, f"{name}: replacement target not found: {old[:60]}"

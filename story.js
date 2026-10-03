@@ -78,7 +78,7 @@
   for (const el of $$(".type")) { el.dataset.text = el.textContent; el.textContent = ""; }
 
   // Ciphertext that never sits still while it's on screen.
-  const ciphers = $$("[data-cipher]");
+  const ciphers = $$(".cipher[data-cipher]");
   setInterval(() => {
     if (reduce) return;
     for (const el of ciphers) {
@@ -154,6 +154,7 @@
           if (vis && !was) {
             for (const t of [...$$(".type", s.el), ...(s.el.matches(".type") ? [s.el] : [])]) if (!t.closest(".beat")) type(t);
             for (const d of $$(".decode-on", s.el)) if (!d.closest(".beat")) decode(d);
+            for (const c of $$("[data-countup]", s.el)) countUp(c);
           }
           if (!vis && was) for (const t of $$(".type", s.el)) if (!t.closest(".beat")) resetType(t);
         }
@@ -181,12 +182,40 @@
   addEventListener("resize", update);
   update();
 
+  // Count-ups (data-countup) run when their data-show block becomes visible; see update().
+  const countUp = (el) => {
+    const end = +el.dataset.countup;
+    if (reduce) { el.textContent = end.toLocaleString(); return; }
+    const t0 = performance.now();
+    const tick = (t) => {
+      const k = clamp((t - t0) / 1600), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(end * e).toLocaleString();
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  window.__countUp = countUp;
+
+  // Hover tooltips on chart marks: the exact value and its source.
+  const tip = document.createElement("div");
+  tip.className = "tip"; tip.setAttribute("role", "tooltip");
+  document.body.append(tip);
+  addEventListener("pointermove", (e) => {
+    const el = e.target.closest && e.target.closest("[data-tip]");
+    if (!el) { tip.classList.remove("on"); return; }
+    tip.textContent = el.dataset.tip;
+    const x = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 8), y = e.clientY + 16;
+    tip.style.left = x + "px"; tip.style.top = (y + tip.offsetHeight > innerHeight ? e.clientY - tip.offsetHeight - 10 : y) + "px";
+    tip.classList.add("on");
+  }, { passive: true });
+
   // Fades.
   const io = new IntersectionObserver((entries) => {
     for (const en of entries) {
       if (!en.isIntersecting) continue;
       en.target.classList.add("in");
       if (en.target.classList.contains("decode-in")) decode(en.target);
+      for (const t of $$(".type", en.target)) if (!t.closest(".beat, [data-show]")) type(t);
       io.unobserve(en.target);
     }
   }, { threshold: 0.3 });
