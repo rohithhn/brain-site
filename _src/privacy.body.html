@@ -1,0 +1,35 @@
+<!--TITLE:Agentic Brain Privacy-->
+<!--DESC:What this website and Agentic Brain do with your data.-->
+
+<section class="doc" data-b="0.78 0.5 0.32 0.3 0.4">
+  <p class="eyebrow">Privacy</p>
+  <h1 class="decode-in">Your memory is yours.</h1>
+  <p class="lede-doc">Agentic Brain is built so that we never see your data. This page explains what the website and the software do.</p>
+  <p class="updated">Last updated 3 October 2026</p>
+
+  <h2>This website</h2>
+  <ul>
+    <li>No accounts, no forms, no cookies, no analytics and no tracking scripts.</li>
+    <li>The pages are static files hosted on GitHub Pages. GitHub may log your IP address when it serves them, under GitHub's own privacy statement.</li>
+    <li>Fonts load from Google Fonts, so your browser asks Google's servers for the font files.</li>
+    <li>The brain animation and every other effect run entirely in your browser.</li>
+  </ul>
+
+  <h2>The Agentic Brain software</h2>
+  <ul>
+    <li><b>It runs on your machine.</b> Your memory lives in a local SQLite database in your home folder.</li>
+    <li><b>We run no server.</b> Nothing you capture is sent to us, and the software has no telemetry or usage analytics.</li>
+    <li><b>Sync goes to your own GitHub.</b> When you sync, the memory is encrypted with <code>age</code> and uploaded as a Release asset to a private repository in your own GitHub account.</li>
+    <li><b>Only you hold the key.</b> The encryption key is kept in your operating system's keychain and is never uploaded. If you lose it, nobody, including us, can recover your memory.</li>
+    <li><b>Distilling uses your AI tool.</b> To turn sessions into memories, Agentic Brain asks the AI tool you choose (Claude, Codex or Gemini) under your own account, so that content is handled by that provider's terms.</li>
+    <li><b>Secrets are scrubbed first.</b> API keys and tokens are removed before anything is stored or written into instruction files. This is best effort, not a guarantee.</li>
+    <li><b>Optional semantic search runs locally.</b> If you turn it on, a small open model is downloaded once and then runs on your machine.</li>
+  </ul>
+
+  <h2>Your control</h2>
+  <ul>
+    <li>Search, edit, pin, delete and restore any memory in the local control panel.</li>
+    <li>Export everything to plain JSONL with <code>brain export</code>.</li>
+    <li>Delete the local database and your private repository to remove it all.</li>
+  </ul>
+</section>
