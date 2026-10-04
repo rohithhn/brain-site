@@ -3,15 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>I Remember</title>
-<meta name="description" content="The memory tells its own story, from empty to awake, in first person.">
+<title>Agentic Brain Blog: Memory for AI Coding Tools</title>
+<meta name="description" content="Notes from building Agentic Brain: why AI coding assistants forget, how to give Claude Code, Codex, Cursor and Gemini CLI one shared memory, and how we measure it.">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#000000">
-<link rel="icon" type="image/svg+xml" href="img/icon.svg"><link rel="icon" type="image/png" sizes="32x32" href="img/icon-32.png"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="canonical" href="https://rohithhn.github.io/brain-site/blog/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Agentic Brain">
+<meta property="og:title" content="Agentic Brain Blog">
+<meta property="og:description" content="Notes from building one private memory for every AI coding tool.">
+<meta property="og:url" content="https://rohithhn.github.io/brain-site/blog/">
+<link rel="icon" type="image/svg+xml" href="../img/icon.svg"><link rel="icon" type="image/png" sizes="32x32" href="../img/icon-32.png"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="story.css">
+<link rel="stylesheet" href="blog.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"Agentic Brain Blog","url":"https://rohithhn.github.io/brain-site/blog/",
+ "blogPost":[{"@type":"BlogPosting","headline":"Why AI coding assistants forget, and why they need persistent memory","url":"https://rohithhn.github.io/brain-site/blog/why-ai-coding-tools-need-memory.html","datePublished":"2026-10-04"}]}
+</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -38,95 +48,33 @@
 <symbol id="l-apple" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
 <symbol id="l-node" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/></symbol>
 </defs></svg>
-<canvas id="brain" aria-hidden="true"></canvas>
-<div class="vignette" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<div class="progress" aria-hidden="true"><span></span></div>
-<header class="nav">
-  <a class="brand" href="index.html"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Agentic Brain</a>
-  <nav><a href="blog/index.html">Blog</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a><span class="soon-pill"><i></i>Coming soon</span></nav>
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../img/icon.svg" alt="" width="34" height="34">Agentic Brain</a>
+  <nav><a href="index.html" aria-current="page">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav>
 </header>
 <main>
-
-<section class="story voice" data-story="10" data-b="0.5 0.5 0.6 0.6 1">
-  <div class="story-pin center">
-    <div class="orbit" data-show="1">
-      <span style="--x:24%;--y:30%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>Claude Code</span>
+  <section class="index-head">
+    <p class="kicker">Blog</p>
+    <h1>Notes from building a brain.</h1>
+    <p class="lede">Why AI coding tools forget, how memory should work, and how we measure it.</p>
+  </section>
+  <a class="post-card" href="why-ai-coding-tools-need-memory.html">
+    <div class="pc-art forget" aria-hidden="true">
+      <div class="fw" style="--brand:#d97757"><div class="fw-h"><svg><use href="#l-claudecode"/></svg>Claude Code<em>Mon</em></div><div class="fw-b"><span class="you">You:</span> Drop Redis.</div></div>
+      <div class="fw"><div class="fw-h"><svg><use href="#l-cursor"/></svg>Cursor<em>Tue</em></div><div class="fw-b"><span class="bad">+ import Redis</span></div></div>
+      <div class="fw"><div class="fw-h"><svg><use href="#l-codex"/></svg>Codex<em>Wed</em></div><div class="fw-b">Redis health check…</div></div>
     </div>
-    <div class="orbit" data-show="2">
-      <span style="--x:24%;--y:30%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>Claude Code</span>
-      <span style="--x:78%;--y:26%;--i:1"><svg><use href="#l-codex"/></svg>Codex</span>
-      <span style="--x:14%;--y:62%;--i:2"><svg><use href="#l-cursor"/></svg>Cursor</span>
-      <span style="--x:86%;--y:64%;--i:3;--brand:#4796e3"><svg><use href="#l-geminicli"/></svg>Gemini CLI</span>
-      <span style="--x:50%;--y:16%;--i:4;--brand:#4f8dfd"><svg><use href="#l-antigravity"/></svg>Antigravity</span>
+    <div class="pc-body">
+      <p class="kicker">Pre-launch · 4 October 2026</p>
+      <h2>Why your AI coding tools forget everything, and why they need a memory</h2>
+      <p>Every session starts from zero, and no tool knows what the others learned. What that costs in time and
+      tokens, and how one private, encrypted memory fixes it.</p>
+      <span class="more">Read the post <span aria-hidden="true">→</span></span>
     </div>
-    <div class="orbit" data-show="6">
-      <span style="--x:20%;--y:22%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>CLAUDE.md</span>
-      <span style="--x:80%;--y:22%;--i:1"><svg><use href="#l-codex"/></svg>AGENTS.md</span>
-      <span style="--x:12%;--y:70%;--i:2"><svg><use href="#l-cursor"/></svg>AGENTS.md</span>
-      <span style="--x:88%;--y:70%;--i:3;--brand:#4796e3"><svg><use href="#l-geminicli"/></svg>GEMINI.md</span>
-    </div>
-
-    <p class="whisper" data-show="3">wiki/infra.md        <b>revised</b><br>wiki/auth.md         <b>revised</b><br>wiki/sqlite-fts.md   <b>new page</b><br>2 learnings drafted</p>
-    <p class="whisper right" data-show="4">learning #41   helpful ×6   <b>rises</b><br>learning #12   helpful ×3   <b>rises</b><br>learning #07   misled ×2   sinks</p>
-    <p class="whisper" data-show="5">LongMemEval-S · 500 questions<br>QA accuracy   <b>94.2%</b><br>answer in top 5   <b>98.3%</b></p>
-
-    <div class="narr">
-      <div class="beat" data-b="0.5 0.5 0.6 0.16 0">
-        <h2 class="line decode-on">I start empty.</h2>
-        <p class="note">No memories. No context. A shape waiting to be filled.</p>
-        <p class="scrollcue" style="justify-content:center"><i></i>Scroll</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.45 0.6 2" data-bm="0.5 0.70 0.27 0.5 0.6 2">
-        <h2 class="line decode-on">Then you open Claude Code, and I listen.</h2>
-        <p class="note">Every decision, every fix, every "no, not like that".</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.85 2.2 2" data-bm="0.5 0.70 0.27 0.9 2.2 2">
-        <h2 class="line decode-on">Codex. Cursor. Gemini. Antigravity. I listen to all of them.</h2>
-        <p class="note">Parsers and file watchers pick up each new session within moments.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.62 0.32 0.25 0">
-        <h2 class="line decode-on">At night, I dream.</h2>
-        <p class="note">I turn raw observations into a wiki that I keep rewriting, not a pile I keep adding to.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.75 1.2 1">
-        <h2 class="line decode-on">I remember what helped.</h2>
-        <p class="note">When a memory helps you, it rises. When it misleads you, it sinks.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.7 1 4">
-        <h2 class="line decode-on">I check my own work.</h2>
-        <p class="note">If a change to how I search makes me worse at recalling your history, it doesn't ship.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.64 1 3.2" data-bm="0.5 0.70 0.27 1 3.2">
-        <h2 class="line decode-on">Open a new tool tomorrow. I'm already there.</h2>
-        <p class="note">A short briefing lands in the file each tool reads before your first message.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.26 0.4">
-        <h2 class="line decode-on">Only you can read me.</h2>
-        <p class="note">I'm sealed with an <code>age</code> key that lives in your Keychain and nowhere else.</p>
-        <div class="cipher" data-cipher="64" style="margin:22px auto 0;max-width:420px"></div>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.6 0.5 0.8">
-        <h2 class="line decode-on">I live in your GitHub. <span class="mute">Not on anyone's server.</span></h2>
-        <p class="note">One encrypted Release asset on your own private repo. If a company shuts down, nothing happens to me.</p>
-      </div>
-      <div class="beat" data-b="0.5 0.5 0.66 1 2.6">
-        <span class="soon-pill big"><i></i>Coming soon</span>
-        <h2 class="line decode-on">I'm almost awake.</h2>
-        <p class="note">Agentic Brain is almost ready. One memory for every AI coding tool you use.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
+  </a>
 </main>
-<nav class="switch" aria-label="Stories"><a href="index.html">Main</a><a href="week.html">A week</a><a href="voice.html" aria-current="page">I remember</a><a href="journey.html">One memory</a></nav>
-<footer class="foot">
-  <span class="brand small"><svg class="mark"><use href="#i-mark"/></svg>Agentic Brain</span>
-  <span>Built by Rohith, Chandhan and Sushmita</span>
-  <span>Open source, self-hosted memory for AI coding tools. Coming soon.</span>
+<footer class="blog-foot">
+  <a href="../index.html">Home</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><span>Built by Rohith, Chandhan and Sushmita</span>
 </footer>
-<script src="brain.js"></script>
-<script src="story.js"></script>
 </body>
 </html>

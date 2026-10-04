@@ -10,6 +10,8 @@ icon = re.search(r'<link rel="icon".*?<link rel="apple-touch-icon"[^>]*>', index
 CUR = ' aria-current="page"'
 PAGES = [("index", "Main"), ("week", "A week"), ("voice", "I remember"), ("journey", "One memory")]
 TABS = [("blog", "Blog"), ("privacy", "Privacy"), ("contact", "Contact")]
+TAB_HREF = {"blog": "blog/index.html"}  # the blog is its own folder (see _src/blog)
+BUILT = [n for n, _ in TABS if n != "blog"]
 CREDIT = "Built by Rohith, Chandhan and Sushmita"
 ENTRY = "index"  # in an artifact this page is the root page; the rest are files beside it
 
@@ -22,9 +24,9 @@ def index_section(n):
 artifact = "--artifact" in sys.argv
 out = pathlib.Path(sys.argv[sys.argv.index("--artifact") + 1]) if artifact else root
 
-pages = PAGES + TABS
+pages = PAGES + [t for t in TABS if t[0] in BUILT]
 if artifact:
-    pages = [p for p in pages if p[0] == ENTRY] + TABS
+    pages = [p for p in pages if p[0] == ENTRY] + [t for t in TABS if t[0] in BUILT]
 for name, label in pages:
     body = (root / "_src" / f"{name}.body.html").read_text()
     title = re.search(r"<!--TITLE:(.*?)-->", body).group(1)
@@ -38,7 +40,7 @@ for name, label in pages:
         body = body.replace(old, new)
     body = re.sub(r"<!--(TITLE|DESC|SCRIPTS|REPLACE):.*?-->\n?", "", body, flags=re.S)
     home = "./" if artifact else "index.html"
-    tabs = "".join(f'<a href="{n}.html"{CUR if n == name else ""}>{l}</a>' for n, l in TABS)
+    tabs = "".join(f'<a href="{TAB_HREF.get(n, n + ".html")}"{CUR if n == name else ""}>{l}</a>' for n, l in TABS)
     switch = "" if artifact or name in dict(TABS) or name == "index" else '<nav class="switch" aria-label="Stories">' + "".join(
         f'<a href="{n}.html"{CUR if n == name else ""}>{l}</a>' for n, l in PAGES) + "</nav>"
     head = f"""<title>{title}</title>
@@ -85,3 +87,20 @@ for name, label in pages:
 """
     (out / f"{name}.html").write_text(html)
     print("wrote", out / f"{name}.html")
+
+# ── Blog: _src/blog/*.html -> blog/ (one level down, so shared assets get ../)
+if not artifact:
+    blog_head = "\n".join([
+        icon.replace('href="img/', 'href="../img/'),
+        fonts,
+        '<link rel="stylesheet" href="blog.css">',
+    ])
+    (root / "blog").mkdir(exist_ok=True)
+    for f in sorted((root / "_src" / "blog").glob("*.html")):
+        html = f.read_text().replace("{{HEAD}}", blog_head).replace("{{SPRITE}}", sprite)
+        (root / "blog" / f.name).write_text(html)
+        print("wrote", root / "blog" / f.name)
+    # old /blog.html links keep working
+    (root / "blog.html").write_text('<!doctype html><meta charset="utf-8"><title>Agentic Brain Blog</title>'
+        '<link rel="canonical" href="https://rohithhn.github.io/brain-site/blog/">'
+        '<meta http-equiv="refresh" content="0; url=blog/index.html"><a href="blog/index.html">Blog</a>')
