@@ -125,9 +125,21 @@
     return span > 0 ? clamp(-r.top / span) : clamp((innerHeight - r.top) / (innerHeight + r.height));
   };
 
+  // Scroll progress goes only on the few elements that draw with it (never on whole sections or
+  // the root, which would make the browser restyle everything inside on every scroll step).
+  const setP = (sec, p) => {
+    const v = p.toFixed(3);
+    if (sec._p === v) return;
+    sec._p = v;
+    (sec._pt ||= [...sec.querySelectorAll(".hero-copy, .steps, .pipe, .route")]).forEach((e) => e.style.setProperty("--p", v));
+  };
+  const bar = document.querySelector(".progress span");
+  const setPage = () => {
+    const d = document.documentElement;
+    if (bar) bar.style.transform = `scaleX(${Math.min(1, Math.max(0, scrollY / (d.scrollHeight - innerHeight || 1))).toFixed(4)})`;
+  };
   const update = () => {
-    const doc = document.documentElement;
-    doc.style.setProperty("--page", clamp(scrollY / (doc.scrollHeight - innerHeight || 1)));
+    setPage();
     const nav = $(".nav");
     if (nav) nav.classList.toggle("solid", scrollY > 30);
 
@@ -136,8 +148,7 @@
       const p = progress(st.sec);
       const f = p * st.n;
       const i = Math.min(st.n - 1, Math.floor(f * 0.9999));
-      st.sec.style.setProperty("--p", p.toFixed(4));
-      st.sec.style.setProperty("--bp", clamp(f - i).toFixed(4));
+      setP(st.sec, p);
       if (i !== st.last) {
         st.last = i;
         st.sec.dataset.beat = i;
@@ -202,7 +213,7 @@
   addEventListener("resize", update);
   update();
   // Text can reflow after a beat appears (headlines unscramble, fonts load), so phones re-measure.
-  setInterval(() => { if (small()) update(); }, 250);
+  setInterval(() => { if (small()) update(); }, 400);
 
   // Count-ups (data-countup) run when their data-show block becomes visible; see update().
   const countUp = (el) => {

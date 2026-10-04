@@ -162,7 +162,8 @@
   const state = { x: 0.7, y: 0.5, scale: 0.42, alpha: 1, region: -1, rate: 1 };
   const target = { ...state };
   const resize = () => {
-    dpr = Math.min(devicePixelRatio || 1, 2);
+    // A full-screen canvas at 3x (iPhone) is ~3M pixels a frame; dots and hairlines look the same at 1.25x.
+    dpr = Math.min(devicePixelRatio || 1, innerWidth < 760 ? 1.25 : 1.5);
     W = innerWidth; H = innerHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + "px"; canvas.style.height = H + "px";
@@ -229,7 +230,10 @@
   // ── Frame.
   let last = performance.now(), t = 0, spont = 0, hoverFire = 0;
   const R_MOUSE = 170;
+  const coarse = matchMedia("(pointer: coarse)").matches;
   const frame = (now) => {
+    // Touch devices draw at ~30fps so the brain never competes with scrolling for the frame budget.
+    if (coarse && now - last < 30) return requestAnimationFrame(frame);
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     if (!reduce) t += dt;
@@ -325,11 +329,9 @@
       ctx.stroke(buckets[v]);
     }
     ctx.lineWidth = 1.1;
+    // Firing wires: both ends share one colour, so a flat stroke (no per-edge gradient object).
     for (const [a, b, act] of hot) {
-      const g = ctx.createLinearGradient(a.sx, a.sy, b.sx, b.sy);
-      g.addColorStop(0, `hsla(204,100%,72%,${act * 0.75 * A})`);
-      g.addColorStop(1, `hsla(204,100%,72%,${act * 0.75 * A})`);
-      ctx.strokeStyle = g;
+      ctx.strokeStyle = `hsla(204,100%,72%,${(act * 0.75 * A).toFixed(3)})`;
       ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(b.sx, b.sy); ctx.stroke();
     }
 

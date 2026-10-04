@@ -155,12 +155,24 @@
     return span > 0 ? clamp(-r.top / span) : clamp((innerHeight - r.top) / (innerHeight + r.height));
   };
 
+  // Scroll progress goes only on the few elements that draw with it (never on whole sections or
+  // the root, which would make the browser restyle everything inside on every scroll step).
+  const setP = (sec, p) => {
+    const v = p.toFixed(3);
+    if (sec._p === v) return;
+    sec._p = v;
+    (sec._pt ||= [...sec.querySelectorAll(".hero-copy, .steps, .pipe, .route")]).forEach((e) => e.style.setProperty("--p", v));
+  };
+  const bar = document.querySelector(".progress span");
+  const setPage = () => {
+    const d = document.documentElement;
+    if (bar) bar.style.transform = `scaleX(${Math.min(1, Math.max(0, scrollY / (d.scrollHeight - innerHeight || 1))).toFixed(4)})`;
+  };
   const update = () => {
-    const doc = document.documentElement;
-    doc.style.setProperty("--page", clamp(scrollY / (doc.scrollHeight - innerHeight || 1)));
+    if (!document.querySelector("[data-b]")) setPage();  // story.js owns the bar when both run
     $(".nav").classList.toggle("solid", scrollY > 30);
 
-    for (const s of $$("[data-scene]")) s.style.setProperty("--p", progress(s).toFixed(4));
+    for (const s of $$("[data-scene]")) setP(s, progress(s));
 
     // Loop steps.
     const loop = $(".loop");
