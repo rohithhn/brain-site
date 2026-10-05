@@ -158,3 +158,14 @@ td { color: var(--muted); } td.yes { color: var(--fg); font-weight: 500; backgro
   .blog-foot span { margin-left: 0; }
 }
 @media (max-width: 460px) { .tldr-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* hero visual: the instruction file each tool reads */
+.files { display: grid; gap: 10px; }
+.file { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 13px 16px; border-radius: 12px;
+  background: var(--card); box-shadow: 0 0 0 1px var(--line-2) inset; }
+.file svg { width: 18px; height: 18px; color: var(--brand, var(--fg)); }
+.file code { background: none; box-shadow: none; padding: 0; font-size: 13.5px; color: var(--fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file em { font-style: normal; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.file.dim { opacity: .6; box-shadow: 0 0 0 1px var(--line) inset; }
+.pc-art .files .file { padding: 9px 12px; } .pc-art .files code { font-size: 12px; }
+@media (max-width: 760px) { .file { grid-template-columns: 20px minmax(0, 1fr); } .file em { grid-column: 2; } }
