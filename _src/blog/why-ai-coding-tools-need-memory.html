@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Why AI Coding Assistants Forget, and Why They Need Persistent Memory | Agentic Brain</title>
 <meta name="description" content="Claude Code, Codex, Cursor and Gemini CLI start every session from zero and never share what they learn. Why that costs time and tokens, and how one private, encrypted memory fixes it.">
-<meta name="keywords" content="AI coding assistant memory, persistent memory for Claude Code, Cursor memory, Codex memory, Gemini CLI memory, AI memory across tools, AI context loss, CLAUDE.md, AGENTS.md, MCP memory server, self-hosted AI memory, encrypted AI memory">
+<meta name="keywords" content="AI coding assistant memory, persistent memory for Claude Code, Cursor memory, Codex memory, Gemini CLI memory, AI memory across tools, AI context loss, long-term memory for AI, self-hosted AI memory, encrypted AI memory">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Rohith, Chandhan and Sushmita">
 <meta name="theme-color" content="#000000">
@@ -38,7 +38,7 @@
       "author": [{ "@type": "Person", "name": "Rohith" }, { "@type": "Person", "name": "Chandhan" }, { "@type": "Person", "name": "Sushmita" }],
       "publisher": { "@type": "Organization", "name": "Agentic Brain", "logo": { "@type": "ImageObject", "url": "https://rohithhn.github.io/brain-site/img/icon-512.png" } },
       "about": { "@id": "#app" },
-      "keywords": "AI coding assistant memory, persistent memory, Claude Code, Cursor, Codex, Gemini CLI, MCP, self-hosted"
+      "keywords": "AI coding assistant memory, persistent memory, Claude Code, Cursor, Codex, Gemini CLI, self-hosted"
     },
     {
       "@type": "SoftwareApplication",
@@ -50,13 +50,12 @@
       "description": "Open-source, self-hosted memory for AI coding tools. One encrypted memory shared by Claude Code, Codex, Cursor, Gemini CLI and Antigravity, stored on your machine and in your own private GitHub repository.",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "featureList": [
-        "Captures sessions from Claude Code, Codex, Cursor, Gemini CLI and Antigravity into one local store",
-        "Writes a briefing of at most 2,000 tokens into CLAUDE.md, AGENTS.md and GEMINI.md before each session",
-        "MCP server so any connected tool can search memory on demand",
-        "Memory organised by project folder, with every project still searchable",
-        "Encrypted with an age key kept in the OS keychain; synced to your own private GitHub repository",
-        "Local control panel to search, edit, pin, delete and restore memories",
-        "Every change to search and ranking gated on a retrieval evaluation"
+        "One memory shared by Claude Code, Codex, Cursor, Gemini CLI and Antigravity",
+        "Relevant context loaded automatically at the start of every session",
+        "Any connected tool can search memory on demand",
+        "Memory organised by project, with every project still searchable",
+        "Encrypted with your own key and synced to your own private GitHub",
+        "See, edit, pin and delete any memory"
       ]
     },
     {
@@ -67,11 +66,11 @@
         { "@type": "Question", "name": "Don't bigger context windows solve this?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. A bigger window lets a model read more in one session, but it does not choose what the next session should read, and it does not move knowledge between tools. Pasting everything in is also the most expensive option." } },
         { "@type": "Question", "name": "Can one memory work across Claude Code, Codex, Cursor and Gemini CLI?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Agentic Brain captures sessions from each tool into one local store, writes a short briefing into the instruction file each tool already reads (CLAUDE.md, AGENTS.md, GEMINI.md), and exposes the same memory over MCP so any connected tool can search it." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Agentic Brain captures sessions from each tool into one local store, loads a short briefing into each tool before you start, and lets any connected tool search the same memory." } },
         { "@type": "Question", "name": "Does adding memory use more tokens?",
-          "acceptedAnswer": { "@type": "Answer", "text": "It uses fewer. The model reads only what was retrieved instead of a whole history: about 31.7k tokens per question instead of 127.6k in our LongMemEval-S runs, and the startup briefing is capped at 2,000 tokens." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "It uses fewer. The model reads only what was retrieved instead of a whole history: about 31.7k tokens per question instead of 127.6k in our LongMemEval-S runs." } },
         { "@type": "Question", "name": "Where is my memory stored?",
-          "acceptedAnswer": { "@type": "Answer", "text": "On your machine, in a local database. To sync between machines it is encrypted with an age key that never leaves your OS keychain and stored in a private repository in your own GitHub account. There is no vendor server and no telemetry." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "On your machine. To sync between machines it is encrypted with a key only you hold and stored in a private repository in your own GitHub account. There is no vendor server and no telemetry." } },
         { "@type": "Question", "name": "When is Agentic Brain available?",
           "acceptedAnswer": { "@type": "Answer", "text": "Agentic Brain is almost ready. Setup will be one command that connects your AI coding tools, creates your private memory repository and generates your key." } }
       ]
@@ -186,24 +185,21 @@
       <h2 id="how-it-works">How does Agentic Brain give AI tools a memory?</h2>
       <p class="answer"><strong>It runs a loop: capture, distill, rank, inject, measure.</strong></p>
       <div class="feature-grid">
-        <div><h3>Capture</h3><p>Reads your sessions from each tool as they happen into one local SQLite database.</p></div>
+        <div><h3>Capture</h3><p>Picks up what each tool learns, as it happens, into one memory on your machine.</p></div>
         <div><h3>Distill</h3><p>Overnight, turns raw observations into a wiki it keeps revising, and drafts lessons from hard problems you solved. You approve them.</p></div>
         <div><h3>Rank</h3><p>Combines search relevance with a record of what actually helped. Memories you mark helpful rise; misleading ones sink.</p></div>
-        <div><h3>Inject</h3><p>Writes a briefing of at most 2,000 tokens into <code>CLAUDE.md</code>, <code>AGENTS.md</code> and <code>GEMINI.md</code> before you type. Your own text is never touched.</p></div>
-        <div><h3>Recall</h3><p>Over MCP, any connected tool can search the full memory when it needs something older.</p></div>
+        <div><h3>Inject</h3><p>Loads a short briefing of what matters into every tool before you type.</p></div>
+        <div><h3>Recall</h3><p>Any connected tool can search the full memory when it needs something older.</p></div>
         <div><h3>Measure</h3><p>A built-in evaluation quizzes the memory on your own history. Ranking changes are gated on it.</p></div>
       </div>
-      <p style="margin-top:20px">A new conversation starts with the briefing already loaded: in about 84 ms at startup. When the
-      model needs more, a search over 10,000 memories takes about 28 ms. And when you switch laptops, the
-      start-up step quietly merges in what your other machine learned.</p>
+      <p style="margin-top:20px">A new conversation starts with the briefing already loaded, in a fraction of a second. When the
+      model needs more, it searches. And when you switch laptops, what your other machine learned comes with you.</p>
 
       <h2 id="folders">Does it keep projects separate?</h2>
       <p class="answer"><strong>Yes, memory is filed by project, but nothing is walled off.</strong> Each memory is
       tagged with the repository it came from. Open a folder and the briefing starts with what happened there:
       its recent decisions, fixes and pinned notes.</p>
-      <p>Not sure which instructions file each tool reads? See our guide to
-      <a href="share-context-claude-md-agents-md-gemini-md.html">CLAUDE.md, AGENTS.md and GEMINI.md</a>.</p>
-      <p>Your global instruction files also carry a short map of up to 20 projects, so a tool working in one repo
+      <p>Every briefing also carries a short map of your other projects, so a tool working in one repo
       still knows the others exist. Search can cover one project or all of them. Even a brand-new repo hears:
       "Other projects are still searchable."</p>
 
@@ -215,8 +211,7 @@
       </div>
       <p class="fine">Tokens read per question on LongMemEval-S, 500 questions. On LoCoMo the drop is from about 26k to 3.6k.</p>
       <p>That's <strong>75% fewer tokens</strong> on LongMemEval-S and <strong>86% fewer</strong> on LoCoMo, with
-      better answers. The startup briefing is capped at 2,000 tokens, so tools that cut off long startup messages never lose
-      the end of it. The control panel also keeps an estimate of the tokens memory has saved you.</p>
+      better answers. The startup briefing stays short by design, and you can see an estimate of the tokens memory has saved you.</p>
 
       <h2 id="numbers">How well does it actually remember?</h2>
       <p class="answer"><strong>We measure it on public long-term memory benchmarks, and gate every change on the results.</strong></p>
@@ -235,13 +230,13 @@
 
       <h2 id="privacy">Who owns the memory?</h2>
       <p class="answer"><strong>You do. It lives on your machine and in your own private GitHub.</strong> To sync
-      between machines, memory is encrypted with an <code>age</code> key that never leaves your keychain, then stored as a
-      release file in a private repository in your GitHub account.</p>
+      between machines, memory is encrypted with a key only you hold, then stored in a private repository in your
+      own GitHub account.</p>
       <div class="feature-grid">
         <div><h3>No vendor server</h3><p>We run nothing in the path. If a company disappears, your memory doesn't.</p></div>
         <div><h3>Only you hold the key</h3><p>A leaked repository or a leaked token exposes nothing readable.</p></div>
         <div><h3>No telemetry</h3><p>The software sends us nothing. Read the <a href="../privacy.html">privacy page</a>.</p></div>
-        <div><h3>See all of it</h3><p>A local control panel lets you search every memory from every tool and project.</p></div>
+        <div><h3>See all of it</h3><p>Search every memory from every tool and project, in one place.</p></div>
         <div><h3>Change any of it</h3><p>Edit, pin, delete and restore memories. Approve or dismiss what it learns.</p></div>
         <div><h3>Take it with you</h3><p>Export everything to plain files with one command.</p></div>
       </div>
@@ -269,11 +264,11 @@
         <details><summary>Don't bigger context windows solve this?</summary>
           <p>No. A bigger window lets a model read more in one session, but it doesn't choose what the next session should read, and it doesn't move knowledge between tools. Pasting everything in is also the most expensive option.</p></details>
         <details><summary>Can one memory work across Claude Code, Codex, Cursor and Gemini CLI?</summary>
-          <p>Yes. Agentic Brain captures sessions from each tool into one local store, writes a short briefing into the instruction file each tool already reads, and exposes the same memory over MCP so any connected tool can search it.</p></details>
+          <p>Yes. Agentic Brain captures sessions from each tool into one local store, loads a short briefing into each tool before you start, and lets any connected tool search the same memory.</p></details>
         <details><summary>Does adding memory use more tokens?</summary>
-          <p>It uses fewer. The model reads only what was retrieved instead of a whole history: about 31.7k tokens per question instead of 127.6k in our LongMemEval-S runs, and the startup briefing is capped at 2,000 tokens.</p></details>
+          <p>It uses fewer. The model reads only what was retrieved instead of a whole history: about 31.7k tokens per question instead of 127.6k in our LongMemEval-S runs.</p></details>
         <details><summary>Where is my memory stored?</summary>
-          <p>On your machine, in a local database. For sync it's encrypted with a key that never leaves your keychain and stored in a private repository in your own GitHub account. There's no vendor server and no telemetry.</p></details>
+          <p>On your machine. For sync it's encrypted with a key only you hold and stored in a private repository in your own GitHub account. There's no vendor server and no telemetry.</p></details>
         <details><summary>When is Agentic Brain available?</summary>
           <p>It's almost ready. Setup will be one command that connects your AI coding tools, creates your private memory repository and generates your key. Already using another memory tool? One command will bring your history across.</p></details>
       </div>
