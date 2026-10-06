@@ -175,3 +175,19 @@ td { color: var(--muted); } td.yes { color: var(--fg); font-weight: 500; backgro
 .flow .file code { font-family: var(--sans); font-size: 15px; font-weight: 500; }
 .flow .file.hot { box-shadow: 0 0 0 1px rgba(143,211,255,.5) inset, 0 0 30px -10px rgba(143,211,255,.5); }
 .flow .file.hot b { color: #000; background: var(--signal); box-shadow: none; }
+/* hero visual: a context window budget */
+.ctx { margin: 0; padding: 24px; border-radius: 16px; background: var(--card); box-shadow: 0 0 0 1px var(--line-2) inset; }
+.ctx figcaption { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; font-weight: 500; color: var(--fg); margin-bottom: 16px; }
+.ctx figcaption em { font: 400 11.5px var(--mono); font-style: normal; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.ctx-bar { display: flex; gap: 2px; height: 44px; border-radius: 10px; overflow: hidden; }
+.ctx-bar i { width: var(--w); background: var(--c); transform-origin: left; animation: ctx-in .9s cubic-bezier(.2,.7,.2,1) both; }
+.ctx-bar i:nth-child(2) { animation-delay: .08s; } .ctx-bar i:nth-child(3) { animation-delay: .16s; } .ctx-bar i:nth-child(4) { animation-delay: .24s; }
+.ctx-bar i:nth-child(5) { animation-delay: .32s; } .ctx-bar i:nth-child(6) { animation-delay: .4s; }
+@keyframes ctx-in { from { transform: scaleX(0); opacity: 0; } }
+.ctx-key { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 16px; font-size: 13px; color: var(--muted); }
+.ctx-key li { display: flex; align-items: center; gap: 9px; margin: 0; }
+.ctx-key li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 3px; background: var(--c); box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset; }
+.ctx-note { margin: 18px 0 0; font-size: 13px; color: var(--muted); line-height: 1.55; }
+.pc-art .ctx { padding: 0; background: none; box-shadow: none; } .pc-art .ctx-bar { height: 34px; }
+@media (prefers-reduced-motion: reduce) { .ctx-bar i { animation: none; } }
+@media (max-width: 460px) { .ctx-key { grid-template-columns: minmax(0, 1fr); } }
