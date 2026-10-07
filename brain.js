@@ -310,7 +310,8 @@
     aura.addColorStop(0, `rgba(143,211,255,${0.06 * A})`);
     aura.addColorStop(0.5, `rgba(255,255,255,${0.015 * A})`);
     aura.addColorStop(1, "rgba(0,0,0,0)");
-    ctx.fillStyle = aura; ctx.fillRect(0, 0, W, H);
+    // Only the aura's own square: a full-screen gradient fill is the costliest thing on a phone.
+    ctx.fillStyle = aura; ctx.fillRect(cx - R * 1.25, cy - R * 1.25, R * 2.5, R * 2.5);
 
     // Wires, bucketed by brightness so each bucket is one stroke.
     const B = 6, buckets = Array.from({ length: B }, () => new Path2D());
@@ -357,10 +358,17 @@
       }
     }
 
-    // Cells.
+    // Cells. Resting cells are batched by brightness into a few paths (one fill each);
+    // only active cells get their own colour and glow.
+    const CB = 6, cells = Array.from({ length: CB }, () => new Path2D());
     for (const n of nodes) {
       if (n.minor && n.act < 0.15) continue;
       const r = (0.8 + n.sd * 1.3) * (n.part === 2 ? 0.8 : 1) * (n.minor ? 0.7 : 1);
+      if (n.act < 0.05) {
+        const v = Math.max(0, Math.min(CB - 1, (n.sd * CB) | 0));
+        cells[v].moveTo(n.sx + r, n.sy); cells[v].arc(n.sx, n.sy, r, 0, Math.PI * 2);
+        continue;
+      }
       ctx.fillStyle = `hsla(204,${Math.round(n.act * 100)}%,${86 - n.act * 4}%,${(0.25 + n.sd * 0.55 + n.act * 0.4) * A})`;
       ctx.beginPath(); ctx.arc(n.sx, n.sy, r + n.act * 1.6, 0, Math.PI * 2); ctx.fill();
       if (n.act > 0.2) {
@@ -369,6 +377,11 @@
         ctx.drawImage(glow, n.sx - s / 2, n.sy - s / 2, s, s);
         ctx.globalAlpha = 1;
       }
+    }
+
+    for (let v = 0; v < CB; v++) {
+      ctx.fillStyle = `hsla(204,0%,86%,${(0.25 + ((v + 0.5) / CB) * 0.55) * A})`;
+      ctx.fill(cells[v]);
     }
 
     // Signals in flight.

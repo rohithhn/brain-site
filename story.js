@@ -253,4 +253,10 @@
     }
   }, { threshold: 0.3 });
   $$(".fade, .decode-in").forEach((el) => io.observe(el));
+
+  // Looping CSS animations keep repainting even off screen; pause each section's while it is out of view.
+  const idle = new IntersectionObserver((entries) => {
+    for (const en of entries) en.target.classList.toggle("idle", !en.isIntersecting);
+  }, { rootMargin: "200px 0px" });
+  $$("body > section, main > section, body > div > section").forEach((el) => idle.observe(el));
 })();

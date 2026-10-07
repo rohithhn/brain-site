@@ -402,3 +402,12 @@
   .voice .pill { margin-bottom: 12px; font-size: 11px; }
   .voice .story-pin.center { padding-top: 88px; }
 }
+
+/* Off-screen sections pause their looping animations (story.js toggles .idle). */
+.idle, .idle *, .idle *::before, .idle *::after { animation-play-state: paused !important; }
+/* Phones: drop the always-on repaint animations; transform/opacity loops stay. */
+@media (pointer: coarse) {
+  .brand .logo, .brand .logo::after { animation: none !important; }
+  .pulse { animation: none; box-shadow: 0 0 0 3px rgba(143,211,255,.25); }
+  .reveal .w { transition: none; }
+}

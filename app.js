@@ -139,7 +139,8 @@
   const SPOTS = {
     hero: () => (small() ? { x: 0.5, y: 0.8, scale: 0.42, alpha: 0.5 } : { x: 0.73, y: 0.46, scale: 0.29, alpha: 1 }),
     loop: () => (small() ? { x: 0.5, y: 0.5, scale: 0.55, alpha: 0.28 } : { x: 0.5, y: 0.52, scale: 0.6, alpha: 0.3 }),
-    dim: () => ({ x: 0.5, y: 0.5, scale: small() ? 0.55 : 0.6, alpha: 0.18 }),
+    // Phones: behind dense tables the brain is barely visible, so it fades out and stops drawing.
+    dim: () => ({ x: 0.5, y: 0.5, scale: small() ? 0.55 : 0.6, alpha: small() ? 0 : 0.18 }),
     vault: () => (small() ? { x: 0.5, y: 0.5, scale: 0.5, alpha: 0.2 } : { x: 0.5, y: 0.5, scale: 0.6, alpha: 0.16 }),
     install: () => ({ x: 0.5, y: 0.5, scale: small() ? 0.55 : 0.5, alpha: 0.4 }),
   };
