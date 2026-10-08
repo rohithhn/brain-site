@@ -244,11 +244,14 @@
         <div><h3>Evidence recall</h3><p>Did the right memory reach the model at all? Answers can't beat retrieval.</p></div>
         <div><h3>Your own history</h3><p>Benchmarks are a start. Test on questions about your real work too.</p></div>
       </div>
-      <p style="margin-top:20px">A useful baseline: giving the model the whole conversation. A memory layer should beat it on
-      accuracy while reading far fewer tokens. On LoCoMo, ours scores <strong>81.8</strong> against <strong>72.9</strong>
-      for the full conversation and <strong>68.4</strong> for the best published memory product, reading about
-      <strong>86% fewer tokens</strong>. On LongMemEval-S it answers <strong>94.2%</strong> of 500 questions correctly.</p>
-      <p class="fine">LoCoMo comparison figures come from a widely cited 2025 published study with a different answering and judging model, so read them as direction, not a like-for-like race.</p>
+      <p style="margin-top:20px">A useful baseline: giving the model the whole conversation. When a conversation fits in the
+      context window, that baseline is hard to beat; a memory layer should come close to it while reading far fewer tokens,
+      and keep working once the history no longer fits. On LoCoMo, ours scores <strong>86.6</strong> against
+      <strong>89.3</strong> for the whole conversation on the same model, <strong>97%</strong> of it while reading about
+      <strong>86% fewer tokens</strong>, and against <strong>68.4</strong> for the best published memory product. On
+      LongMemEval-S it answers <strong>94.2%</strong> of 500 questions correctly, and on LongMemEval-M, with about 1.27 million
+      tokens of history behind each question, <strong>83.0%</strong>.</p>
+      <p class="fine">Updated 8 October 2026. The whole-conversation and LongMemEval-M figures were measured by us with the same model throughout. The 68.4 comes from a widely cited 2025 published study with a different answering and judging model, so read that comparison as direction, not a like-for-like race.</p>
 
       <h2 id="hosted-self">Hosted memory API or self-hosted memory?</h2>
       <p class="answer"><strong>A hosted memory API is fastest to start. Self-hosted memory keeps your data, your costs

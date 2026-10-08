@@ -217,16 +217,16 @@
       <p class="answer"><strong>We measure it on public long-term memory benchmarks, and gate every change on the results.</strong></p>
       <div class="stats">
         <div><b>94.2%</b><span>answer accuracy on LongMemEval-S, 500 questions</span></div>
-        <div><b>81.8</b><span>on LoCoMo (LLM-judge accuracy)</span></div>
+        <div><b>86.6</b><span>on LoCoMo (LLM-judge accuracy)</span></div>
         <div><b>99.6%</b><span>of questions had the right evidence in context</span></div>
         <div><b>15→65%</b><span>recall on our own history, from one ranking change</span></div>
       </div>
       <div class="bars" role="table" aria-label="LoCoMo answer accuracy">
-        <div class="bar me" role="row"><span role="rowheader">Agentic Brain</span><i style="--v:.818"></i><b role="cell">81.8</b></div>
-        <div class="bar" role="row"><span role="rowheader">Full conversation</span><i style="--v:.729"></i><b role="cell">72.9</b></div>
+        <div class="bar" role="row"><span role="rowheader">Whole conversation</span><i style="--v:.893"></i><b role="cell">89.3</b></div>
+        <div class="bar me" role="row"><span role="rowheader">Agentic Brain</span><i style="--v:.866"></i><b role="cell">86.6</b></div>
         <div class="bar" role="row"><span role="rowheader">Industry best*</span><i style="--v:.684"></i><b role="cell">68.4</b></div>
       </div>
-      <p class="fine">*The highest score of any memory product in the widely cited 2025 LoCoMo comparison, which used gpt-4o-mini to answer and judge; "Full conversation" is that study's baseline. Agentic Brain: Claude Sonnet answering and judging over 1,540 questions. Different setups, so read this as direction, not a like-for-like race. LongMemEval-S: Claude Sonnet answering with LongMemEval's own judge prompts.</p>
+      <p class="fine">Updated 8 October 2026. Agentic Brain and whole conversation: measured on the same model (gpt-6-luna answering and judging), 1,540 questions; Agentic Brain reads about 18% of the tokens for 97% of the whole-conversation score. *The highest score of any memory product in the widely cited 2025 LoCoMo comparison, which used gpt-4o-mini to answer and judge; a different model, so read that one as direction, not a like-for-like race. LongMemEval-S: Claude Sonnet answering with LongMemEval's own judge prompts.</p>
 
       <h2 id="privacy">Who owns the memory?</h2>
       <p class="answer"><strong>You do. It lives on your machine and in your own private GitHub.</strong> To sync

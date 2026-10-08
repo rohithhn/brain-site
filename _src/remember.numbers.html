@@ -2,18 +2,18 @@
 <section class="numbers" data-b="0.5 0.5 0.6 0.1 0.4">
   <p class="eyebrow">How I compare</p>
   <h2 class="reveal">Next to the published numbers.</h2>
-  <p class="sub fade">LoCoMo asks questions about very long conversations. Here is my score next to the best published memory product, and next to simply giving the model the whole conversation.</p>
+  <p class="sub fade">LoCoMo asks questions about long conversations. Here is my score next to giving the same model the whole conversation, and next to the best published memory product.</p>
 
   <div class="charts">
     <figure class="chartcard fade spot">
       <figcaption><b>LoCoMo</b> · answer accuracy (LLM judge, J), categories 1–4</figcaption>
-      <div class="hero-num"><b>+13.4</b><span>points above the industry best (published) · <b>+8.9</b> above reading the whole conversation</span></div>
+      <div class="hero-num"><b>97%</b><span>of the whole-conversation score, reading <b>18%</b> of the tokens · <b>+18.2</b> above the industry best (published)</span></div>
       <div class="bars" role="table" aria-label="LoCoMo answer accuracy by system">
-        <div class="bar me" role="row" data-tip="Agentic Brain with pseudo-relevance feedback · 81.8"><span role="rowheader">Agentic Brain</span><i style="--v:.818"></i><b role="cell">81.8</b></div>
-        <div class="bar" role="row" data-tip="Whole conversation in the prompt · 72.9 (published baseline)"><span role="rowheader">Full conversation</span><i style="--v:.729"></i><b role="cell">72.9</b></div>
+        <div class="bar" role="row" data-tip="The whole conversation in the prompt, same model · 89.3 (~20.8k tokens per question)"><span role="rowheader">Whole conversation</span><i style="--v:.893"></i><b role="cell">89.3</b></div>
+        <div class="bar me" role="row" data-tip="Agentic Brain with deep recall, 40 memories · 86.6 (~3.7k tokens per question)"><span role="rowheader">Agentic Brain</span><i style="--v:.866"></i><b role="cell">86.6</b></div>
         <div class="bar" role="row" data-tip="Highest memory-product score in the 2025 published comparison · 68.4"><span role="rowheader">Industry best*</span><i style="--v:.684"></i><b role="cell">68.4</b></div>
       </div>
-      <p class="fine">*Industry best: the highest score of any memory product in the widely cited 2025 LoCoMo comparison, which used gpt-4o-mini to answer and to judge. Full conversation: the same study's baseline. Agentic Brain: Claude Sonnet answering and judging, 1,540 questions; 80.5 without pseudo-relevance feedback, 83.6 when re-judged by GPT. Different setups, so read this as direction, not a like-for-like race.</p>
+      <p class="fine">Agentic Brain and whole conversation: measured by us on the same model (gpt-6-luna answering and judging), all 1,540 questions; with Claude Sonnet answering, Agentic Brain scores 81.8 at 20 memories. *Industry best: the highest score of any memory product in the widely cited 2025 LoCoMo comparison, which used gpt-4o-mini to answer and to judge. Different models, so read that comparison as direction, not a like-for-like race.</p>
     </figure>
 
     <figure class="chartcard fade spot">
@@ -28,7 +28,21 @@
         <div class="bar me" role="row" data-tip="Abstention: knowing it doesn't know · 90.0"><span role="rowheader">Saying "I don't know"</span><i style="--v:.9"></i><b role="cell">90.0</b></div>
         <div class="bar me" role="row" data-tip="Multi-session reasoning · 88.7"><span role="rowheader">Across many chats</span><i style="--v:.887"></i><b role="cell">88.7</b></div>
       </div>
-      <p class="fine">Claude Sonnet reader, LongMemEval's own judge prompts, k=40 rounds with pseudo-relevance feedback and deep recall. The right evidence was in the model's context for 99.6% of questions.</p>
+      <p class="fine">Claude Sonnet reader, LongMemEval's own judge prompts, k=40 rounds with pseudo-relevance feedback and deep recall. The right evidence was in the model's context for 99.6% of questions. Same search with a GPT reader (gpt-6-luna): 90.0%.</p>
+    </figure>
+
+    <figure class="chartcard fade spot" style="grid-column: 1 / -1">
+      <figcaption><b>LongMemEval-M</b> · answer accuracy with about 1.27 million tokens of history per question, 500 questions</figcaption>
+      <div class="hero-num"><b>83.0%</b><span>with histories too large to hand any model in full · the model read <b>98.5%</b> fewer tokens · the right evidence reached it for 97.9% of questions</span></div>
+      <div class="bars compact" role="table" aria-label="LongMemEval-M accuracy by question type">
+        <div class="bar me" role="row" data-tip="Single-session, assistant facts · 100"><span role="rowheader">Things the AI said</span><i style="--v:1"></i><b role="cell">100</b></div>
+        <div class="bar me" role="row" data-tip="Single-session, user facts · 94.3"><span role="rowheader">Facts you stated</span><i style="--v:.943"></i><b role="cell">94.3</b></div>
+        <div class="bar me" role="row" data-tip="Knowledge updates · 92.3"><span role="rowheader">Updated facts</span><i style="--v:.923"></i><b role="cell">92.3</b></div>
+        <div class="bar me" role="row" data-tip="Temporal reasoning · 80.5"><span role="rowheader">When things happened</span><i style="--v:.805"></i><b role="cell">80.5</b></div>
+        <div class="bar me" role="row" data-tip="Multi-session reasoning · 72.9"><span role="rowheader">Across many chats</span><i style="--v:.729"></i><b role="cell">72.9</b></div>
+        <div class="bar me" role="row" data-tip="Single-session preferences · 56.7"><span role="rowheader">Your preferences</span><i style="--v:.567"></i><b role="cell">56.7</b></div>
+      </div>
+      <p class="fine">The large LongMemEval variant: about 2,500 conversation rounds and 1.27M tokens behind every question. gpt-6-luna answering and judging, deep recall, 40 memories; about 19k tokens read per question. The same setup scores 90.0% on the smaller LongMemEval-S.</p>
     </figure>
   </div>
 </section>
@@ -59,10 +73,10 @@
       <div class="dtrack"><i class="from" style="--v:.855"></i><i class="line" style="--a:.855;--b:.949"></i><i class="to" style="--v:.949"></i></div>
       <b role="cell">85.5% → 94.9%</b>
     </div>
-    <div class="db" role="row" data-tip="Pseudo-relevance feedback on LoCoMo multi-hop: 59.6 → 66.7">
-      <span role="rowheader">Following the thread<small>LoCoMo multi-hop questions</small></span>
-      <div class="dtrack"><i class="from" style="--v:.596"></i><i class="line" style="--a:.596;--b:.667"></i><i class="to" style="--v:.667"></i></div>
-      <b role="cell">59.6 → 66.7</b>
+    <div class="db" role="row" data-tip="Deep recall + 40 memories on LoCoMo multi-hop, same model (gpt-6-luna): 65.6 → 80.5">
+      <span role="rowheader">Following the thread<small>LoCoMo questions that need several chats</small></span>
+      <div class="dtrack"><i class="from" style="--v:.656"></i><i class="line" style="--a:.656;--b:.805"></i><i class="to" style="--v:.805"></i></div>
+      <b role="cell">65.6 → 80.5</b>
     </div>
     <div class="db-legend"><span><i class="from"></i>before</span><span><i class="to"></i>after</span><span class="axis">0 ──────────── 100</span></div>
   </div>
@@ -85,7 +99,7 @@
       <div class="beat">
         <p class="stamp">LoCoMo</p>
         <h2 class="line"><span class="sig">86% fewer</span> tokens per question.</h2>
-        <p class="note">About 3.6k tokens instead of the 26k-token conversation, at 81.8% answer accuracy.</p>
+        <p class="note">About 3.7k tokens instead of the 26k-token conversation, at 86.6% answer accuracy: 97% of what reading the whole conversation scores.</p>
       </div>
       <div class="beat">
         <p class="stamp">Every session start</p>
@@ -106,7 +120,7 @@
       </div>
       <div class="tokens spot" data-show="1">
         <div class="tk"><span>Whole conversation</span><i style="--v:1"></i><b>26k</b></div>
-        <div class="tk me"><span>My memories</span><i style="--v:.138"></i><b>3.6k</b></div>
+        <div class="tk me"><span>My memories</span><i style="--v:.142"></i><b>3.7k</b></div>
         <p class="fine">Tokens read per question · 1,540 questions</p>
       </div>
       <div class="tokens spot" data-show="2">
