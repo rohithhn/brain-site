@@ -53,7 +53,7 @@
         { "@type": "Question", "name": "What is context rot?",
           "acceptedAnswer": { "@type": "Answer", "text": "Context rot is the drop in answer quality that often happens as a model's context grows long and noisy. Relevant facts get buried, older or contradictory information competes with the current task, and the model is more likely to miss or misuse what matters." } },
         { "@type": "Question", "name": "Doesn't a bigger context window remove the need for context engineering?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. A larger window raises the limit, but filling it costs more, takes longer and can lower accuracy. Choosing the right small set of information usually beats sending everything." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "No. A larger window raises the limit, but filling it costs more, takes longer and can lower accuracy. Choosing the right small set of information often comes close to sending everything, at a fraction of the cost, and still works when everything no longer fits." } },
         { "@type": "Question", "name": "How does memory relate to context engineering?",
           "acceptedAnswer": { "@type": "Answer", "text": "Memory is the long-term half of context engineering. It writes what matters outside the context window so it survives the session, then retrieves the relevant part back into the window when a later task needs it." } },
         { "@type": "Question", "name": "How do you measure good context engineering?",
@@ -179,9 +179,11 @@
         <li><strong>Accuracy:</strong> long, noisy context often makes models worse at finding what matters, a problem often called <em>context rot</em>.</li>
         <li><strong>Continuity:</strong> nothing in a bigger window survives to the next session on its own.</li>
       </ul>
-      <p>A small, well-chosen context usually beats a huge one. On a public long-conversation benchmark, our memory
-      layer answers more questions correctly than a model given the whole conversation, while reading about
-      <strong>86% fewer tokens</strong>.</p>
+      <p>A small, well-chosen context can come close to a huge one at a fraction of the cost. On a public
+      long-conversation benchmark, our memory layer reaches <strong>97%</strong> of the accuracy of giving the same model
+      the whole conversation, while reading about <strong>82% fewer tokens</strong>. And when the history is far too
+      long to fit at all (about 1.27 million tokens per question), retrieval is the only option: it still answers
+      <strong>83%</strong> correctly.</p>
 
       <h2 id="techniques">What are the core context engineering techniques?</h2>
       <p class="answer"><strong>Six moves cover most of it.</strong></p>
