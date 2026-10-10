@@ -1,6 +1,6 @@
 <!--TITLE:Agentic Brain-->
 <!--DESC:The memory tells its own story, and shows how it works, chapter by chapter.-->
-<!--SCRIPTS:app.js story.js-->
+<!--SCRIPTS:app.js story.js graph.js-->
 <!--REPLACE:<p class="eyebrow">A set of loops, not a chat product</p>|||<p class="eyebrow">How I work</p>-->
 <!--REPLACE:Purpose-built parsers read Claude Code, Codex, Antigravity, Gemini CLI, Cursor and Kilo Code sessions, starting with the history already on your machine.
           File watchers pick up new sessions near-live, into one local SQLite store.|||I read your Claude Code, Codex, Antigravity, Gemini CLI, Cursor and Kilo Code sessions, first the history already on your machine, then each new one as it happens,
@@ -80,6 +80,21 @@
       <span><svg><use href="#l-sqlite"/></svg>SQLite</span>
     </div>
   </div>
+</section>
+
+<section class="interlude graph-show" data-b="0.5 0.5 0.6 0.1 0.3">
+  <h2 class="line decode-in">Everything you've built, connected.</h2>
+  <p class="note fade">Every project, and the ideas that connect them. Hover, drag, click.</p>
+  <figure class="kg fade" id="kg">
+    <div class="kg-stage">
+      <canvas tabindex="0" role="img" aria-label="Example knowledge graph: five made-up projects as glowing hubs, each surrounded by its concepts, with links between ideas shared across projects. Press Enter to explore, N to step through nodes."></canvas>
+      <div class="kg-tip" aria-hidden="true"></div>
+      <button class="kg-reset" type="button">Reset</button>
+      <p class="kg-hint"></p>
+      <p class="kg-live" aria-live="polite"></p>
+    </div>
+    <figcaption>Example memory with made-up projects. Yours is drawn from your own sessions, in your control panel.</figcaption>
+  </figure>
 </section>
 
 <section class="interlude" data-b="0.5 0.5 0.62 0.32 0.25 0">
