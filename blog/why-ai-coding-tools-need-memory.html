@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Why AI Coding Assistants Forget, and Why They Need Persistent Memory | Agentic Brain</title>
-<meta name="description" content="Claude Code, Codex, Cursor and Gemini CLI start every session from zero and never share what they learn. Why that costs time and tokens, and how one private, encrypted memory fixes it.">
-<meta name="keywords" content="AI coding assistant memory, persistent memory for Claude Code, Cursor memory, Codex memory, Gemini CLI memory, AI memory across tools, AI context loss, long-term memory for AI, self-hosted AI memory, encrypted AI memory">
+<meta name="description" content="Claude Code, Codex, Cursor and Antigravity CLI start every session from zero and never share what they learn. Why that costs time and tokens, and how one private, encrypted memory fixes it.">
+<meta name="keywords" content="AI coding assistant memory, persistent memory for Claude Code, Cursor memory, Codex memory, Antigravity CLI memory, AI memory across tools, AI context loss, long-term memory for AI, self-hosted AI memory, encrypted AI memory">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Rohith, Chandhan and Sushmita">
 <meta name="theme-color" content="#000000">
@@ -19,7 +19,7 @@
 <meta property="article:published_time" content="2026-10-04">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Your AI coding tools forget everything. Here's why that has to change.">
-<meta name="twitter:description" content="Why Claude Code, Codex, Cursor and Gemini CLI need one shared, private memory.">
+<meta name="twitter:description" content="Why Claude Code, Codex, Cursor and Antigravity CLI need one shared, private memory.">
 <link rel="icon" type="image/svg+xml" href="../img/icon.svg"><link rel="icon" type="image/png" sizes="32x32" href="../img/icon-32.png"><link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,7 @@
       "@type": "BlogPosting",
       "mainEntityOfPage": "https://rohithhn.github.io/brain-site/blog/why-ai-coding-tools-need-memory.html",
       "headline": "Why AI coding assistants forget, and why they need persistent memory",
-      "description": "Claude Code, Codex, Cursor and Gemini CLI start every session from zero and never share what they learn. Why that costs time and tokens, and how one private, encrypted memory fixes it.",
+      "description": "Claude Code, Codex, Cursor and Antigravity CLI start every session from zero and never share what they learn. Why that costs time and tokens, and how one private, encrypted memory fixes it.",
       "datePublished": "2026-10-04",
       "dateModified": "2026-10-04",
       "inLanguage": "en",
@@ -42,7 +42,7 @@
       "author": [{ "@type": "Person", "name": "Rohith" }, { "@type": "Person", "name": "Chandhan" }, { "@type": "Person", "name": "Sushmita" }],
       "publisher": { "@type": "Organization", "name": "Agentic Brain", "logo": { "@type": "ImageObject", "url": "https://rohithhn.github.io/brain-site/img/icon-512.png" } },
       "about": { "@id": "#app" },
-      "keywords": "AI coding assistant memory, persistent memory, Claude Code, Cursor, Codex, Gemini CLI, self-hosted"
+      "keywords": "AI coding assistant memory, persistent memory, Claude Code, Cursor, Codex, Antigravity CLI, self-hosted"
     },
     {
       "@type": "SoftwareApplication",
@@ -51,10 +51,10 @@
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "macOS",
       "url": "https://rohithhn.github.io/brain-site/",
-      "description": "Open-source, self-hosted memory for AI coding tools. One encrypted memory shared by Claude Code, Codex, Cursor, Gemini CLI and Antigravity, stored on your machine and in your own private GitHub repository.",
+      "description": "Open-source, self-hosted memory for AI coding tools. One encrypted memory shared by Claude Code, Codex, Cursor and Antigravity CLI, stored on your machine and in your own private GitHub repository.",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "featureList": [
-        "One memory shared by Claude Code, Codex, Cursor, Gemini CLI and Antigravity",
+        "One memory shared by Claude Code, Codex, Cursor and Antigravity CLI",
         "Relevant context loaded automatically at the start of every session",
         "Any connected tool can search memory on demand",
         "Memory organised by project, with every project still searchable",
@@ -69,7 +69,7 @@
           "acceptedAnswer": { "@type": "Answer", "text": "Each session starts with an empty context window. Unless something writes earlier decisions back into it, the model has no record of what you settled yesterday, and each tool stores its history in its own format that the other tools cannot read." } },
         { "@type": "Question", "name": "Don't bigger context windows solve this?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. A bigger window lets a model read more in one session, but it does not choose what the next session should read, and it does not move knowledge between tools. Pasting everything in is also the most expensive option." } },
-        { "@type": "Question", "name": "Can one memory work across Claude Code, Codex, Cursor and Gemini CLI?",
+        { "@type": "Question", "name": "Can one memory work across Claude Code, Codex, Cursor and Antigravity CLI?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes. Agentic Brain captures sessions from each tool into one local store, loads a short briefing into each tool before you start, and lets any connected tool search the same memory." } },
         { "@type": "Question", "name": "Does adding memory use more tokens?",
           "acceptedAnswer": { "@type": "Answer", "text": "It uses fewer. The model reads only what was retrieved instead of a whole history: about 31.7k tokens per question instead of 127.6k in our LongMemEval-S runs." } },
@@ -177,7 +177,7 @@
       <p class="answer"><strong>Because every session starts with an empty context window.</strong> A model only
       knows what is in front of it right now. When a chat ends, what you settled in it is gone, unless something
       writes it back into the next session.</p>
-      <p>Switching tools makes it worse. Claude Code, Codex, Cursor and Gemini CLI each keep their own history,
+      <p>Switching tools makes it worse. Claude Code, Codex, Cursor and Antigravity CLI each keep their own history,
       in their own format, in their own folder. None of them can read the others. So the only thing connecting your
       tools is you, repeating yourself.</p>
 
@@ -202,7 +202,7 @@
       <h2 id="requirements">What does a good memory for AI coding tools need?</h2>
       <p class="answer">We wrote down five requirements before writing any code.</p>
       <ol class="timeline">
-        <li><b>One memory for every tool.</b> Claude Code, Codex, Cursor, Gemini CLI and Antigravity read and write the same store.</li>
+        <li><b>One memory for every tool.</b> Claude Code, Codex, Cursor and Antigravity CLI read and write the same store.</li>
         <li><b>Already loaded when you start.</b> The relevant context is there before you type, without you asking.</li>
         <li><b>Small and relevant.</b> A short briefing for this project, not a dump of everything ever said.</li>
         <li><b>Measured, not guessed.</b> If a change makes recall worse, it doesn't ship.</li>
@@ -275,7 +275,7 @@
           <tbody>
             <tr><th scope="row">Where memory lives</th><td>Vendor's database</td><td class="yes">Your machine and your private GitHub</td></tr>
             <tr><th scope="row">Who can read it</th><td>Vendor infrastructure</td><td class="yes">Whoever holds your key</td></tr>
-            <tr><th scope="row">Works across coding tools</th><td>Usually one product</td><td class="yes">Claude Code, Codex, Cursor, Gemini CLI, Antigravity</td></tr>
+            <tr><th scope="row">Works across coding tools</th><td>Usually one product</td><td class="yes">Claude Code, Codex, Cursor, Antigravity CLI</td></tr>
             <tr><th scope="row">Cost</th><td>Per-seat subscription</td><td class="yes">Free and open source</td></tr>
             <tr><th scope="row">Setup</th><td>Sign up</td><td>One command, a key and a repo</td></tr>
           </tbody>
@@ -290,7 +290,7 @@
           <p>Each session starts with an empty context window. Unless something writes earlier decisions back into it, the model has no record of what you settled yesterday, and each tool stores its history in a format the others can't read.</p></details>
         <details><summary>Don't bigger context windows solve this?</summary>
           <p>No. A bigger window lets a model read more in one session, but it doesn't choose what the next session should read, and it doesn't move knowledge between tools. Pasting everything in is also the most expensive option.</p></details>
-        <details><summary>Can one memory work across Claude Code, Codex, Cursor and Gemini CLI?</summary>
+        <details><summary>Can one memory work across Claude Code, Codex, Cursor and Antigravity CLI?</summary>
           <p>Yes. Agentic Brain captures sessions from each tool into one local store, loads a short briefing into each tool before you start, and lets any connected tool search the same memory.</p></details>
         <details><summary>Does adding memory use more tokens?</summary>
           <p>It uses fewer. The model reads only what was retrieved instead of a whole history: about 31.7k tokens per question instead of 127.6k in our LongMemEval-S runs.</p></details>
@@ -303,7 +303,7 @@
       <section class="cta-box">
         <span class="soon"><i></i>Coming soon</span>
         <h2>Say it once. Every tool remembers.</h2>
-        <p>Agentic Brain gives Claude Code, Codex, Cursor, Gemini CLI and Antigravity one shared memory that lives on
+        <p>Agentic Brain gives Claude Code, Codex, Cursor and Antigravity CLI one shared memory that lives on
         your machine and in your own GitHub.</p>
         <div class="row"><a class="btn primary" href="../index.html">See how it works <span aria-hidden="true">→</span></a><a class="btn ghost" href="index.html">More from the blog</a></div>
       </section>
