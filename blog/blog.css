@@ -191,3 +191,6 @@ td { color: var(--muted); } td.yes { color: var(--fg); font-weight: 500; backgro
 .pc-art .ctx { padding: 0; background: none; box-shadow: none; } .pc-art .ctx-bar { height: 34px; }
 @media (prefers-reduced-motion: reduce) { .ctx-bar i { animation: none; } }
 @media (max-width: 460px) { .ctx-key { grid-template-columns: minmax(0, 1fr); } }
+/* bars inside a hero/card figure: no second card */
+.ctx .bars { margin: 0; padding: 0; background: none; border: 0; }
+.ctx .bar { grid-template-columns: 112px minmax(0, 1fr) 48px; gap: 10px; font-size: 13px; }
