@@ -12,7 +12,7 @@ PAGES = [("index", "Main"), ("week", "A week"), ("voice", "I remember"), ("journ
 TABS = [("blog", "Blog"), ("privacy", "Privacy"), ("contact", "Contact")]
 TAB_HREF = {"blog": "blog/index.html"}  # the blog is its own folder (see _src/blog)
 BUILT = [n for n, _ in TABS if n != "blog"]
-CREDIT = "Built by Rohith, Chandhan and Sushmita"
+CREDIT = "Built by Rohith, Chandan and Sushmita"
 ENTRY = "index"  # in an artifact this page is the root page; the rest are files beside it
 
 
