@@ -358,3 +358,24 @@ main, .foot { position: relative; z-index: 2; }
 
 /* "beta" tag on tool chips (Kilo Code) */
 .beta { font: 600 9px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-2); border-radius: 999px; padding: 3px 6px; margin-left: 6px; }
+
+/* ───── launch: install command + GitHub links ───── */
+.soon-pill.live i { background: var(--signal); box-shadow: 0 0 8px var(--signal); }
+.install { width: 100%; max-width: 760px; margin: 30px auto 0; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.install .btn svg { width: 18px; height: 18px; }
+.install .cmd { width: 100%; display: flex; align-items: center; text-align: left; border-radius: 14px; background: rgba(7,7,8,.9);
+  box-shadow: 0 0 0 1px var(--line-2) inset, 0 40px 100px -50px rgba(143,211,255,.35); }
+.install .cmd code { flex: 1; min-width: 0; padding: 16px 0 16px 20px; font: 13px/1.7 var(--mono); color: var(--fg); background: none; box-shadow: none; border-radius: 0;
+  white-space: pre-wrap; overflow-wrap: anywhere; }
+.install .cmd code::before { content: "$ "; color: var(--signal); }
+.install .copy { flex: none; align-self: flex-start; margin: 10px; padding: 8px 14px; border: 0; border-radius: 9px; font: 500 12px var(--mono); color: var(--fg);
+  background: rgba(255,255,255,.06); box-shadow: 0 0 0 1px var(--line-2) inset; cursor: pointer; transition: background .2s, color .2s; }
+.install .copy:hover { background: rgba(255,255,255,.12); } .install .copy.ok { color: var(--signal); }
+.install .works { margin-top: 4px; }
+.nav nav a.gh, .foot a.gh { display: inline-flex; align-items: center; gap: 7px; }
+.nav nav a.gh svg, .foot a.gh svg { width: 16px; height: 16px; }
+.foot a { color: var(--muted); text-decoration: none; } .foot a:hover { color: var(--fg); }
+@media (max-width: 760px) {
+  .nav nav a.gh span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .install .cmd code { font-size: 12px; padding-left: 14px; }
+}

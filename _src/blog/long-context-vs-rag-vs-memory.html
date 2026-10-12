@@ -69,7 +69,7 @@
 {{SPRITE}}
 <header class="site">
   <a class="brand" href="../index.html"><img src="../img/icon.svg" alt="" width="34" height="34">Agentic Brain</a>
-  <nav><a href="index.html" aria-current="page">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav>
+  <nav><a href="index.html" aria-current="page">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><a class="gh" href="https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public" aria-label="Agentic Brain on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a></nav>
 </header>
 <main>
   <section class="post-hero">
@@ -156,7 +156,7 @@
       <p>The whole conversation wins, and that matches published research: a widely cited 2025 study also found full
       context ahead of every memory product it tested. Retrieving more, and re-ranking what was retrieved, closes most of
       the gap. Questions that need several parts of the conversation improved the most (from 65.6 to 80.5), and on
-      open-ended questions the memory run came out ahead of the full conversation (63.5 vs 62.5).</p>
+      open-ended questions the two were tied: one point apart on 96 questions, which is about one question.</p>
 
       <h2 id="cost">What does long context actually cost?</h2>
       <p class="answer"><strong>You pay for every token in the window, on every call.</strong> The same 1,540 questions:</p>
@@ -245,17 +245,18 @@
       <p class="fine">Numbers measured by us on public benchmarks (LoCoMo; LongMemEval S and M), October 2026, with the same model answering and judging within each comparison. Costs are at the API list prices on the day of the run.</p>
 
       <section class="cta-box">
-        <span class="soon"><i></i>Coming soon</span>
+        <span class="soon live"><i></i>Open source · Apache-2.0</span>
         <h2>Keep the window small. Keep everything else.</h2>
         <p>Agentic Brain is an open-source, self-hosted memory layer for AI coding tools. It remembers what matters across
         sessions and brings back only what's relevant, on your machine and under your key.</p>
-        <div class="row"><a class="btn primary" href="../index.html">See how it works <span aria-hidden="true">→</span></a><a class="btn ghost" href="index.html">More from the blog</a></div>
+        <div class="cmd"><code>curl -fsSL https://raw.githubusercontent.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public/main/install.sh | bash</code><button class="copy" type="button" aria-label="Copy the install command" onclick="var b=this,c=b.previousElementSibling,d=function(){b.textContent='Copied';b.classList.add('ok');setTimeout(function(){b.textContent='Copy';b.classList.remove('ok')},1600)},f=function(){var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r);try{if(document.execCommand('copy'))d()}catch(e){}};navigator.clipboard&&window.isSecureContext?navigator.clipboard.writeText(c.textContent).then(d,f):f()">Copy</button></div>
+        <div class="row"><a class="btn primary" href="https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public"><svg><use href="#l-github"/></svg>Get it on GitHub</a><a class="btn ghost" href="../index.html">See how it works</a><a class="btn ghost" href="index.html">More from the blog</a></div>
       </section>
     </article>
   </div>
 </main>
 <footer class="blog-foot">
-  <a href="../index.html">Home</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><span>Built by Rohith, Chandan and Sushmita</span>
+  <a href="../index.html">Home</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><a class="gh" href="https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public" aria-label="Agentic Brain on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a><span>Built by Rohith, Chandan and Sushmita</span>
 </footer>
 <script>
   (() => {

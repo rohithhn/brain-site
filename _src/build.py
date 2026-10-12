@@ -13,6 +13,8 @@ TABS = [("blog", "Blog"), ("privacy", "Privacy"), ("contact", "Contact")]
 TAB_HREF = {"blog": "blog/index.html"}  # the blog is its own folder (see _src/blog)
 BUILT = [n for n, _ in TABS if n != "blog"]
 CREDIT = "Built by Rohith, Chandan and Sushmita"
+REPO = "https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public"
+GH = f'<a class="gh" href="{REPO}" aria-label="Agentic Brain on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a>'
 ENTRY = "index"  # in an artifact this page is the root page; the rest are files beside it
 
 
@@ -57,7 +59,7 @@ for name, label in pages:
 <div class="progress" aria-hidden="true"><span></span></div>
 <header class="nav">
   <a class="brand" href="{home}"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Agentic Brain</a>
-  <nav>{tabs}<span class="soon-pill"><i></i>Coming soon</span></nav>
+  <nav>{tabs}{GH}<span class="soon-pill live"><i></i>Open source · Apache-2.0</span></nav>
 </header>
 <main>
 {body}
@@ -66,7 +68,8 @@ for name, label in pages:
 <footer class="foot">
   <span class="brand small"><svg class="mark"><use href="#i-mark"/></svg>Agentic Brain</span>
   <span>{CREDIT}</span>
-  <span>Open source, self-hosted memory for AI coding tools. Coming soon.</span>
+  <span>Open source (Apache-2.0), self-hosted memory for AI coding tools.</span>
+  {GH}
 </footer>
 <script src="brain.js"></script>
 {chr(10).join(f'<script src="{s}"></script>' for s in scripts)}"""

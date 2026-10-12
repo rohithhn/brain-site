@@ -93,10 +93,10 @@
   }
 
   // ── Tools scene: tool chips around a core, wired in with SVG.
-  // [name, x, y, kind, logo, brand colour when lit]
+  // [name, x, y, kind, logo (null: label only), brand colour when lit, tag]
   const TOOLS = [
     ["Claude Code", 0.1, 0.14, "full", "claudecode", "#d97757"], ["Codex", 0.06, 0.42, "full", "codex", "#ffffff"],
-    ["Antigravity", 0.1, 0.72, "full", "antigravity", "#4f8dfd"], ["Gemini CLI", 0.9, 0.14, "full", "geminicli", "#4796e3"],
+    ["Antigravity", 0.1, 0.72, "full", "antigravity", "#4f8dfd"], ["Kilo Code", 0.88, 0.14, "full", null, "#ffffff", "beta"],
     ["Cursor", 0.94, 0.42, "part", "cursor", "#ffffff"], ["Claude Desktop", 0.88, 0.72, "pull", "claude", "#d97757"],
     ["ChatGPT desktop", 0.5, 0.95, "pull", "openai", "#ffffff"],
   ];
@@ -105,7 +105,7 @@
   if (wire && svg) {
     const NS = "http://www.w3.org/2000/svg";
     const CX = 500, CY = 270;
-    TOOLS.forEach(([name, fx, fy, kind, logo, brand], i) => {
+    TOOLS.forEach(([name, fx, fy, kind, logo, brand, tag], i) => {
       const x = fx * 1000, y = fy * 560;
       const d = `M${x} ${y} C${(x + CX) / 2} ${y}, ${(x + CX) / 2} ${CY}, ${CX} ${CY}`;
       const base = document.createElementNS(NS, "path");
@@ -118,7 +118,7 @@
       chip.className = `chip ${kind}`;
       chip.style.left = fx * 100 + "%"; chip.style.top = fy * 100 + "%";
       chip.style.setProperty("--brand", brand);
-      chip.innerHTML = `<svg><use href="#l-${logo}"/></svg>${name}`;
+      chip.innerHTML = (logo ? `<svg><use href="#l-${logo}"/></svg>` : "") + name + (tag ? `<small class="beta">${tag}</small>` : "");
       wire.append(chip);
       wires.push({ base, sig, chip });
     });

@@ -211,7 +211,6 @@
     requestAnimationFrame(() => { ticking = false; update(); });
   }, { passive: true });
   addEventListener("resize", update);
-  update();
   // Text can reflow after a beat appears (headlines unscramble, fonts load), so phones re-measure.
   setInterval(() => { if (small()) update(); }, 400);
 
@@ -228,6 +227,7 @@
     requestAnimationFrame(tick);
   };
   window.__countUp = countUp;
+  update(); // first paint, after countUp exists (update() may start a count-up)
 
   // Hover tooltips on chart marks: the exact value and its source.
   const tip = document.createElement("div");
