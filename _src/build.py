@@ -70,6 +70,7 @@ for name, label in pages:
   <span>{CREDIT}</span>
   <span>Open source (Apache-2.0), self-hosted memory for AI coding tools.</span>
   {GH}
+  <a href="mailto:agenticbrain@zohomail.in">agenticbrain@zohomail.in</a>
 </footer>
 <script src="brain.js"></script>
 {chr(10).join(f'<script src="{s}"></script>' for s in scripts)}"""
