@@ -18,23 +18,17 @@ GH = f'<a class="gh" href="{REPO}" aria-label="Agentic Brain on GitHub"><svg><us
 ENTRY = "index"  # in an artifact this page is the root page; the rest are files beside it
 
 
-# Google Tag Manager (container GTM-M9P3JLD5): head snippet as high in <head> as possible,
-# noscript right after <body>. Added to every page, including the blog.
-GTM_HEAD = """<!-- Consent Mode: analytics stays off until the visitor accepts (choice kept in localStorage) -->
+# Google Analytics 4 (G-DXSD8QT2SN) via the Google tag, top of <head> on every page, blog included.
+# Basic consent mode: gtag.js is only fetched once the visitor has accepted (now or on an earlier visit),
+# so nothing reaches Google before Accept. The banner below calls abLoadGA() on Accept.
+GA_ID = "G-DXSD8QT2SN"
+GTM_HEAD = """<!-- Google tag (gtag.js), loaded only after cookie consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-try{if(localStorage.getItem('ab-consent')==='granted')gtag('consent','update',{analytics_storage:'granted'});}catch(e){}</script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M9P3JLD5');</script>
-<!-- End Google Tag Manager -->"""
-GTM_BODY = """<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9P3JLD5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->"""
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
+window.abLoadGA=function(){if(window.abGA)return;window.abGA=1;gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-DXSD8QT2SN';document.head.appendChild(s);
+gtag('js',new Date());gtag('config','G-DXSD8QT2SN');};
+try{if(localStorage.getItem('ab-consent')==='granted')abLoadGA();}catch(e){}</script>"""
 # Cookie banner: shown until the visitor chooses; Accept grants analytics_storage, Decline keeps it denied.
 # Any element with data-consent-reset (e.g. on the privacy page) clears the choice and shows it again.
 CONSENT = """<div class="ab-consent" role="dialog" aria-live="polite" aria-label="Cookie choice" hidden>
@@ -56,16 +50,14 @@ function get(){try{return localStorage.getItem('ab-consent')}catch(e){return nul
 function set(v){try{localStorage.setItem('ab-consent',v)}catch(e){}}
 if(!get())b.hidden=false;
 b.addEventListener('click',function(e){var v=e.target.getAttribute&&e.target.getAttribute('data-c');if(!v)return;
-set(v);gtag('consent','update',{analytics_storage:v});b.hidden=true;});
+set(v);if(v==='granted')abLoadGA();else gtag('consent','update',{analytics_storage:'denied'});b.hidden=true;});
 document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-consent-reset]');if(!t)return;
 e.preventDefault();try{localStorage.removeItem('ab-consent')}catch(_){}gtag('consent','update',{analytics_storage:'denied'});b.hidden=false;});
 })();</script>"""
 def with_gtm(html, root=""):
-    if "GTM-M9P3JLD5" in html or "<body" not in html:
+    if GA_ID in html or "<body" not in html:
         return html
     html = html.replace("<head>\n", "<head>\n" + GTM_HEAD + "\n", 1)
-    i = html.index(">", html.index("<body")) + 1
-    html = html[:i] + "\n" + GTM_BODY + html[i:]
     j = html.rindex("</body>")
     return html[:j] + CONSENT.replace("{root}", root) + "\n" + html[j:]
 
