@@ -18,6 +18,26 @@ GH = f'<a class="gh" href="{REPO}" aria-label="Agentic Brain on GitHub"><svg><us
 ENTRY = "index"  # in an artifact this page is the root page; the rest are files beside it
 
 
+# Google Tag Manager (container GTM-M9P3JLD5): head snippet as high in <head> as possible,
+# noscript right after <body>. Added to every page, including the blog.
+GTM_HEAD = """<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M9P3JLD5');</script>
+<!-- End Google Tag Manager -->"""
+GTM_BODY = """<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9P3JLD5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->"""
+def with_gtm(html):
+    if "GTM-M9P3JLD5" in html or "<body" not in html:
+        return html
+    html = html.replace("<head>\n", "<head>\n" + GTM_HEAD + "\n", 1)
+    i = html.index(">", html.index("<body")) + 1
+    return html[:i] + "\n" + GTM_BODY + html[i:]
+
 def index_section(n):
     """Section n of index.html: from its `<!-- n · ` comment to the next section comment."""
     m = re.search(rf"<!-- {n} · .*?-->\n(.*?)(?=\n<!-- \d+ · |\n</main>)", index, re.S)
@@ -89,6 +109,8 @@ for name, label in pages:
 </body>
 </html>
 """
+    if not artifact:
+        html = with_gtm(html)
     (out / f"{name}.html").write_text(html)
     print("wrote", out / f"{name}.html")
 
@@ -102,6 +124,7 @@ if not artifact:
     (root / "blog").mkdir(exist_ok=True)
     for f in sorted((root / "_src" / "blog").glob("*.html")):
         html = f.read_text().replace("{{HEAD}}", blog_head).replace("{{SPRITE}}", sprite)
+        html = with_gtm(html)
         (root / "blog" / f.name).write_text(html)
         print("wrote", root / "blog" / f.name)
     # old /blog.html links keep working
