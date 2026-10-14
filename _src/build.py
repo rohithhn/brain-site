@@ -15,6 +15,20 @@ BUILT = [n for n, _ in TABS if n != "blog"]
 CREDIT = "Built by Rohith, Chandan and Sushmita"
 REPO = "https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public"
 GH = f'<a class="gh" href="{REPO}" aria-label="Agentic Brain on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a>'
+SITE = "https://rohithhn.github.io/brain-site/"
+REPO = "https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public"
+HOME_LD = """<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"SoftwareApplication","name":"Agentic Brain","url":"https://rohithhn.github.io/brain-site/",
+  "description":"Open-source, self-hosted long-term memory shared by AI coding agents: Claude Code, Codex, Cursor, Antigravity CLI and Kilo Code. Captures decisions across sessions and tools, stores them encrypted on your machine and in your own private GitHub, and brings back only what is relevant.",
+  "applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux","license":"https://www.apache.org/licenses/LICENSE-2.0",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "downloadUrl":"https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public","codeRepository":"https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public",
+  "image":"https://rohithhn.github.io/brain-site/img/og.png",
+  "author":[{"@type":"Person","name":"Rohith"},{"@type":"Person","name":"Chandan"},{"@type":"Person","name":"Sushmita"}]},
+ {"@type":"WebSite","name":"Agentic Brain","url":"https://rohithhn.github.io/brain-site/"}
+]}
+</script>"""
 ENTRY = "index"  # in an artifact this page is the root page; the rest are files beside it
 
 
@@ -88,8 +102,21 @@ for name, label in pages:
     tabs = "".join(f'<a href="{TAB_HREF.get(n, n + ".html")}"{CUR if n == name else ""}>{l}</a>' for n, l in TABS)
     switch = "" if artifact or name in dict(TABS) or name == "index" else '<nav class="switch" aria-label="Stories">' + "".join(
         f'<a href="{n}.html"{CUR if n == name else ""}>{l}</a>' for n, l in PAGES) + "</nav>"
+    url = SITE if name == "index" else f"{SITE}{name}.html"
     head = f"""<title>{title}</title>
 <meta name="description" content="{desc}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Agentic Brain">
+<meta property="og:url" content="{url}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{SITE}img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE}img/og.png">
+{HOME_LD if name == "index" else ""}
 <meta name="theme-color" content="#000000">
 {icon}
 {fonts}

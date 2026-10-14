@@ -1,0 +1,30 @@
+# Agentic Brain
+
+> Agentic Brain is an open-source (Apache-2.0), self-hosted long-term memory layer shared by AI coding agents: Claude Code, Codex, Cursor, Antigravity CLI and Kilo Code (beta). It captures what each session decides and learns, stores it encrypted on the user's own machine and optionally in their own private GitHub repository, and at the start of each new session hands the agent a small, ranked set of relevant memories instead of the whole history. No hosted service; macOS and Linux.
+
+Built by Rohith, Chandan and Sushmita. Source code: https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public
+
+## Key facts
+
+- One memory shared across tools: a decision made in one AI coding tool is known in the others.
+- Memory is scoped per project folder, with a global layer for preferences that apply everywhere.
+- Encrypted at rest; sync goes only to the user's own private GitHub repository, which only ever sees ciphertext.
+- Benchmarks (measured October 2026, same model answering and judging within each comparison):
+  - LoCoMo (1,540 questions): 86.6 accuracy vs 89.3 for the whole conversation in context, i.e. 97% of full-context accuracy using 18% of the tokens at about a fifth of the cost.
+  - LongMemEval-S (500 questions): 94.2% with a Claude reader, 90.0% with a GPT reader.
+  - LongMemEval-M (500 questions, about 1.27 million tokens of history per question, too large for any model's context): 83.0%, reading 98.5% fewer tokens.
+- Install: curl -fsSL https://raw.githubusercontent.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public/main/install.sh | bash
+
+## Pages
+
+- [Home](https://rohithhn.github.io/brain-site/): what Agentic Brain is and how it works
+- [Privacy](https://rohithhn.github.io/brain-site/privacy.html): what the website and the software do with data
+- [Contact](https://rohithhn.github.io/brain-site/contact.html)
+
+## Guides
+
+- [AI coding agent hooks, explained](https://rohithhn.github.io/brain-site/blog/ai-coding-agent-hooks.html): which coding agents support hooks, their lifecycle events, and how to write safe hooks
+- [Long context vs RAG vs memory](https://rohithhn.github.io/brain-site/blog/long-context-vs-rag-vs-memory.html): when a 1M-token context window wins, what it costs, and what happens when history doesn't fit
+- [Context engineering for AI agents](https://rohithhn.github.io/brain-site/blog/context-engineering-ai-agents.html): what goes in an agent's context window and the core techniques
+- [AI memory layers, explained](https://rohithhn.github.io/brain-site/blog/ai-memory-layer-long-term-memory-for-ai-agents.html): types of agent memory, RAG vs memory, how to benchmark and choose
+- [Why AI coding assistants forget](https://rohithhn.github.io/brain-site/blog/why-ai-coding-tools-need-memory.html): the cost of stateless sessions and how shared memory fixes it
