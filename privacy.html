@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Consent Mode: analytics stays off until the visitor accepts (choice kept in localStorage) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+try{if(localStorage.getItem('ab-consent')==='granted')gtag('consent','update',{analytics_storage:'granted'});}catch(e){}</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -67,7 +71,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2>This website</h2>
   <ul>
     <li>No accounts and no forms.</li>
-    <li><b>Visit statistics.</b> We use Google Analytics, loaded through Google Tag Manager, to count visits and see which pages are read. It sets cookies and sends Google your IP address, browser details and the pages you view, under Google's privacy policy. We don't use it for advertising, and we don't combine it with anything else. Blocking cookies or scripts in your browser turns it off; the site works the same without it.</li>
+    <li><b>Visit statistics.</b> We use Google Analytics, loaded through Google Tag Manager, to count visits and see which pages are read. It sets cookies and sends Google your IP address, browser details and the pages you view, under Google's privacy policy. We don't use it for advertising, and we don't combine it with anything else. It only runs if you click Accept on the cookie banner; until then it stays off. <a href="#" data-consent-reset>Change your cookie choice</a>.</li>
     <li>The pages are static files hosted on GitHub Pages. GitHub may log your IP address when it serves them, under GitHub's own privacy statement.</li>
     <li>Fonts load from Google Fonts, so your browser asks Google's servers for the font files.</li>
     <li>The brain animation and every other effect run entirely in your browser.</li>
@@ -103,5 +107,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 <script src="brain.js"></script>
 <script src="story.js"></script>
+<div class="ab-consent" role="dialog" aria-live="polite" aria-label="Cookie choice" hidden>
+<p>We use cookies to count visits and see which pages are read. Nothing else, and only if you agree. <a href="privacy.html">Privacy</a></p>
+<div><button type="button" data-c="denied">Decline</button><button type="button" data-c="granted" class="ok">Accept</button></div>
+</div>
+<style>
+.ab-consent{position:fixed;z-index:9999;left:16px;right:16px;bottom:max(16px,env(safe-area-inset-bottom));margin:0 auto;max-width:560px;
+display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;background:#0b0c0f;color:#c9ced8;
+border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 50px rgba(0,0,0,.6);font:14px/1.5 Inter,system-ui,sans-serif}
+.ab-consent[hidden]{display:none}.ab-consent p{margin:0}.ab-consent a{color:#8fd3ff}
+.ab-consent div{display:flex;gap:8px;flex:none}
+.ab-consent button{font:500 13px Inter,system-ui,sans-serif;padding:8px 14px;border-radius:9px;cursor:pointer;border:1px solid rgba(255,255,255,.18);background:transparent;color:#e7eaf0}
+.ab-consent button.ok{background:#f3f5f8;color:#000;border-color:#f3f5f8}
+@media (max-width:520px){.ab-consent{flex-direction:column;align-items:stretch}.ab-consent div button{flex:1}}
+</style>
+<script>(function(){var b=document.querySelector('.ab-consent');if(!b)return;
+function get(){try{return localStorage.getItem('ab-consent')}catch(e){return null}}
+function set(v){try{localStorage.setItem('ab-consent',v)}catch(e){}}
+if(!get())b.hidden=false;
+b.addEventListener('click',function(e){var v=e.target.getAttribute&&e.target.getAttribute('data-c');if(!v)return;
+set(v);gtag('consent','update',{analytics_storage:v});b.hidden=true;});
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-consent-reset]');if(!t)return;
+e.preventDefault();try{localStorage.removeItem('ab-consent')}catch(_){}gtag('consent','update',{analytics_storage:'denied'});b.hidden=false;});
+})();</script>
 </body>
 </html>

@@ -20,7 +20,11 @@ ENTRY = "index"  # in an artifact this page is the root page; the rest are files
 
 # Google Tag Manager (container GTM-M9P3JLD5): head snippet as high in <head> as possible,
 # noscript right after <body>. Added to every page, including the blog.
-GTM_HEAD = """<!-- Google Tag Manager -->
+GTM_HEAD = """<!-- Consent Mode: analytics stays off until the visitor accepts (choice kept in localStorage) -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+try{if(localStorage.getItem('ab-consent')==='granted')gtag('consent','update',{analytics_storage:'granted'});}catch(e){}</script>
+<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -31,12 +35,39 @@ GTM_BODY = """<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9P3JLD5"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->"""
-def with_gtm(html):
+# Cookie banner: shown until the visitor chooses; Accept grants analytics_storage, Decline keeps it denied.
+# Any element with data-consent-reset (e.g. on the privacy page) clears the choice and shows it again.
+CONSENT = """<div class="ab-consent" role="dialog" aria-live="polite" aria-label="Cookie choice" hidden>
+<p>We use cookies to count visits and see which pages are read. Nothing else, and only if you agree. <a href="{root}privacy.html">Privacy</a></p>
+<div><button type="button" data-c="denied">Decline</button><button type="button" data-c="granted" class="ok">Accept</button></div>
+</div>
+<style>
+.ab-consent{position:fixed;z-index:9999;left:16px;right:16px;bottom:max(16px,env(safe-area-inset-bottom));margin:0 auto;max-width:560px;
+display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;background:#0b0c0f;color:#c9ced8;
+border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 50px rgba(0,0,0,.6);font:14px/1.5 Inter,system-ui,sans-serif}
+.ab-consent[hidden]{display:none}.ab-consent p{margin:0}.ab-consent a{color:#8fd3ff}
+.ab-consent div{display:flex;gap:8px;flex:none}
+.ab-consent button{font:500 13px Inter,system-ui,sans-serif;padding:8px 14px;border-radius:9px;cursor:pointer;border:1px solid rgba(255,255,255,.18);background:transparent;color:#e7eaf0}
+.ab-consent button.ok{background:#f3f5f8;color:#000;border-color:#f3f5f8}
+@media (max-width:520px){.ab-consent{flex-direction:column;align-items:stretch}.ab-consent div button{flex:1}}
+</style>
+<script>(function(){var b=document.querySelector('.ab-consent');if(!b)return;
+function get(){try{return localStorage.getItem('ab-consent')}catch(e){return null}}
+function set(v){try{localStorage.setItem('ab-consent',v)}catch(e){}}
+if(!get())b.hidden=false;
+b.addEventListener('click',function(e){var v=e.target.getAttribute&&e.target.getAttribute('data-c');if(!v)return;
+set(v);gtag('consent','update',{analytics_storage:v});b.hidden=true;});
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-consent-reset]');if(!t)return;
+e.preventDefault();try{localStorage.removeItem('ab-consent')}catch(_){}gtag('consent','update',{analytics_storage:'denied'});b.hidden=false;});
+})();</script>"""
+def with_gtm(html, root=""):
     if "GTM-M9P3JLD5" in html or "<body" not in html:
         return html
     html = html.replace("<head>\n", "<head>\n" + GTM_HEAD + "\n", 1)
     i = html.index(">", html.index("<body")) + 1
-    return html[:i] + "\n" + GTM_BODY + html[i:]
+    html = html[:i] + "\n" + GTM_BODY + html[i:]
+    j = html.rindex("</body>")
+    return html[:j] + CONSENT.replace("{root}", root) + "\n" + html[j:]
 
 def index_section(n):
     """Section n of index.html: from its `<!-- n · ` comment to the next section comment."""
@@ -124,7 +155,7 @@ if not artifact:
     (root / "blog").mkdir(exist_ok=True)
     for f in sorted((root / "_src" / "blog").glob("*.html")):
         html = f.read_text().replace("{{HEAD}}", blog_head).replace("{{SPRITE}}", sprite)
-        html = with_gtm(html)
+        html = with_gtm(html, "../")
         (root / "blog" / f.name).write_text(html)
         print("wrote", root / "blog" / f.name)
     # old /blog.html links keep working
