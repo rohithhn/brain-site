@@ -16,7 +16,7 @@
 {{HEAD}}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Blog","name":"Agentic Brain Blog","url":"https://rohithhn.github.io/brain-site/blog/",
- "blogPost":[{"@type":"BlogPosting","headline":"Long context vs RAG vs memory: when does a 1M-token context window win?","url":"https://rohithhn.github.io/brain-site/blog/long-context-vs-rag-vs-memory.html","datePublished":"2026-10-11"},{"@type":"BlogPosting","headline":"Context engineering explained: how to give AI agents the right context","url":"https://rohithhn.github.io/brain-site/blog/context-engineering-ai-agents.html","datePublished":"2026-10-06"},{"@type":"BlogPosting","headline":"AI memory layer explained: long-term memory for AI agents","url":"https://rohithhn.github.io/brain-site/blog/ai-memory-layer-long-term-memory-for-ai-agents.html","datePublished":"2026-10-05"},{"@type":"BlogPosting","headline":"Why AI coding assistants forget, and why they need persistent memory","url":"https://rohithhn.github.io/brain-site/blog/why-ai-coding-tools-need-memory.html","datePublished":"2026-10-04"}]}
+ "blogPost":[{"@type":"BlogPosting","headline":"AI coding agent hooks explained: Claude Code, Cursor, Codex, Copilot CLI and more","url":"https://rohithhn.github.io/brain-site/blog/ai-coding-agent-hooks.html","datePublished":"2026-10-14"},{"@type":"BlogPosting","headline":"Long context vs RAG vs memory: when does a 1M-token context window win?","url":"https://rohithhn.github.io/brain-site/blog/long-context-vs-rag-vs-memory.html","datePublished":"2026-10-11"},{"@type":"BlogPosting","headline":"Context engineering explained: how to give AI agents the right context","url":"https://rohithhn.github.io/brain-site/blog/context-engineering-ai-agents.html","datePublished":"2026-10-06"},{"@type":"BlogPosting","headline":"AI memory layer explained: long-term memory for AI agents","url":"https://rohithhn.github.io/brain-site/blog/ai-memory-layer-long-term-memory-for-ai-agents.html","datePublished":"2026-10-05"},{"@type":"BlogPosting","headline":"Why AI coding assistants forget, and why they need persistent memory","url":"https://rohithhn.github.io/brain-site/blog/why-ai-coding-tools-need-memory.html","datePublished":"2026-10-04"}]}
 </script>
 </head>
 <body>
@@ -31,6 +31,22 @@
     <h1>Notes from building a brain.</h1>
     <p class="lede">Guides to AI memory: why AI tools forget, how long-term memory for AI agents works, context engineering, long context vs memory, and how to choose.</p>
   </section>
+  <a class="post-card" href="ai-coding-agent-hooks.html">
+    <div class="pc-art" aria-hidden="true"><div class="files flow">
+      <div class="file"><b>1</b><code>Session start</code></div>
+      <div class="file"><b>2</b><code>Prompt submitted</code></div>
+      <div class="file"><b>3</b><code>Before a tool call</code></div>
+      <div class="file"><b>4</b><code>After a tool call</code></div>
+      <div class="file hot"><b>5</b><code>Turn ends</code></div>
+    </div></div>
+    <div class="pc-body">
+      <p class="kicker">Guide · 14 October 2026</p>
+      <h2>AI coding agent hooks, explained: Claude Code, Cursor, Codex, Copilot CLI and more</h2>
+      <p>Which coding agents have hooks, which events they fire, what to use them for, and seven rules for hooks
+      that never break a session.</p>
+      <span class="more">Read the guide <span aria-hidden="true">→</span></span>
+    </div>
+  </a>
   <a class="post-card" href="long-context-vs-rag-vs-memory.html">
     <div class="pc-art" aria-hidden="true"><div class="ctx"><div class="bars">
       <div class="bar"><span>LoCoMo</span><i style="--v:.0164"></i><b>20.8k</b></div>
