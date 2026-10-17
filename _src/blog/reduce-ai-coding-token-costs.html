@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to Cut AI Coding Agent Token Costs: 10 Practical Ways</title>
+<meta name="description" content="Where an AI coding agent's tokens actually go, and ten practical ways to cut token usage and cost without making the agent worse: fresh sessions, prompt caching, smaller tool output, persistent memory and more.">
+<meta name="keywords" content="reduce token usage, LLM token cost, AI coding agent cost, reduce Claude Code token usage, AI coding assistant cost, prompt caching, context window cost, token budget, cut LLM costs, AI agent memory tokens">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Rohith, Chandan and Sushmita">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://rohithhn.github.io/brain-site/blog/reduce-ai-coding-token-costs.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rohithhn.github.io/brain-site/blog/reduce-ai-coding-token-costs.html">
+<meta property="og:site_name" content="Agentic Brain">
+<meta property="og:title" content="How to cut AI coding agent token costs: 10 practical ways">
+<meta property="og:description" content="Where the tokens go, and ten ways to spend fewer of them without making the agent worse.">
+<meta property="og:image" content="https://rohithhn.github.io/brain-site/img/og.png">
+<meta property="article:published_time" content="2026-10-17">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rohithhn.github.io/brain-site/img/og.png">
+<meta name="twitter:title" content="How to cut AI coding agent token costs: 10 practical ways">
+<meta name="twitter:description" content="Where the tokens go, and ten ways to spend fewer of them.">
+{{HEAD}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": "https://rohithhn.github.io/brain-site/blog/reduce-ai-coding-token-costs.html",
+      "headline": "How to cut AI coding agent token costs: 10 practical ways",
+      "description": "Where an AI coding agent's tokens go, and ten practical ways to cut token usage and cost without making the agent worse.",
+      "datePublished": "2026-10-17",
+      "dateModified": "2026-10-17",
+      "inLanguage": "en",
+      "image": "https://rohithhn.github.io/brain-site/img/og.png",
+      "author": [{ "@type": "Person", "name": "Rohith" }, { "@type": "Person", "name": "Chandan" }, { "@type": "Person", "name": "Sushmita" }],
+      "publisher": { "@type": "Organization", "name": "Agentic Brain", "logo": { "@type": "ImageObject", "url": "https://rohithhn.github.io/brain-site/img/icon-192.png" } },
+      "keywords": "reduce token usage, LLM token cost, AI coding agent cost, prompt caching, token budget"
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to cut AI coding agent token costs",
+      "step": [
+        { "@type": "HowToStep", "name": "Stop re-explaining", "text": "Keep decisions and preferences in persistent memory instead of pasting them into every session." },
+        { "@type": "HowToStep", "name": "Start fresh sessions", "text": "Begin a new session for each new task instead of continuing one endless conversation." },
+        { "@type": "HowToStep", "name": "Compact long sessions", "text": "Summarise long history into the facts that matter." },
+        { "@type": "HowToStep", "name": "Point, don't paste", "text": "Reference the files that matter instead of pasting whole files or folders." },
+        { "@type": "HowToStep", "name": "Trim tool output", "text": "Cap and filter long logs and test output before they reach the model." },
+        { "@type": "HowToStep", "name": "Disable unused tools", "text": "Every tool definition is sent on every call; turn off what you don't use." },
+        { "@type": "HowToStep", "name": "Use prompt caching", "text": "Keep stable instructions at the start and unchanged so providers can cache them." },
+        { "@type": "HowToStep", "name": "Right-size the model", "text": "Use a smaller, cheaper model for simple subtasks." },
+        { "@type": "HowToStep", "name": "Keep instruction files short", "text": "Long rules files are re-read on every session and every call." },
+        { "@type": "HowToStep", "name": "Measure", "text": "Track tokens per task so you know which change actually helped." }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Why does my AI coding agent use so many tokens?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Because the whole context is sent again on every call: system instructions, tool definitions, the conversation so far, file contents and tool output. A long session pays for its own history over and over." } },
+        { "@type": "Question", "name": "What is the fastest way to reduce token usage?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Start a fresh session for each new task, and stop pasting the same background into every session. Persistent memory that injects only the relevant facts replaces most of that repeated context." } },
+        { "@type": "Question", "name": "Does prompt caching reduce costs?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, for the parts of the prompt that stay the same between calls. Providers charge less for cached input, so keep stable instructions at the start of the prompt and avoid changing them mid-session." } },
+        { "@type": "Question", "name": "Will cutting tokens make the agent worse?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not if you cut noise rather than signal. In our tests, retrieved memories reached 97% of the accuracy of the full conversation while reading 82% fewer tokens. Cutting the context the agent actually needs leads to wrong answers and reruns, which cost more." } },
+        { "@type": "Question", "name": "How much can persistent memory save?",
+          "acceptedAnswer": { "@type": "Answer", "text": "On a public benchmark of 1,540 questions, sending retrieved memories instead of the whole conversation cost $0.73 instead of $3.36, about 4.6 times less, with the same model." } }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rohithhn.github.io/brain-site/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rohithhn.github.io/brain-site/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Cut AI coding agent token costs", "item": "https://rohithhn.github.io/brain-site/blog/reduce-ai-coding-token-costs.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+{{SPRITE}}
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../img/icon.svg" alt="" width="34" height="34">Agentic Brain</a>
+  <nav><a href="index.html" aria-current="page">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav>
+</header>
+<main>
+  <section class="post-hero">
+    <div>
+      <p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / Guide</p>
+      <p class="kicker">Guide · 17 October 2026 · 7 min read</p>
+      <h1>How to cut AI coding agent token costs: 10 practical ways</h1>
+      <p class="lede">An AI coding agent pays for its whole context on every call: instructions, tools, history, files,
+      output. Most of that is repeated, and much of it isn't needed. Here's where the tokens go, and ten ways to spend
+      fewer of them without making the agent worse.</p>
+      <p class="byline">By <b>Rohith</b>, <b>Chandan</b> and <b>Sushmita</b></p>
+      <a class="btn primary" href="#ten">Jump to the 10 ways <span aria-hidden="true">→</span></a>
+    </div>
+    <figure class="ctx" aria-label="Cost of answering 1,540 questions">
+      <figcaption>Answering 1,540 questions <em>same model</em></figcaption>
+      <div class="bars" role="table" aria-label="Cost by approach">
+        <div class="bar" role="row"><span role="rowheader">Whole history</span><i style="--v:1"></i><b role="cell">$3.36</b></div>
+        <div class="bar me" role="row"><span role="rowheader">Memory, 40</span><i style="--v:.217"></i><b role="cell">$0.73</b></div>
+        <div class="bar me" role="row"><span role="rowheader">Memory, 20</span><i style="--v:.14"></i><b role="cell">$0.47</b></div>
+      </div>
+      <p class="ctx-note">LoCoMo benchmark. Sending retrieved memories instead of the whole conversation kept 97% of
+      the accuracy at about a fifth of the cost.</p>
+    </figure>
+  </section>
+
+  <section class="tldr" aria-label="Summary">
+    <h2>In short</h2>
+    <dl class="tldr-grid">
+      <div><dt>Why it adds up</dt><dd>The whole context is re-sent on every call, so long sessions pay for their own history again and again.</dd></div>
+      <div><dt>Biggest wins</dt><dd>Fresh sessions per task, and memory instead of re-pasting the same background.</dd></div>
+      <div><dt>Cheap wins</dt><dd>Prompt caching, shorter tool output, fewer tool definitions, smaller models for small jobs.</dd></div>
+      <div><dt>Don't overdo it</dt><dd>Cut noise, not signal. Missing context costs more in reruns than it saves.</dd></div>
+    </dl>
+  </section>
+
+  <div class="post-layout">
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#where">Where the tokens go</a></li>
+        <li><a href="#ten">10 ways to cut them</a></li>
+        <li><a href="#memory">What memory saves</a></li>
+        <li><a href="#dont">What not to cut</a></li>
+        <li><a href="#measure">How to measure</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
+    <article class="post">
+      <h2 id="where">Why does an AI coding agent use so many tokens?</h2>
+      <p class="answer"><strong>Because the whole context is sent again on every call.</strong> A model doesn't
+      remember the previous step; the agent re-sends everything it needs, every time.</p>
+      <div class="feature-grid">
+        <div><h3>Instructions</h3><p>System prompt and rules files, on every call.</p></div>
+        <div><h3>Tool definitions</h3><p>Every enabled tool's description, whether it's used or not.</p></div>
+        <div><h3>History</h3><p>The conversation so far, growing with every turn.</p></div>
+        <div><h3>Files</h3><p>Whatever the agent has read, often whole files.</p></div>
+        <div><h3>Tool output</h3><p>Test runs, build logs and search results, frequently the biggest single item.</p></div>
+        <div><h3>Re-explaining</h3><p>The background you paste into every new session because the agent forgot it.</p></div>
+      </div>
+      <p>The last one is the sneakiest. Each session starts from zero, so you (or a long rules file) re-supply the same
+      decisions and conventions every time, and pay for them every call.</p>
+
+      <h2 id="ten">10 ways to cut AI coding token costs</h2>
+      <p class="answer"><strong>Roughly in order of how much they save.</strong></p>
+      <ol class="timeline">
+        <li><b>Stop re-explaining.</b> Keep decisions, preferences and fixes in persistent memory, and inject only the ones relevant to the task, instead of pasting the same background into every session.</li>
+        <li><b>Start a fresh session for each task.</b> One endless conversation pays for its whole history on every call. A new task rarely needs the last one's transcript.</li>
+        <li><b>Compact long sessions.</b> When a session must continue, summarise the history into the facts that matter. Most agents have a command for this.</li>
+        <li><b>Point, don't paste.</b> Name the files and functions that matter rather than pasting whole files or folders.</li>
+        <li><b>Trim tool output.</b> Cap long test runs and build logs, show failures not passes, and filter noise before it reaches the model.</li>
+        <li><b>Disable tools you don't use.</b> Every enabled tool's definition is sent on every call. Unused integrations are pure overhead.</li>
+        <li><b>Use prompt caching.</b> Providers charge less for input that repeats exactly. Keep stable instructions at the start of the prompt and don't edit them mid-session.</li>
+        <li><b>Right-size the model.</b> Use a smaller, cheaper model for simple subtasks like renames, formatting or summaries, and save the big one for hard reasoning.</li>
+        <li><b>Keep rules files short.</b> Instruction files are re-read every session. Move rarely needed detail out, and keep only what applies to most tasks.</li>
+        <li><b>Measure every change.</b> Track tokens and cost per task, so you know which change actually helped and which only felt like it did.</li>
+      </ol>
+
+      <h2 id="memory">How much can persistent memory save?</h2>
+      <p class="answer"><strong>A lot, because it replaces the largest repeated cost: history.</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">Accuracy</th><th scope="col">Tokens per question</th><th scope="col">Cost, 1,540 questions</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Whole conversation</th><td>89.3</td><td>~20,800</td><td>$3.36</td></tr>
+            <tr><th scope="row">Memory, 40 results</th><td class="yes">86.6</td><td class="yes">~3,700</td><td class="yes">$0.73</td></tr>
+            <tr><th scope="row">Memory, 20 results</th><td>78.8</td><td>~2,000</td><td>$0.47</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>On the LoCoMo benchmark, with the same model answering and judging, retrieved memories kept 97% of the
+      whole-conversation accuracy while reading 82% fewer tokens, at about a fifth of the cost. On a far larger
+      history (about 1.27 million tokens per question, too big for any model), memory read 98.5% fewer tokens and
+      still answered 83% correctly. More in <a href="long-context-vs-rag-vs-memory.html">long context vs RAG vs memory</a>.</p>
+
+      <h2 id="dont">What shouldn't you cut?</h2>
+      <p class="answer"><strong>Anything the agent actually needs.</strong> Starving the context is a false saving.</p>
+      <ul>
+        <li><strong>The task and its constraints.</strong> A vague prompt leads to a wrong answer and a second, longer attempt.</li>
+        <li><strong>Decisions that still apply.</strong> Forgetting them means the agent re-does or undoes work.</li>
+        <li><strong>The relevant code.</strong> Guessing at an interface it hasn't seen produces bugs you pay to fix.</li>
+      </ul>
+      <p>The goal is a small context, not an empty one. See <a href="context-engineering-ai-agents.html">context
+      engineering for AI agents</a> for how to decide what earns a place.</p>
+
+      <h2 id="measure">How do you measure token usage?</h2>
+      <p class="answer"><strong>Per task, not per month.</strong></p>
+      <div class="stats">
+        <div><b>Input tokens</b><span>per task: the number most of these tips reduce</span></div>
+        <div><b>Output tokens</b><span>usually smaller, priced higher</span></div>
+        <div><b>Cached share</b><span>how much input was served from the cache</span></div>
+        <div><b>Reruns</b><span>tasks that needed a second attempt</span></div>
+      </div>
+      <p>Most coding agents can show usage for a session, and every model provider's dashboard breaks down spend.
+      Pick a few typical tasks, measure them before and after a change, and keep only what moves the number.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>Why does my AI coding agent use so many tokens?</summary>
+          <p>The whole context (instructions, tool definitions, history, files and tool output) is re-sent on every call, so long sessions pay for their own history repeatedly.</p></details>
+        <details><summary>What is the fastest way to reduce token usage?</summary>
+          <p>Start a fresh session for each task, and stop pasting the same background into every session; persistent memory that injects only what's relevant replaces most of it.</p></details>
+        <details><summary>Does prompt caching reduce costs?</summary>
+          <p>Yes, for the parts of the prompt that repeat exactly. Keep stable instructions first and unchanged during a session.</p></details>
+        <details><summary>Will cutting tokens make the agent worse?</summary>
+          <p>Not if you cut noise rather than signal. Retrieved memories reached 97% of full-conversation accuracy with 82% fewer tokens in our tests.</p></details>
+        <details><summary>How much can persistent memory save?</summary>
+          <p>On a 1,540-question benchmark, $0.73 instead of $3.36 with the same model, about 4.6 times less.</p></details>
+      </div>
+      <p class="fine">Benchmark figures measured by us on LoCoMo and LongMemEval-M, October 2026, with the same model answering and judging within each comparison; costs at API list prices on the day of the run.</p>
+
+      <section class="cta-box">
+        <span class="soon live"><i></i>Open source · Apache-2.0</span>
+        <h2>Stop paying to re-explain your project.</h2>
+        <p>Agentic Brain is an open-source, self-hosted memory layer for AI coding tools. It remembers decisions across
+        sessions and tools, and hands each new session only what's relevant, so you stop paying for the same context twice.</p>
+        <div class="cmd"><code>curl -fsSL https://raw.githubusercontent.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public/main/install.sh | bash</code><button class="copy" type="button" aria-label="Copy the install command" onclick="var b=this,c=b.previousElementSibling,d=function(){b.textContent='Copied';b.classList.add('ok');setTimeout(function(){b.textContent='Copy';b.classList.remove('ok')},1600)},f=function(){var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r);try{if(document.execCommand('copy'))d()}catch(e){}};navigator.clipboard&&window.isSecureContext?navigator.clipboard.writeText(c.textContent).then(d,f):f()">Copy</button></div>
+        <div class="row"><a class="btn primary" href="https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public"><svg><use href="#l-github"/></svg>Get it on GitHub</a><a class="btn ghost" href="../index.html">See how it works</a><a class="btn ghost" href="index.html">More from the blog</a></div>
+      </section>
+    </article>
+  </div>
+</main>
+<footer class="blog-foot">
+  <a href="../index.html">Home</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><a class="gh" href="https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public" aria-label="Agentic Brain on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a><span>Built by Rohith, Chandan and Sushmita</span>
+</footer>
+<script>
+  (() => {
+    const links = [...document.querySelectorAll(".toc a")];
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll(".post h2[id]").forEach((h) => io.observe(h));
+  })();
+</script>
+</body>
+</html>
