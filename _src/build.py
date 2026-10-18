@@ -13,20 +13,20 @@ TABS = [("blog", "Blog"), ("privacy", "Privacy"), ("contact", "Contact")]
 TAB_HREF = {"blog": "blog/index.html"}  # the blog is its own folder (see _src/blog)
 BUILT = [n for n, _ in TABS if n != "blog"]
 CREDIT = "Built by Rohith, Chandan and Sushmita"
-REPO = "https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public"
-GH = f'<a class="gh" href="{REPO}" aria-label="Agentic Brain on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a>'
+REPO = "https://github.com/rohithhn/Open-Agentic-Brain-and-Memory"
+GH = f'<a class="gh" href="{REPO}" aria-label="Open Agentic Brain and Memory on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a>'
 SITE = "https://rohithhn.github.io/brain-site/"
-REPO = "https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public"
+REPO = "https://github.com/rohithhn/Open-Agentic-Brain-and-Memory"
 HOME_LD = """<script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
- {"@type":"SoftwareApplication","name":"Agentic Brain","url":"https://rohithhn.github.io/brain-site/",
+ {"@type":"SoftwareApplication","name":"Open Agentic Brain and Memory","url":"https://rohithhn.github.io/brain-site/",
   "description":"Open-source, self-hosted long-term memory shared by AI coding agents: Claude Code, Codex, Cursor, Antigravity CLI and Kilo Code. Captures decisions across sessions and tools, stores them encrypted on your machine and in your own private GitHub, and brings back only what is relevant.",
   "applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux","license":"https://www.apache.org/licenses/LICENSE-2.0",
   "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-  "downloadUrl":"https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public","codeRepository":"https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public",
+  "downloadUrl":"https://github.com/rohithhn/Open-Agentic-Brain-and-Memory","codeRepository":"https://github.com/rohithhn/Open-Agentic-Brain-and-Memory",
   "image":"https://rohithhn.github.io/brain-site/img/og.png",
   "author":[{"@type":"Person","name":"Rohith"},{"@type":"Person","name":"Chandan"},{"@type":"Person","name":"Sushmita"}]},
- {"@type":"WebSite","name":"Agentic Brain","url":"https://rohithhn.github.io/brain-site/"}
+ {"@type":"WebSite","name":"Open Agentic Brain and Memory","url":"https://rohithhn.github.io/brain-site/"}
 ]}
 </script>"""
 ENTRY = "index"  # in an artifact this page is the root page; the rest are files beside it
@@ -107,7 +107,7 @@ for name, label in pages:
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Agentic Brain">
+<meta property="og:site_name" content="Open Agentic Brain and Memory">
 <meta property="og:url" content="{url}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
@@ -128,7 +128,7 @@ for name, label in pages:
 <div class="grain" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"><span></span></div>
 <header class="nav">
-  <a class="brand" href="{home}"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Agentic Brain</a>
+  <a class="brand" href="{home}"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Open Agentic Brain and Memory</a>
   <nav>{tabs}{GH}<span class="soon-pill live"><i></i>Open source · Apache-2.0</span></nav>
 </header>
 <main>
@@ -136,7 +136,7 @@ for name, label in pages:
 </main>
 {switch}
 <footer class="foot">
-  <span class="brand small"><svg class="mark"><use href="#i-mark"/></svg>Agentic Brain</span>
+  <span class="brand small"><svg class="mark"><use href="#i-mark"/></svg>Open Agentic Brain and Memory</span>
   <span>{CREDIT}</span>
   <span>Open source (Apache-2.0), self-hosted memory for AI coding tools.</span>
   {GH}
@@ -178,6 +178,6 @@ if not artifact:
         (root / "blog" / f.name).write_text(html)
         print("wrote", root / "blog" / f.name)
     # old /blog.html links keep working
-    (root / "blog.html").write_text('<!doctype html><meta charset="utf-8"><title>Agentic Brain Blog</title>'
+    (root / "blog.html").write_text('<!doctype html><meta charset="utf-8"><title>Open Agentic Brain and Memory Blog</title>'
         '<link rel="canonical" href="https://rohithhn.github.io/brain-site/blog/">'
         '<meta http-equiv="refresh" content="0; url=blog/index.html"><a href="blog/index.html">Blog</a>')

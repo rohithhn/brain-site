@@ -1,4 +1,4 @@
-/* Agentic Brain. Deep black, one cold "signal" accent for anything that fires. No libraries: brain.js
+/* Open Agentic Brain and Memory. Deep black, one cold "signal" accent for anything that fires. No libraries: brain.js
    draws the neural background on a canvas, app.js drives scroll progress into CSS custom properties. */
 /* Layout: full-bleed pinned scenes over a fixed canvas; content in a 1200px column. */
 :root {
@@ -343,7 +343,7 @@ main, .foot { position: relative; z-index: 2; }
 .credit.inline { display: block; margin: 22px 0 0; font: 12px var(--mono); letter-spacing: .06em; color: var(--muted); }
 .credit.inline b { color: var(--fg); font-weight: 500; }
 
-/* the product's logo tile (same treatment as the Agentic Brain control panel) */
+/* the product's logo tile (same treatment as the Open Agentic Brain and Memory control panel) */
 .brand .logo { position: relative; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; flex: none;
   background: linear-gradient(180deg, #17181c, #0e0f11); box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 0 4px rgba(139,141,252,.05); }
 .brand .logo::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none; padding: 1px;
@@ -378,4 +378,11 @@ main, .foot { position: relative; z-index: 2; }
 @media (max-width: 760px) {
   .nav nav a.gh span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .install .cmd code { font-size: 12px; padding-left: 14px; }
+}
+
+/* long product name: let the nav brand label wrap and shrink on phones */
+.brand { min-width: 0; }
+@media (max-width: 760px) {
+  .nav .brand, header.site .brand { font-size: 12px; line-height: 1.15; gap: 8px; max-width: 150px; }
+  .nav nav, header.site nav { flex: none; }
 }

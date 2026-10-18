@@ -1,6 +1,6 @@
 # brain-site
 
-Landing page for Agentic Brain, served by GitHub Pages.
+Landing page for Open Agentic Brain and Memory, served by GitHub Pages.
 
 Plain static files, no build step and no libraries:
 

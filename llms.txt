@@ -1,8 +1,8 @@
-# Agentic Brain
+# Open Agentic Brain and Memory
 
-> Agentic Brain is an open-source (Apache-2.0), self-hosted long-term memory layer shared by AI coding agents: Claude Code, Codex, Cursor, Antigravity CLI and Kilo Code (beta). It captures what each session decides and learns, stores it encrypted on the user's own machine and optionally in their own private GitHub repository, and at the start of each new session hands the agent a small, ranked set of relevant memories instead of the whole history. No hosted service; macOS and Linux.
+> Open Agentic Brain and Memory is an open-source (Apache-2.0), self-hosted long-term memory layer shared by AI coding agents: Claude Code, Codex, Cursor, Antigravity CLI and Kilo Code (beta). It captures what each session decides and learns, stores it encrypted on the user's own machine and optionally in their own private GitHub repository, and at the start of each new session hands the agent a small, ranked set of relevant memories instead of the whole history. No hosted service; macOS and Linux.
 
-Built by Rohith, Chandan and Sushmita. Source code: https://github.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public
+Built by Rohith, Chandan and Sushmita. Source code: https://github.com/rohithhn/Open-Agentic-Brain-and-Memory
 
 ## Key facts
 
@@ -13,11 +13,11 @@ Built by Rohith, Chandan and Sushmita. Source code: https://github.com/rohithhn/
   - LoCoMo (1,540 questions): 86.6 accuracy vs 89.3 for the whole conversation in context, i.e. 97% of full-context accuracy using 18% of the tokens at about a fifth of the cost.
   - LongMemEval-S (500 questions): 94.2% with a Claude reader, 90.0% with a GPT reader.
   - LongMemEval-M (500 questions, about 1.27 million tokens of history per question, too large for any model's context): 83.0%, reading 98.5% fewer tokens.
-- Install: curl -fsSL https://raw.githubusercontent.com/rohithhn/Ultra-Agentic-Memory-and-Brain-Public/main/install.sh | bash
+- Install: curl -fsSL https://raw.githubusercontent.com/rohithhn/Open-Agentic-Brain-and-Memory/main/install.sh | bash
 
 ## Pages
 
-- [Home](https://rohithhn.github.io/brain-site/): what Agentic Brain is and how it works
+- [Home](https://rohithhn.github.io/brain-site/): what Open Agentic Brain and Memory is and how it works
 - [Privacy](https://rohithhn.github.io/brain-site/privacy.html): what the website and the software do with data
 - [Contact](https://rohithhn.github.io/brain-site/contact.html)
 

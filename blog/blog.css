@@ -1,5 +1,5 @@
 /* Blog pages. Same structure as the MoneyOS blog (hero, "In short", sticky contents, question-led
-   sections, FAQ, call to action), in Agentic Brain's deep black with the one signal blue. No canvas
+   sections, FAQ, call to action), in Open Agentic Brain and Memory's deep black with the one signal blue. No canvas
    here: posts stay quiet and fast to read. */
 :root {
   color-scheme: dark;
@@ -210,4 +210,16 @@ header.site nav a.gh svg, .blog-foot a.gh svg { width: 16px; height: 16px; }
 @media (max-width: 760px) {
   header.site nav a.gh span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .cta-box .cmd code { font-size: 12px; padding-left: 14px; }
+}
+
+/* long product name: let the nav brand label wrap and shrink on phones */
+.brand { min-width: 0; }
+@media (max-width: 760px) {
+  header.site .brand { font-size: 12px; line-height: 1.15; gap: 8px; max-width: 150px; }
+  header.site nav { flex: none; }
+}
+@media (max-width: 760px) {
+  header.site .brand { flex: 0 1 auto; }
+  header.site nav a[href^="mailto:"] { display: none; }
+  header.site { gap: 10px; }
 }

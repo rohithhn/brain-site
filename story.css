@@ -368,7 +368,7 @@
 }
 
 /* Phones: the pinned credit sits where the logos and brain land, so it shows only on the first
-   screen; the "I'm Agentic Brain" beat carries its own inline copy instead. */
+   screen; the "I'm Open Agentic Brain and Memory" beat carries its own inline copy instead. */
 .credit.inline { position: static; transform: none; display: block; margin: 18px 0 0; white-space: normal; }
 .phone-only { display: none !important; }
 @media (max-width: 760px) {
