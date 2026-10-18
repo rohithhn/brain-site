@@ -24,7 +24,7 @@ HOME_LD = """<script type="application/ld+json">
   "applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux","license":"https://www.apache.org/licenses/LICENSE-2.0",
   "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
   "downloadUrl":"https://github.com/rohithhn/Open-Agentic-Brain-and-Memory","codeRepository":"https://github.com/rohithhn/Open-Agentic-Brain-and-Memory",
-  "image":"https://rohithhn.github.io/brain-site/img/og.png",
+  "image":"https://rohithhn.github.io/brain-site/img/og.png?v=2",
   "author":[{"@type":"Person","name":"Rohith"},{"@type":"Person","name":"Chandan"},{"@type":"Person","name":"Sushmita"}]},
  {"@type":"WebSite","name":"Open Agentic Brain and Memory","url":"https://rohithhn.github.io/brain-site/"}
 ]}
@@ -111,11 +111,11 @@ for name, label in pages:
 <meta property="og:url" content="{url}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{SITE}img/og.png">
+<meta property="og:image" content="{SITE}img/og.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{SITE}img/og.png">
+<meta name="twitter:image" content="{SITE}img/og.png?v=2">
 {HOME_LD if name == "index" else ""}
 <meta name="theme-color" content="#000000">
 {icon}

@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- Source for img/og.png (the link-preview card). Render: see _src/og/README.md -->
+<html><head><meta charset="utf-8"><title>og</title>
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1200px;height:630px;background:#000;overflow:hidden}
+  body{position:relative;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#f4f4f6}
+  .glow{position:absolute;right:-120px;top:40px;width:700px;height:560px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,110,170,.22),rgba(0,0,0,0))}
+  canvas{position:absolute;right:30px;top:100px}
+  .brand{position:absolute;left:90px;top:80px;display:flex;align-items:center;gap:18px;font-size:30px;font-weight:700;letter-spacing:.2px}
+  .brand img{width:64px;height:64px;border-radius:15px}
+  h1{position:absolute;left:90px;top:158px;width:700px;font-size:80px;line-height:1.02;font-weight:800;letter-spacing:-1.5px}
+  h1 b{color:#8fd0ff;font-weight:800}
+  p.sub{position:absolute;left:90px;top:422px;width:660px;font-size:25px;line-height:1.32;color:#a9abb4}
+  .pills{position:absolute;left:90px;bottom:46px;display:flex;gap:16px}
+  .pill{font-family:"SF Mono",Menlo,monospace;font-size:21px;padding:13px 24px;border-radius:40px;border:1.5px solid #34353b;color:#d7d8de;background:rgba(255,255,255,.03)}
+  .pill.tok{border-color:#3f6fa6;color:#bfe3ff;background:rgba(80,140,210,.12)}
+</style></head><body>
+<div class="glow"></div><canvas id="g" width="520" height="440"></canvas>
+<div class="brand"><img src="../../img/icon.svg" alt="">Open Agentic Brain and Memory</div>
+<h1>One memory for all your <b>AI coding tools.</b></h1>
+<p class="sub">Claude Code, Codex, Cursor and more share what they learn. Private and self-hosted.</p>
+<div class="pills"><span class="pill">Open source · Apache-2.0</span><span class="pill tok">About 5× fewer tokens than full history</span></div>
+<script>
+// Deterministic node graph (seeded), so the card renders the same every time.
+let s=7;const r=()=>((s=(s*16807)%2147483647)/2147483647);
+const c=document.getElementById('g').getContext('2d'),W=520,H=440,pts=[];
+for(let i=0;i<150;i++){const a=r()*6.283,d=Math.sqrt(r());pts.push([W/2+Math.cos(a)*d*W*.46,H/2+Math.sin(a)*d*H*.44*(0.9+.1*Math.sin(a*3))])}
+c.lineWidth=1;
+for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i][0]-pts[j][0],dy=pts[i][1]-pts[j][1],dd=Math.hypot(dx,dy);
+ if(dd<62&&r()<.55){c.strokeStyle=`rgba(190,200,215,${.34*(1-dd/62)})`;c.beginPath();c.moveTo(...pts[i]);c.lineTo(...pts[j]);c.stroke()}}
+pts.forEach((p,i)=>{const hot=i%11===0;if(hot){const g=c.createRadialGradient(p[0],p[1],0,p[0],p[1],16);g.addColorStop(0,'rgba(120,190,255,.45)');g.addColorStop(1,'rgba(120,190,255,0)');c.fillStyle=g;c.beginPath();c.arc(p[0],p[1],16,0,7);c.fill()}
+ c.fillStyle=hot?'#7cc4ff':'rgba(200,205,215,.85)';c.beginPath();c.arc(p[0],p[1],hot?3.4:2.2,0,7);c.fill()});
+</script></body></html>
