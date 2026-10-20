@@ -223,3 +223,6 @@ header.site nav a.gh svg, .blog-foot a.gh svg { width: 16px; height: 16px; }
   header.site nav a[href^="mailto:"] { display: none; }
   header.site { gap: 10px; }
 }
+/* code snippet block */
+.post pre.snippet { margin: 18px 0 8px; padding: 18px 20px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); overflow-x: auto; }
+.post pre.snippet code { background: none; box-shadow: none; padding: 0; font: 13.5px/1.6 var(--mono); color: var(--fg); white-space: pre; }
