@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Using Multiple AI Coding Agents Without Losing Context</title>
+<meta name="description" content="Why developers use several AI coding agents at once, what breaks when context doesn't move with you, four ways to share context between tools, a handoff checklist, and workflows that keep parallel agents out of each other's way.">
+<meta name="keywords" content="multiple AI coding agents, use Claude Code and Cursor together, share context between AI tools, switch AI coding assistants, multi-agent coding workflow, AI coding agent handoff, parallel AI agents git worktrees, Codex and Claude Code together, AI pair programming workflow">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Rohith, Chandan and Sushmita">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://rohithhn.github.io/brain-site/blog/use-multiple-ai-coding-agents.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rohithhn.github.io/brain-site/blog/use-multiple-ai-coding-agents.html">
+<meta property="og:site_name" content="Open Agentic Brain and Memory">
+<meta property="og:title" content="Using multiple AI coding agents without losing context">
+<meta property="og:description" content="Four ways to share context between tools, a handoff checklist, and workflows for parallel agents.">
+<meta property="og:image" content="https://rohithhn.github.io/brain-site/img/og.png">
+<meta property="article:published_time" content="2026-10-21">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rohithhn.github.io/brain-site/img/og.png">
+<meta name="twitter:title" content="Using multiple AI coding agents without losing context">
+<meta name="twitter:description" content="Share context between tools, hand off cleanly, and keep parallel agents apart.">
+{{HEAD}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": "https://rohithhn.github.io/brain-site/blog/use-multiple-ai-coding-agents.html",
+      "headline": "Using multiple AI coding agents without losing context",
+      "description": "Why developers use several AI coding agents, what breaks when context doesn't move with you, four ways to share context, a handoff checklist, and workflows for parallel agents.",
+      "datePublished": "2026-10-21",
+      "dateModified": "2026-10-21",
+      "inLanguage": "en",
+      "image": "https://rohithhn.github.io/brain-site/img/og.png",
+      "author": [{ "@type": "Person", "name": "Rohith" }, { "@type": "Person", "name": "Chandan" }, { "@type": "Person", "name": "Sushmita" }],
+      "publisher": { "@type": "Organization", "name": "Open Agentic Brain and Memory", "logo": { "@type": "ImageObject", "url": "https://rohithhn.github.io/brain-site/img/icon-192.png" } },
+      "keywords": "multiple AI coding agents, share context between AI tools, multi-agent coding workflow, AI coding agent handoff"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Can I use Claude Code and Cursor together?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many developers use a terminal agent and an IDE agent on the same project. The catch is context: each tool starts fresh and doesn't know what the other decided, so you need a shared place for decisions, such as rules files in the repo, a decision log, or a shared memory layer." } },
+        { "@type": "Question", "name": "How do I share context between AI coding tools?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Four ways, from least to most automatic: hand-written handoff notes, shared rules files in the repository, a decision log the agents read, and a shared memory layer that captures decisions from every tool and gives each new session the relevant ones." } },
+        { "@type": "Question", "name": "How do I switch AI coding agents in the middle of a task?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Write a short handoff before switching: the goal, decisions made and why, what is done, what failed, and the next step. Start the new agent with that handoff instead of the old transcript." } },
+        { "@type": "Question", "name": "Can two AI agents work on the same repository at once?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, if they don't edit the same files. Give each agent its own branch, ideally in its own git worktree, and merge through normal review." } },
+        { "@type": "Question", "name": "Why do my AI coding tools contradict each other?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Because each one only knows what is in its own context. A decision made in one tool is invisible to the next unless something carries it over, so the second tool follows its defaults and undoes the first one's work." } }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rohithhn.github.io/brain-site/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rohithhn.github.io/brain-site/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Using multiple AI coding agents", "item": "https://rohithhn.github.io/brain-site/blog/use-multiple-ai-coding-agents.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+{{SPRITE}}
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../img/icon.svg" alt="" width="34" height="34">Open Agentic Brain and Memory</a>
+  <nav><a href="index.html" aria-current="page">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav>
+</header>
+<main>
+  <section class="post-hero">
+    <div>
+      <p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / Guide</p>
+      <p class="kicker">Guide · 21 October 2026 · 8 min read</p>
+      <h1>Using multiple AI coding agents without losing context</h1>
+      <p class="lede">Plan in one agent, build in another, review in a third, fix in your editor. Using several AI
+      coding tools is normal now. Keeping them on the same page isn't. Here's what breaks, four ways to share
+      context, and how to hand off cleanly.</p>
+      <p class="byline">By <b>Rohith</b>, <b>Chandan</b> and <b>Sushmita</b></p>
+      <a class="btn primary" href="#handoff">Jump to the handoff checklist <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="files flow" aria-label="A multi-agent workflow">
+      <div class="file"><b>1</b><code>Plan in a terminal agent</code><em>decides the approach</em></div>
+      <div class="file"><b>2</b><code>Build in another</code><em>implements it</em></div>
+      <div class="file"><b>3</b><code>Review with a third</code><em>second opinion</em></div>
+      <div class="file"><b>4</b><code>Fix in your editor</code><em>small changes</em></div>
+      <div class="file hot"><b>5</b><code>One shared memory</code><em>all of them know</em></div>
+    </div>
+  </section>
+
+  <section class="tldr" aria-label="Summary">
+    <h2>In short</h2>
+    <dl class="tldr-grid">
+      <div><dt>Why several</dt><dd>Different strengths, usage limits, cost, and terminal vs editor workflows.</dd></div>
+      <div><dt>What breaks</dt><dd>Each tool starts fresh, so decisions made in one are undone in the next.</dd></div>
+      <div><dt>The fix</dt><dd>A shared source of truth: rules files, a decision log, or a shared memory.</dd></div>
+      <div><dt>When switching</dt><dd>Hand off a short summary, not the old transcript.</dd></div>
+    </dl>
+  </section>
+
+  <div class="post-layout">
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#why">Why use several?</a></li>
+        <li><a href="#breaks">What breaks</a></li>
+        <li><a href="#share">4 ways to share context</a></li>
+        <li><a href="#handoff">Handoff checklist</a></li>
+        <li><a href="#workflows">Workflows that work</a></li>
+        <li><a href="#pitfalls">Pitfalls</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
+    <article class="post">
+      <h2 id="why">Why do developers use more than one AI coding agent?</h2>
+      <p class="answer"><strong>Because no single tool is best at everything, all the time.</strong></p>
+      <div class="feature-grid">
+        <div><h3>Different strengths</h3><p>One is better at long autonomous tasks, another at quick edits in the editor.</p></div>
+        <div><h3>Usage limits</h3><p>When one tool's quota runs out mid-week, work moves to another.</p></div>
+        <div><h3>Cost</h3><p>Cheaper tools for routine work, the expensive one for hard problems.</p></div>
+        <div><h3>Second opinions</h3><p>A different model reviewing the first one's work catches different mistakes.</p></div>
+        <div><h3>Terminal vs editor</h3><p>Some work fits an agent in the terminal; some fits one in the IDE.</p></div>
+        <div><h3>Team mix</h3><p>Teammates use different tools on the same codebase.</p></div>
+      </div>
+
+      <h2 id="breaks">What breaks when you switch between AI coding tools?</h2>
+      <p class="answer"><strong>Context doesn't move with you.</strong> Each tool starts every session from zero and only
+      knows what's in its own context.</p>
+      <ul>
+        <li><strong>Decision drift.</strong> You agree to drop a dependency in one tool; the next one adds it back.</li>
+        <li><strong>Re-explaining.</strong> The same background, typed into every tool, every session.</li>
+        <li><strong>Conflicting rules.</strong> Each tool has its own rules file, and they slowly disagree.</li>
+        <li><strong>Lost fixes.</strong> A tricky bug solved in one tool is solved again from scratch in another.</li>
+      </ul>
+      <p>None of this is a model problem. The second tool is doing exactly what it should with what it was given; it
+      just wasn't given the decision.</p>
+
+      <h2 id="share">How do you share context between AI coding tools?</h2>
+      <p class="answer"><strong>Four ways, from manual to automatic.</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">Handoff notes</th><th scope="col">Shared rules files</th><th scope="col">Decision log</th><th scope="col">Shared memory</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Effort</th><td>Every switch</td><td>Upfront, then upkeep</td><td>Every decision</td><td class="yes">Set up once</td></tr>
+            <tr><th scope="row">Stays current</th><td>If you remember</td><td>If you remember</td><td>If you remember</td><td class="yes">Captured as you work</td></tr>
+            <tr><th scope="row">Every tool sees it</th><td>Only the next one</td><td>Each reads its own file</td><td>If told to read it</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">Across projects</th><td>No</td><td>No</td><td>No</td><td class="yes">Per project plus global</td></tr>
+            <tr><th scope="row">Cost in tokens</th><td>Small</td><td>Grows over time</td><td>Grows over time</td><td class="yes">Small, only what's relevant</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="timeline">
+        <li><b>Handoff notes.</b> Paste a short summary into the next tool. Free and effective, but it depends on you doing it every time.</li>
+        <li><b>Shared rules files.</b> Keep one source of truth for conventions in the repo, and generate each tool's own file from it so they can't drift apart.</li>
+        <li><b>A decision log.</b> Record architecture decisions and their reasons in the repo, and tell every agent to read it. Good for big decisions, too heavy for small ones.</li>
+        <li><b>A shared memory layer.</b> Capture decisions, preferences and fixes from every tool automatically, and give each new session only the ones that apply.</li>
+      </ol>
+
+      <h2 id="handoff">How do you switch agents in the middle of a task?</h2>
+      <p class="answer"><strong>Hand off a summary, not the transcript.</strong> Before switching, write (or ask the
+      outgoing agent to write) five lines:</p>
+      <ol class="timeline">
+        <li><b>Goal:</b> what we're trying to achieve, in one sentence.</li>
+        <li><b>Decisions:</b> what we chose, and why, including what we ruled out.</li>
+        <li><b>Done:</b> what's finished and where it lives.</li>
+        <li><b>Tried and failed:</b> so the next agent doesn't repeat it.</li>
+        <li><b>Next step:</b> the single next thing to do.</li>
+      </ol>
+      <p>A long transcript is expensive and mostly noise. Five good lines give the next agent what it needs at a
+      fraction of the tokens. See <a href="reduce-ai-coding-token-costs.html">how to cut AI coding agent token costs</a>.</p>
+
+      <h2 id="workflows">Which multi-agent workflows actually work?</h2>
+      <p class="answer"><strong>The ones that give each agent a clear role and its own space.</strong></p>
+      <div class="feature-grid">
+        <div><h3>Planner and builder</h3><p>One agent writes the plan and the decisions; another implements against them.</p></div>
+        <div><h3>Builder and reviewer</h3><p>A second agent, ideally a different model, reviews the diff before you merge.</p></div>
+        <div><h3>Parallel branches</h3><p>Independent tasks on separate branches, each in its own git worktree, merged through review.</p></div>
+        <div><h3>Agent plus editor</h3><p>Let the agent do the bulk change, then make small fixes yourself in the editor.</p></div>
+      </div>
+
+      <h2 id="pitfalls">What are the common pitfalls?</h2>
+      <p class="answer"><strong>Collisions, contradictions and leaks.</strong></p>
+      <ul>
+        <li><strong>Two agents editing the same files</strong> at once. Separate branches or worktrees avoid it.</li>
+        <li><strong>Rules that contradict each other</strong> across tools. Keep one source of truth.</li>
+        <li><strong>Stale decisions</strong> that keep getting followed after they changed. Update, don't just add.</li>
+        <li><strong>Secrets pasted into handoffs</strong> and carried from tool to tool. Scrub them first; see our
+        <a href="self-hosted-ai-memory-privacy-security.html">privacy and security guide</a>.</li>
+      </ul>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>Can I use Claude Code and Cursor together?</summary>
+          <p>Yes. Many developers use a terminal agent and an IDE agent on the same project; you just need a shared place for decisions, because each tool starts fresh.</p></details>
+        <details><summary>How do I share context between AI coding tools?</summary>
+          <p>Handoff notes, shared rules files in the repo, a decision log, or a shared memory layer that captures decisions from every tool automatically.</p></details>
+        <details><summary>How do I switch AI coding agents mid-task?</summary>
+          <p>Hand off five lines: goal, decisions, done, tried and failed, next step. Start the new agent with that, not the old transcript.</p></details>
+        <details><summary>Can two AI agents work on the same repository at once?</summary>
+          <p>Yes, on separate branches, ideally in separate git worktrees, merged through normal review.</p></details>
+        <details><summary>Why do my AI coding tools contradict each other?</summary>
+          <p>Each one only knows its own context. A decision made in one tool is invisible to the next unless something carries it over.</p></details>
+      </div>
+
+      <section class="cta-box">
+        <span class="soon live"><i></i>Open source · Apache-2.0</span>
+        <h2>Tell one tool. Every tool knows.</h2>
+        <p>Open Agentic Brain and Memory is an open-source, self-hosted memory shared by Claude Code, Codex, Cursor,
+        Antigravity and Kilo Code. Decisions made in one tool reach the others automatically, on your machine and under your key.</p>
+        <div class="cmd"><code>curl -fsSL https://raw.githubusercontent.com/rohithhn/Open-Agentic-Brain-and-Memory/main/install.sh | bash</code><button class="copy" type="button" aria-label="Copy the install command" onclick="var b=this,c=b.previousElementSibling,d=function(){b.textContent='Copied';b.classList.add('ok');setTimeout(function(){b.textContent='Copy';b.classList.remove('ok')},1600)},f=function(){var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r);try{if(document.execCommand('copy'))d()}catch(e){}};navigator.clipboard&&window.isSecureContext?navigator.clipboard.writeText(c.textContent).then(d,f):f()">Copy</button></div>
+        <div class="row"><a class="btn primary" href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory"><svg><use href="#l-github"/></svg>Get it on GitHub</a><a class="btn ghost" href="../index.html">See how it works</a><a class="btn ghost" href="index.html">More from the blog</a></div>
+      </section>
+    </article>
+  </div>
+</main>
+<footer class="blog-foot">
+  <a href="../index.html">Home</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><a class="gh" href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" aria-label="Open Agentic Brain and Memory on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a><span>Built by Rohith, Chandan and Sushmita</span>
+</footer>
+<script>
+  (() => {
+    const links = [...document.querySelectorAll(".toc a")];
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll(".post h2[id]").forEach((h) => io.observe(h));
+  })();
+</script>
+</body>
+</html>

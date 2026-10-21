@@ -23,6 +23,7 @@ Built by Rohith, Chandan and Sushmita. Source code: https://github.com/rohithhn/
 
 ## Guides
 
+- [Using multiple AI coding agents without losing context](https://rohithhn.github.io/brain-site/blog/use-multiple-ai-coding-agents.html): why developers use several agents, four ways to share context between tools, a handoff checklist and multi-agent workflows
 - [MCP memory server](https://rohithhn.github.io/brain-site/blog/mcp-memory-server.html): what an MCP memory server is, push vs pull memory, which apps can use it (Claude Desktop, Claude Code, Cursor, Codex, ChatGPT desktop) and how to set one up
 - [How to cut AI coding agent token costs](https://rohithhn.github.io/brain-site/blog/reduce-ai-coding-token-costs.html): where an agent's tokens go and ten practical ways to reduce token usage and cost
 - [Self-hosted AI memory: privacy and security](https://rohithhn.github.io/brain-site/blog/self-hosted-ai-memory-privacy-security.html): what agent memory stores, hosted vs self-hosted, memory poisoning, secrets, and a security checklist
