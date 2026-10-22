@@ -193,8 +193,10 @@
     const box = (beat.closest(".caption") || beat).getBoundingClientRect();
     // the fixed banner + top nav end at the nav's bottom edge
     const nav = $(".nav"), navB = nav ? nav.getBoundingClientRect().bottom : 60;
-    const bottomGap = $(".switch") ? 76 : 16;
-    const above = [navB + 8, box.top - 18], below = [box.bottom + 18, innerHeight - bottomGap];
+    const bottomGap = $(".switch") ? 76 : 36;
+    // the pinned frame can be shorter than the window (iOS toolbars), and it clips what overflows
+    const pin = $(".story-pin", sec), pinB = pin ? Math.min(innerHeight, pin.getBoundingClientRect().bottom) : innerHeight;
+    const above = [navB + 8, box.top - 18], below = [box.bottom + 18, pinB - bottomGap];
     let [a0, a1] = above[1] - above[0] > below[1] - below[0] ? above : below;
     // keep the logo ring compact around the brain: cap the band and centre it in the free space
     const cap = Math.min(innerWidth * 0.95, 380);

@@ -302,12 +302,6 @@ button.btn { border: 0; font: inherit; font-size: 15px; font-weight: 500; cursor
 @media (max-width: 760px) {
   .block { padding-top: 80px; padding-bottom: 80px; }
   .vs { padding: 4px; }
-  .vs-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .vs-row > span:first-child { grid-column: 1 / -1; padding-bottom: 2px; font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .vs-row.head > span:first-child { display: none; }
-  .vs-row > span { padding: 10px 12px; font-size: 13.5px; align-items: flex-start; }
-  .vs-row > span:not(:first-child) { border-top: 0; }
-  .vs-row .me, .vs-row.head .me, .vs-row:last-child .me { border-radius: 10px; box-shadow: 0 0 0 1px rgba(143,211,255,.22) inset; }
   .cta-card { padding: 30px 20px; border-radius: 22px; }
   .vp-play { width: 64px; height: 64px; margin: -32px 0 0 -32px; } .vp-play svg { width: 24px; height: 24px; }
   .vp-cap { left: 16px; right: 16px; bottom: 14px; }
@@ -336,3 +330,18 @@ button.btn { border: 0; font: inherit; font-size: 15px; font-weight: 500; cursor
   .vp-cap b { font-size: 15.5px; }
   .cta-card .sub { font-size: 16px; }
 }
+
+@media (max-width: 760px) {
+  /* phones: each comparison row becomes a small card: topic label, then the .md line, then the brain line */
+  .vs { padding: 0; background: none; box-shadow: none; display: flex; flex-direction: column; gap: 12px; }
+  .vs-row.head { display: none; }
+  .vs-row { display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 16px; background: rgba(8,9,12,.9); box-shadow: 0 0 0 1px var(--line-2) inset; }
+  .vs-row > span { border-top: 0 !important; min-height: 0; padding: 0 0 0 34px !important; font-size: 15px; line-height: 1.5; }
+  .vs-row > span:first-child { padding: 0 !important; font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .vs-row span > svg:first-child:not(.mark) { left: 0; top: 1px; }
+  .vs-row .me, .vs-row:last-child .me { background: none; box-shadow: none; border-radius: 0; color: var(--fg); }
+  .vs-row > span:nth-child(2)::before { content: "Hand-kept .md: "; color: var(--dim); }
+  .vs-row > span.me::before { content: "Brain: "; color: var(--signal); font-weight: 500; }
+}
+
+.topnav, .topnav.solid { background: #050506 !important; }
