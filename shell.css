@@ -323,3 +323,15 @@ button.btn { border: 0; font: inherit; font-size: 15px; font-weight: 500; cursor
 @media (prefers-reduced-motion: reduce) {
   .vp-play::after, .cta-glow, .ag-list button[aria-selected="true"] .ag-bar { animation: none; }
 }
+
+@media (max-width: 760px) {
+  /* pinned story chapters start below the fixed banner + top nav */
+  .story-pin { padding-top: calc(var(--bar) + var(--nav) + 18px) !important; }
+}
+
+@media (max-width: 760px) {
+  .vposter { aspect-ratio: 4 / 3; }
+  .vp-play { top: 42%; }
+  .vp-cap b { font-size: 15.5px; }
+  .cta-card .sub { font-size: 16px; }
+}

@@ -21,7 +21,9 @@
 /* ───── sections ───── */
 .home { position: relative; }
 .home .hs { position: relative; padding: 110px 0; }
-.home .hs > * { max-width: 960px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+.home .hs > * { width: min(960px, calc(100% - 48px)); margin-left: auto; margin-right: auto; padding-left: 0; padding-right: 0; box-sizing: border-box; }
+.home .hs > .cta-card { padding: 56px; }
+.home .hs > .agents { padding: 32px; }
 .home .hs + .hs::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: calc(min(960px, 100%) - 48px); height: 1px; background: var(--line); }
 
@@ -225,4 +227,18 @@
   .home .md-vers li.new { animation: none; opacity: 1; transform: none; }
   .home .md-vers li .saving, .home .term .caret { animation: none; }
   .home .pill-go, .home .pill-go svg, .home .g-src, .home .bench-top a svg { transition: none; }
+}
+
+@media (max-width: 760px) {
+  .home .hs > * { width: calc(100% - 32px); }
+  .home .hs > .cta-card { padding: 28px 20px; }
+  .home .hs > .agents { padding: 14px; }
+  /* phones: never hide content behind scroll-in animations */
+  .home .fade { opacity: 1 !important; transform: none !important; transition: none !important; }
+  /* phones: the home hero is a normal static hero, not a pinned 4-step story */
+  .story[id="top"] { height: auto !important; }
+  .story[id="top"] .story-pin { position: relative; height: auto; min-height: calc(100svh - 100px); padding: 48px 20px 56px !important; align-items: center; }
+  .story[id="top"] .orbit, .story[id="top"] .scrollcue { display: none !important; }
+  .story[id="top"] .beat { display: none !important; }
+  .story[id="top"] .beat:first-child { display: block !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
 }
