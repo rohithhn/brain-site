@@ -164,6 +164,12 @@ for name, label in pages:
     (out / f"{name}.html").write_text(html)
     print("wrote", out / f"{name}.html")
 
+# ── Preview redesign: _src/v2.html -> v2.html (standalone page, shared sprite/fonts/icons)
+if not artifact and (root / "_src" / "v2.html").exists():
+    v2 = (root / "_src" / "v2.html").read_text().replace("{{HEAD}}", icon + "\n" + fonts).replace("{{SPRITE}}", sprite)
+    (root / "v2.html").write_text(with_gtm(v2))
+    print("wrote", root / "v2.html")
+
 # ── Blog: _src/blog/*.html -> blog/ (one level down, so shared assets get ../)
 if not artifact:
     blog_head = "\n".join([
