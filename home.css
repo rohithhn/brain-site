@@ -235,10 +235,5 @@
   .home .hs > .agents { padding: 14px; }
   /* phones: never hide content behind scroll-in animations */
   .home .fade { opacity: 1 !important; transform: none !important; transition: none !important; }
-  /* phones: the home hero is a normal static hero, not a pinned 4-step story */
-  .story[id="top"] { height: auto !important; }
-  .story[id="top"] .story-pin { position: relative; height: auto; min-height: calc(100svh - 100px); padding: 48px 20px 56px !important; align-items: center; }
-  .story[id="top"] .orbit, .story[id="top"] .scrollcue { display: none !important; }
-  .story[id="top"] .beat { display: none !important; }
-  .story[id="top"] .beat:first-child { display: block !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
+  .home .kg-stage { height: 360px; }
 }

@@ -56,8 +56,8 @@ button.btn { border: 0; font: inherit; font-size: 15px; font-weight: 500; cursor
 .social svg { width: 16px; height: 16px; }
 
 /* ───── fixed top nav ───── */
-.topnav { position: fixed; z-index: 55; top: var(--bar) !important; left: 0; right: 0; height: var(--nav); padding: 0 !important; background: rgba(5,5,6,.88);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.topnav { position: fixed; z-index: 55; top: var(--bar) !important; left: 0; right: 0; height: var(--nav); padding: 0 !important; background: rgba(5,5,6,.97);
+  border-bottom: 1px solid var(--line); }
 .tn-in { height: 100%; display: flex; align-items: center; gap: 28px; padding: 0 24px; flex: 1; width: 100%; min-width: 0; }
 .topnav .brand { display: flex; align-items: center; gap: 10px; color: #f5f5f6; text-decoration: none; font-weight: 600; letter-spacing: -.02em; white-space: nowrap; }
 .topnav .brand .logo { position: relative; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; flex: none; background: linear-gradient(180deg, #17181c, #0e0f11); box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 0 4px rgba(139,141,252,.05); }
