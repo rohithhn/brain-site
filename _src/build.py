@@ -401,6 +401,12 @@ if not artifact:
     page("connect", "Connect your AI coding tools to Open Agentic Brain and Memory",
          "Claude Code, Codex, Cursor, Antigravity CLI, Kilo Code, Claude Desktop and ChatGPT desktop: what each one gets from one shared memory.", body, ["story.js"])
 
+# ── Preview redesign: _src/v2.html -> v2.html (standalone page, shared sprite/fonts/icons)
+if not artifact and (root / "_src" / "v2.html").exists():
+    v2 = (root / "_src" / "v2.html").read_text().replace("{{HEAD}}", icon + "\n" + fonts).replace("{{SPRITE}}", sprite)
+    (root / "v2.html").write_text(with_gtm(v2))
+    print("wrote", root / "v2.html")
+
 # ── Blog: _src/blog/*.html -> blog/ (one level down, so shared assets get ../)
 if not artifact:
     blog_head = "\n".join([
