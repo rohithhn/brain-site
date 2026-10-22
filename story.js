@@ -191,10 +191,14 @@
     const beat = $(".beat.on", sec);
     if (!beat) return brain;
     const box = (beat.closest(".caption") || beat).getBoundingClientRect();
-    const navH = ($(".nav") || { offsetHeight: 60 }).offsetHeight;
+    // the fixed banner + top nav end at the nav's bottom edge
+    const nav = $(".nav"), navB = nav ? nav.getBoundingClientRect().bottom : 60;
     const bottomGap = $(".switch") ? 76 : 16;
-    const above = [navH + 8, box.top - 18], below = [box.bottom + 18, innerHeight - bottomGap];
-    const [a0, a1] = above[1] - above[0] > below[1] - below[0] ? above : below;
+    const above = [navB + 8, box.top - 18], below = [box.bottom + 18, innerHeight - bottomGap];
+    let [a0, a1] = above[1] - above[0] > below[1] - below[0] ? above : below;
+    // keep the logo ring compact around the brain: cap the band and centre it in the free space
+    const cap = Math.min(innerWidth * 0.95, 380);
+    if (a1 - a0 > cap) { const mid = (a0 + a1) / 2; a0 = mid - cap / 2; a1 = mid + cap / 2; }
     const h = Math.max(120, a1 - a0);
     sec.style.setProperty("--ot", a0 + "px");
     sec.style.setProperty("--oh", h + "px");

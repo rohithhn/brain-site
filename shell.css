@@ -9,7 +9,8 @@
 .page { position: relative; z-index: 2; margin-left: var(--side); }
 .page { padding-top: calc(var(--bar) + var(--nav)); }
 body.blogpage { padding-top: calc(var(--bar) + var(--nav)); }
-#brain, .vignette, .progress { top: calc(var(--bar) + var(--nav)); }
+#brain, .vignette { top: 0; }
+.progress { top: calc(var(--bar) + var(--nav)); }
 .toc-anchor { display: block; height: 0; }
 button.btn { border: 0; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; }
 .btn svg { width: 16px; height: 16px; }

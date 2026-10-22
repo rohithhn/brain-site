@@ -230,6 +230,7 @@
 }
 
 @media (max-width: 760px) {
+  .story[id="top"] { height: calc(var(--n, 4) * 28vh + 100vh) !important; }
   .home .hs > * { width: calc(100% - 32px); }
   .home .hs > .cta-card { padding: 28px 20px; }
   .home .hs > .agents { padding: 14px; }
