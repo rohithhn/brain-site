@@ -1,8 +1,13 @@
 """Assemble the story pages from _src/*.body.html with the shared head, sprite, nav and scripts.
 Run from the repo root: python3 _src/build.py [--artifact OUTDIR]"""
-import re, sys, pathlib
+import re, sys, pathlib, hashlib
 
 root = pathlib.Path(__file__).resolve().parent.parent
+
+def v(path):
+    """Short content hash for cache-busting: style.css -> style.css?v=1a2b3c4d."""
+    f = root / path
+    return f"{path}?v={hashlib.md5(f.read_bytes()).hexdigest()[:8]}" if f.exists() else path
 index = (root / "_src" / "overview.html").read_text()  # the overview page supplies reusable sections
 sprite = re.search(r'<svg width="0" height="0".*?</svg>', index, re.S).group(0)
 fonts = '\n'.join(l for l in index.splitlines() if 'fonts.g' in l)
@@ -255,10 +260,10 @@ def page(name, title, desc, body, scripts, r=""):
 <meta name="theme-color" content="#000000">
 {icon}
 {fonts}
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="story.css">
-<link rel="stylesheet" href="shell.css">
-{f'<link rel="stylesheet" href="home.css">' if name == "index" else ""}"""
+<link rel="stylesheet" href="{v('style.css')}">
+<link rel="stylesheet" href="{v('story.css')}">
+<link rel="stylesheet" href="{v('shell.css')}">
+{f'<link rel="stylesheet" href="{v("home.css")}">' if name == "index" else ""}"""
     main = f"""{sprite}
 <canvas id="brain" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
@@ -275,9 +280,9 @@ def page(name, title, desc, body, scripts, r=""):
 {foot(r)}
 </div>
 {vmodal()}
-<script src="brain.js"></script>
-{chr(10).join(f'<script src="{s}"></script>' for s in scripts)}
-<script src="shell.js"></script>"""
+<script src="{v('brain.js')}"></script>
+{chr(10).join(f'<script src="{v(s)}"></script>' for s in scripts)}
+<script src="{v('shell.js')}"></script>"""
     if artifact and name == ENTRY:
         html = head + "\n" + main
     else:
@@ -413,7 +418,7 @@ if not artifact:
         icon.replace('href="img/', 'href="../img/'),
         fonts,
         '<link rel="stylesheet" href="blog.css">',
-        '<link rel="stylesheet" href="../shell.css">',
+        f'<link rel="stylesheet" href="../{v("shell.css")}">',
     ])
     (root / "blog").mkdir(exist_ok=True)
     for f in sorted((root / "_src" / "blog").glob("*.html")):
@@ -422,7 +427,7 @@ if not artifact:
         html = re.sub(r'<footer class="blog-foot">.*?</footer>', lambda m: foot("../"), html, flags=re.S)
         html = re.sub(r"<header class=\"site\">.*?</header>", lambda m: annc("../") + "\n" + topnav("blog", "../"), html, flags=re.S)
         html = html.replace("<body>", "<body class=\"no-side blogpage\">", 1)
-        html = html.replace("</body>", vmodal() + '\n<script src="../shell.js"></script>\n</body>', 1)
+        html = html.replace("</body>", vmodal() + f'\n<script src="../{v("shell.js")}"></script>\n</body>', 1)
         html = with_gtm(html, "../")
         (root / "blog" / f.name).write_text(html)
         print("wrote", root / "blog" / f.name)
