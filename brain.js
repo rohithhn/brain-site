@@ -158,13 +158,16 @@
 
   // ── Viewport + where the brain should sit (set by app.js per scene).
   let W = 0, H = 0, dpr = 1;
+  // The canvas starts right of the site sidebar (CSS --side, 0 on phones); pointer coords are shifted to match.
+  let side = 0;
   // rate scales spontaneous firing: 0 is a sleeping brain, 1 normal, 2+ a busy one.
   const state = { x: 0.7, y: 0.5, scale: 0.42, alpha: 1, region: -1, rate: 1 };
   const target = { ...state };
   const resize = () => {
     // A full-screen canvas at 3x (iPhone) is ~3M pixels a frame; dots and hairlines look the same at 1.25x.
     dpr = Math.min(devicePixelRatio || 1, innerWidth < 760 ? 1.25 : 1.5);
-    W = innerWidth; H = innerHeight;
+    side = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--side")) || 0;
+    W = innerWidth - side; H = innerHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + "px"; canvas.style.height = H + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -203,8 +206,9 @@
   // ── Pointer.
   const mouse = { x: -9999, y: -9999, on: false, px: 0, py: 0, moved: 0 };
   addEventListener("pointermove", (e) => {
-    mouse.moved += Math.hypot(e.clientX - mouse.x, e.clientY - mouse.y) || 0;
-    mouse.x = e.clientX; mouse.y = e.clientY; mouse.on = true; mouse.touch = e.pointerType !== "mouse";
+    const x = e.clientX - side;
+    mouse.moved += Math.hypot(x - mouse.x, e.clientY - mouse.y) || 0;
+    mouse.x = x; mouse.y = e.clientY; mouse.on = true; mouse.touch = e.pointerType !== "mouse";
   }, { passive: true });
   addEventListener("pointerleave", () => { mouse.on = false; });
   // A finger lifts; a cursor doesn't. Don't leave connectors stuck where the last tap was.
@@ -212,8 +216,8 @@
   addEventListener("scroll", () => { if (mouse.on && mouse.touch) mouse.on = false; }, { passive: true });
   document.addEventListener("mouseleave", () => { mouse.on = false; });
   addEventListener("pointerdown", (e) => {
-    if (e.target.closest("a, button, input, pre, table")) return;
-    burst(e.clientX, e.clientY);
+    if (e.target.closest("a, button, input, pre, table, .side")) return;
+    burst(e.clientX - side, e.clientY);
   });
   const nearest = (x, y, r) => {
     const out = [];
@@ -421,6 +425,7 @@
 
   window.Brain = {
     setTarget(o) { Object.assign(target, o); },
+    get side() { return side; },
     burst,
   };
 })();

@@ -1,0 +1,232 @@
+<!--TITLE:The brain's story: Open Agentic Brain and Memory-->
+<!--DESC:The full story of Open Agentic Brain and Memory, told by the brain: how it captures, dreams, ranks and hands context to every AI coding tool.-->
+<!--SCRIPTS:app.js story.js graph.js-->
+<!--REPLACE:<p class="eyebrow">A set of loops, not a chat product</p>|||<p class="eyebrow">How I work</p>-->
+<!--REPLACE:Purpose-built parsers read Claude Code, Codex, Antigravity, Cursor and Kilo Code sessions, starting with the history already on your machine.
+          File watchers pick up new sessions near-live, into one local SQLite store.|||I read your Claude Code, Codex, Antigravity, Cursor and Kilo Code sessions, first the history already on your machine, then each new one as it happens,
+          into one local SQLite store on your machine.-->
+<!--REPLACE:<code>brain dream</code> turns raw observations into a compounding wiki that gets revised, not
+          appended. Resolved struggles become reusable learnings you approve.|||While you sleep, <code>brain dream</code> turns what I heard into a wiki I keep rewriting.
+          When you finally fix something hard, I draft the lesson for you to approve.-->
+<!--REPLACE:BM25 over SQLite FTS, plus outcome scores: how often a learning was injected and whether
+          you marked it helpful. Proven usefulness, not keyword overlap alone.|||I rank by relevance, then by proof: how often a memory was used, and whether you said it helped.
+          What misleads you sinks.-->
+<!--REPLACE:One assembler builds a ~2k-token block into <code>CLAUDE.md</code>, <code>AGENTS.md</code> and
+          <code>GEMINI.md</code>, inside managed markers. Your own text is never touched.|||Before you type, I write a ~2,000-token briefing into <code>CLAUDE.md</code>, <code>AGENTS.md</code> and
+          <code>GEMINI.md</code>, inside my own markers. I never touch your text.-->
+<!--REPLACE:<code>brain eval</code> asks questions about your own history and scores whether retrieval
+          surfaced the answer. Every ranking change is gated on that number.|||<code>brain eval</code> quizzes me on your own history. If a change makes me remember worse,
+          it doesn't ship.-->
+<!--REPLACE:<p class="eyebrow">One store, many tools</p>|||<p class="eyebrow">Where I live</p>-->
+<!--REPLACE:<h2 class="reveal">Every tool plugs into the same brain.</h2>|||<h2 class="reveal">Every tool you use plugs into me.</h2>-->
+<!--REPLACE:<p class="eyebrow">You own the store</p>|||<p class="eyebrow">Who I belong to</p>-->
+<!--REPLACE:<h2 class="reveal">Encrypted with your key. Parked in your repo.</h2>|||<h2 class="reveal">Sealed with your key. Kept in your repo.</h2>-->
+<!--REPLACE:The memory is an <code>age</code>-encrypted blob in a GitHub Release asset on your private repo.
+      The key lives only in each machine's Keychain. A leaked repo or a leaked token exposes nothing readable.|||I travel as one <code>age</code>-encrypted blob, a Release asset on your private repo.
+      My key lives only in your Keychain. A leaked repo or a leaked token exposes nothing readable.-->
+<!--REPLACE:<p class="eyebrow rail-title">And the rest of the brain</p>|||<p class="eyebrow rail-title">A few more things about me</p>-->
+<!--REPLACE:<p class="eyebrow">Hosted memory vs. Open Agentic Brain and Memory</p>|||<p class="eyebrow">Hosted memory vs. me</p>-->
+<!--REPLACE:<p class="eyebrow">Known limits</p>|||<p class="eyebrow">What I can't do yet</p>-->
+
+<!-- Opening: the brain introduces itself -->
+<section class="story voice" id="top" data-toc="Overview" data-story="4" data-b="0.5 0.5 0.6 0.6 1">
+  <div class="story-pin center">
+    <p class="credit">Built by <b>Rohith</b>, <b>Chandan</b> and <b>Sushmita</b></p>
+    <div class="orbit" data-show="1-3" style="--cy:75%">
+      <span style="--x:24%;--y:30%;--i:0;--brand:#d97757"><svg><use href="#l-claudecode"/></svg>Claude Code</span>
+      <span style="--x:78%;--y:26%;--i:1"><svg><use href="#l-codex"/></svg>Codex</span>
+      <span style="--x:14%;--y:62%;--i:2"><svg><use href="#l-cursor"/></svg>Cursor</span>
+      <span style="--x:50%;--y:16%;--i:4;--brand:#4f8dfd"><svg><use href="#l-antigravity"/></svg>Antigravity</span>
+      <span style="--x:86%;--y:64%;--i:5">Kilo Code<small class="beta">beta</small></span>
+    </div>
+    <div class="narr">
+      <div class="beat" data-b="0.5 0.5 0.6 0.16 0" data-bm="0.5 0.75 0.25 0.16 0">
+        <h1 class="line decode-on">One memory for all your AI coding tools.</h1>
+        <p class="note">Claude Code, Cursor, Codex and the rest forget everything when a chat ends, and none of them know what the others learned. I remember for all of them.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#install">Install free <svg><use href="#i-go"/></svg></a>
+          <button type="button" class="btn ghost" data-video><svg><use href="#i-play"/></svg>Watch launch video</button>
+          <a class="btn ghost" href="#agents">See it work</a>
+        </div>
+        <p class="credit inline phone-only">Built by <b>Rohith</b>, <b>Chandan</b> and <b>Sushmita</b></p>
+        <p class="scrollcue" style="justify-content:center"><i></i>Scroll</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.45 0.6 2" data-bm="0.5 0.75 0.25 0.5 0.6 2">
+        <h2 class="line decode-on">Tell one tool. Every tool knows.</h2>
+        <p class="note">Decide something in Claude Code on Monday, and Cursor already knows it on Tuesday. So does your other laptop. You never explain your project twice.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.6 0.85 2.2 2" data-bm="0.5 0.75 0.25 0.9 2.2 2">
+        <h2 class="line decode-on">Most memory starts blank. Yours doesn't have to.</h2>
+        <p class="note">When you install me, you choose: start with the work you've already done with AI, or start fresh. It stays on your computer, and you can delete any of it.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.62 1 1.6" data-bm="0.5 0.75 0.25 1 1.6">
+        <span class="pill"><i class="pulse"></i>Open source · Self-hosted · Encrypted</span>
+        <h2 class="line decode-on">I'm Open Agentic Brain and Memory. I live on your machine, and in <span class="sig">your private GitHub</span>.</h2>
+        <p class="note">No account, and no server of ours. Free and open source.</p>
+        <p class="credit inline phone-only">Built by <b>Rohith</b>, <b>Chandan</b> and <b>Sushmita</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interlude marquee-wrap" data-b="0.5 0.5 0.6 0.3 1">
+  <div class="marquee static" aria-label="Works with">
+    <div class="marquee-track">
+      <span><svg><use href="#l-claudecode"/></svg>Claude Code</span>
+      <span><svg><use href="#l-codex"/></svg>Codex</span>
+      <span><svg><use href="#l-antigravity"/></svg>Antigravity</span>
+      <span><svg><use href="#l-cursor"/></svg>Cursor</span>
+      <span>Kilo Code<small class="beta">beta</small></span>
+      <span><svg><use href="#l-claude"/></svg>Claude Desktop</span>
+      <span><svg><use href="#l-openai"/></svg>ChatGPT desktop</span>
+      <span><svg><use href="#l-github"/></svg>GitHub</span>
+      <span><svg><use href="#l-sqlite"/></svg>SQLite</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="video" data-b="0.5 0.5 0.6 0.18 0.5" data-toc="Launch video">
+  <div class="block-head">
+    <p class="eyebrow">Launch video</p>
+    <h2 class="reveal">Two minutes. Then you'll never re-explain your project.</h2>
+    <p class="sub fade">Watch the brain capture a decision in one tool and hand it to the next.</p>
+  </div>
+  {{VIDEO}}
+</section>
+
+<section class="block" id="agents" data-b="0.5 0.5 0.6 0.12 0.8" data-toc="Every tool">
+  <div class="block-head">
+    <p class="eyebrow">Live in your tools</p>
+    <h2 class="reveal">Same question. Every tool. One memory.</h2>
+    <p class="sub fade">Ask Claude Code, Codex or Cursor the same thing, and each one answers from the same brain. What one tool learns, the others know next time.</p>
+  </div>
+  <div class="agents fade" data-agents>
+    <div class="ag-list" role="tablist" aria-label="Pick a tool">
+      <button type="button" role="tab" aria-selected="true" data-ag="0"><span class="ag-ico" style="--brand:#d97757"><svg><use href="#l-claudecode"/></svg></span><span><b>Claude Code</b><small>Briefing in <code>CLAUDE.md</code>, and every session captured.</small></span><i class="ag-bar"></i></button>
+      <button type="button" role="tab" aria-selected="false" data-ag="1"><span class="ag-ico"><svg><use href="#l-codex"/></svg></span><span><b>Codex</b><small>CLI and desktop app, briefing in <code>AGENTS.md</code>.</small></span><i class="ag-bar"></i></button>
+      <button type="button" role="tab" aria-selected="false" data-ag="2"><span class="ag-ico"><svg><use href="#l-cursor"/></svg></span><span><b>Cursor</b><small>History ingested, memory search over MCP.</small></span><i class="ag-bar"></i></button>
+    </div>
+    <div class="ag-win" aria-live="polite">
+      <div class="ag-top"><span class="dots"><i></i><i></i><i></i></span><span class="ag-title">~/acme-api · <b data-f="tool">Claude Code</b></span><span class="ag-pill"><i></i>brain</span></div>
+      <div class="ag-body">
+        <p class="ag-sys"><svg><use href="#i-mark"/></svg>Briefing loaded from <code data-f="file">CLAUDE.md</code> · 1,840 tokens</p>
+        <p class="ag-you">How do we ship this service?</p>
+        <p class="ag-tool"><svg><use href="#i-mark"/></svg>brain_recall · <span>deploy acme-api</span> <em>3 memories</em></p>
+        <div class="ag-ans"><p data-f="ans"></p></div>
+      </div>
+      <div class="ag-input"><span data-f="ph">Reply to Claude Code…</span><b><svg><use href="#i-go"/></svg></b></div>
+    </div>
+  </div>
+  <div class="also fade"><span>Also works with</span>
+    <a href="connect-antigravity.html" title="Antigravity CLI"><svg><use href="#l-antigravity"/></svg>Antigravity</a>
+    <a href="connect-kilo-code.html" title="Kilo Code">Kilo Code<small class="beta">beta</small></a>
+    <a href="connect-claude-desktop.html" title="Claude Desktop"><svg><use href="#l-claude"/></svg>Claude Desktop</a>
+    <a href="connect-chatgpt-desktop.html" title="ChatGPT desktop"><svg><use href="#l-openai"/></svg>ChatGPT desktop</a>
+    <a class="all" href="connect.html">All tools <svg><use href="#i-go"/></svg></a>
+  </div>
+</section>
+
+<section class="block" id="why" data-b="0.5 0.5 0.6 0.1 0.4" data-toc="Why memory">
+  <div class="block-head">
+    <p class="eyebrow">Why memory</p>
+    <h2 class="reveal">More than a folder of <span class="sig">Markdown files.</span></h2>
+    <p class="sub fade">A hand-kept <code>CLAUDE.md</code> is a good start. It just doesn't keep itself, travel between tools, or know what matters today.</p>
+  </div>
+  <div class="vs fade">
+    <div class="vs-row head"><span></span><span>Hand-kept <code>.md</code> files</span><span class="me"><svg class="mark"><use href="#i-mark"/></svg>Open Agentic Brain</span></div>
+    <div class="vs-row"><span>Who writes it</span><span><svg><use href="#i-x"/></svg>You, by hand, when you remember to</span><span class="me"><svg><use href="#i-check"/></svg>Captured from every session</span></div>
+    <div class="vs-row"><span>Across tools</span><span><svg><use href="#i-x"/></svg>One file per tool, kept in sync by you</span><span class="me"><svg><use href="#i-check"/></svg>One store writes <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>GEMINI.md</code></span></div>
+    <div class="vs-row"><span>A new session loads</span><span><svg><use href="#i-x"/></svg>The whole file, however long it grows</span><span class="me"><svg><use href="#i-check"/></svg>A briefing capped at 2,000 tokens</span></div>
+    <div class="vs-row"><span>Older context</span><span><svg><use href="#i-x"/></svg>Gone, unless someone wrote it down</span><span class="me"><svg><use href="#i-check"/></svg>The model searches the brain when it needs to</span></div>
+    <div class="vs-row"><span>Staying current</span><span><svg><use href="#i-x"/></svg>Stale until someone edits it</span><span class="me"><svg><use href="#i-check"/></svg>Rewritten every night; what misleads sinks</span></div>
+    <div class="vs-row"><span>Your other laptop</span><span><svg><use href="#i-x"/></svg>Copy it over yourself</span><span class="me"><svg><use href="#i-check"/></svg><code>brain sync</code>, encrypted with your key</span></div>
+  </div>
+</section>
+
+<a class="toc-anchor" id="how" data-toc="How it remembers" aria-hidden="true"></a>
+<!--PART:remember.loading-->
+
+<section class="interlude graph-show" id="graph" data-toc="Your brain" data-b="0.5 0.5 0.6 0.1 0.3">
+  <h2 class="line decode-in">Everything you've built, connected.</h2>
+  <p class="note fade">Every project, and the ideas that connect them. Hover, drag, click.</p>
+  <figure class="kg fade" id="kg">
+    <div class="kg-stage">
+      <canvas tabindex="0" role="img" aria-label="Example knowledge graph: five made-up projects as glowing hubs, each surrounded by its concepts, with links between ideas shared across projects. Press Enter to explore, N to step through nodes."></canvas>
+      <div class="kg-tip" aria-hidden="true"></div>
+      <button class="kg-reset" type="button">Reset</button>
+      <p class="kg-hint"></p>
+      <p class="kg-live" aria-live="polite"></p>
+    </div>
+    <figcaption>Example memory with made-up projects. Yours is drawn from your own sessions, in your control panel.</figcaption>
+  </figure>
+</section>
+
+<section class="interlude" id="own" data-toc="Own your memory" data-b="0.5 0.5 0.6 0.22 0.4">
+  <h2 class="line decode-in">Only you can read me.</h2>
+  <p class="note fade">I know your decisions, your code and your mistakes. That shouldn't sit on anyone else's server.</p>
+</section>
+
+<!--INDEX:5-->
+
+<!--PART:remember.access-->
+
+<section class="interlude" id="loop-intro" data-toc="The nightly loop" data-b="0.5 0.5 0.62 0.32 0.25 0">
+  <h2 class="line decode-in">At night, I dream.</h2>
+  <p class="note fade">By morning I know more than I did, and I've thrown away what didn't matter. Here's the loop I run, every day.</p>
+</section>
+
+<!--INDEX:2-->
+
+<section class="interlude" id="numbers" data-toc="Stats for nerds" data-b="0.5 0.5 0.6 0.7 1 4">
+  <h2 class="line decode-in">I check my own work.</h2>
+  <p class="note fade">On a public long-term memory benchmark, this is how I score.</p>
+</section>
+
+<!--INDEX:3-->
+
+<!--PART:remember.numbers-->
+
+<section class="interlude" id="support" data-toc="Supported tools" data-b="0.5 0.5 0.64 1 3">
+  <h2 class="line decode-in">Open a new tool tomorrow. I'm already there.</h2>
+  <p class="note fade">But "supported" can mean three different things. Here they are, kept apart.</p>
+</section>
+
+<!--INDEX:4-->
+
+<!--INDEX:6-->
+
+<section class="interlude" id="honest" data-toc="The honest trade" data-b="0.5 0.5 0.6 0.4 0.6">
+  <h2 class="line decode-in">I'll be straight with you.</h2>
+  <p class="note fade">Hosted memory products are good, and easier to set up. Here's the trade, and what I can't do yet.</p>
+</section>
+
+<!--INDEX:7-->
+
+<!--INDEX:8-->
+
+<section class="story voice" data-story="2" id="soon" data-toc="Install" data-b="0.5 0.5 0.62 0.6 1">
+  <div class="story-pin center">
+    <div class="narr">
+      <div class="beat" data-b="0.5 0.5 0.62 0.9 2">
+        <h2 class="line decode-on">Say it once. I'll remember it everywhere.</h2>
+        <p class="note">One command wires every tool on your machine, creates your private data repo and generates my key. Then I start with the work you've already done.</p>
+      </div>
+      <div class="beat" data-b="0.5 0.5 0.66 1 2.8">
+        <span class="soon-pill big live"><i></i>Open source · Apache-2.0</span>
+        <h2 class="line decode-on">I'm awake. Take me home.</h2>
+        <div class="hero-cta"><a class="btn primary" href="#install">Install free <svg><use href="#i-go"/></svg></a><button type="button" class="btn ghost" data-video><svg><use href="#i-play"/></svg>Watch launch video</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="install" data-b="0.5 0.5 0.7 0.55 2.4">
+  <div class="cta-card spot">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <p class="eyebrow">Start with one command <span class="free">Free · Apache-2.0</span></p>
+    <h2>Install your brain in two minutes.</h2>
+    <p class="sub">One command wires every tool on your machine, creates your private data repo and generates your key. Then it turns the AI history already on your computer into your first memories.</p>
+<!--PART:install-->
+    {{FLOW}}
+  </div>
+</section>

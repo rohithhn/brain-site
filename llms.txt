@@ -20,6 +20,8 @@ Built by Rohith, Chandan and Sushmita. Source code: https://github.com/rohithhn/
 - [Home](https://rohithhn.github.io/brain-site/): what Open Agentic Brain and Memory is and how it works
 - [Privacy](https://rohithhn.github.io/brain-site/privacy.html): what the website and the software do with data
 - [Contact](https://rohithhn.github.io/brain-site/contact.html)
+- [Connect your tools](https://rohithhn.github.io/brain-site/connect.html): what Claude Code, Codex, Cursor, Antigravity CLI, Kilo Code, Claude Desktop and ChatGPT desktop each get (capture, push, pull), with a page per tool
+- [Launch video](https://www.youtube.com/watch?v=hHqga63iSIg): a two-minute walkthrough
 
 ## Guides
 

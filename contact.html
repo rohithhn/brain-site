@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-side">
 <head>
 <!-- Google tag (gtag.js), loaded only after cookie consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
@@ -31,8 +31,10 @@ try{if(localStorage.getItem('ab-consent')==='granted')abLoadGA();}catch(e){}</sc
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="story.css">
+<link rel="stylesheet" href="shell.css">
+
 </head>
-<body>
+<body class="no-side">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="i-mark" viewBox="112 122 288 288" fill="none"><linearGradient id="ab-ink" x1="96" y1="96" x2="416" y2="416" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c3c4ff"/><stop offset="1" stop-color="#7f81f7"/></linearGradient><g transform="translate(256 266) scale(.86) translate(-256 -266)"><g stroke="url(#ab-ink)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"><path d="M244 118c-34-22-86-10-98 32-40 6-62 46-46 82-26 22-26 66 2 88-6 42 28 76 70 72 14 26 46 36 72 22"/><path d="M268 118c34-22 86-10 98 32 40 6 62 46 46 82 26 22 26 66-2 88 6 42-28 76-70 72-14 26-46 36-72 22"/></g><path d="M256 150v236" stroke="url(#ab-ink)" stroke-width="26" stroke-linecap="round" opacity=".9"/><path d="M190 232L322 232L256 324Z" stroke="#ededef" stroke-opacity=".85" stroke-width="16" stroke-linejoin="round"/><g fill="#ffffff"><circle cx="190" cy="232" r="26"/><circle cx="322" cy="232" r="26"/><circle cx="256" cy="324" r="26"/></g></g></symbol>
 <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
@@ -55,15 +57,33 @@ try{if(localStorage.getItem('ab-consent')==='granted')abLoadGA();}catch(e){}</sc
 <symbol id="l-sqlite" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M21.678.521c-1.032-.92-2.28-.55-3.513.544a8.71 8.71 0 0 0-.547.535c-2.109 2.237-4.066 6.38-4.674 9.544.237.48.422 1.093.544 1.561a13.044 13.044 0 0 1 .164.703s-.019-.071-.096-.296l-.05-.146a1.689 1.689 0 0 0-.033-.08c-.138-.32-.518-.995-.686-1.289-.143.423-.27.818-.376 1.176.484.884.778 2.4.778 2.4s-.025-.099-.147-.442c-.107-.303-.644-1.244-.772-1.464-.217.804-.304 1.346-.226 1.478.152.256.296.698.422 1.186.286 1.1.485 2.44.485 2.44l.017.224a22.41 22.41 0 0 0 .056 2.748c.095 1.146.273 2.13.5 2.657l.155-.084c-.334-1.038-.47-2.399-.41-3.967.09-2.398.642-5.29 1.661-8.304 1.723-4.55 4.113-8.201 6.3-9.945-1.993 1.8-4.692 7.63-5.5 9.788-.904 2.416-1.545 4.684-1.931 6.857.666-2.037 2.821-2.912 2.821-2.912s1.057-1.304 2.292-3.166c-.74.169-1.955.458-2.362.629-.6.251-.762.337-.762.337s1.945-1.184 3.613-1.72C21.695 7.9 24.195 2.767 21.678.521m-18.573.543A1.842 1.842 0 0 0 1.27 2.9v16.608a1.84 1.84 0 0 0 1.835 1.834h9.418a22.953 22.953 0 0 1-.052-2.707c-.006-.062-.011-.141-.016-.2a27.01 27.01 0 0 0-.473-2.378c-.121-.47-.275-.898-.369-1.057-.116-.197-.098-.31-.097-.432 0-.12.015-.245.037-.386a9.98 9.98 0 0 1 .234-1.045l.217-.028c-.017-.035-.014-.065-.031-.097l-.041-.381a32.8 32.8 0 0 1 .382-1.194l.2-.019c-.008-.016-.01-.038-.018-.053l-.043-.316c.63-3.28 2.587-7.443 4.8-9.791.066-.069.133-.128.198-.194Z"/></symbol>
 <symbol id="l-apple" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
 <symbol id="l-node" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.189-0.047-0.271,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.189,0.139,0.235l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-2.026-0.551L2.28,18.675c-0.57-0.329-0.922-0.945-0.922-1.604V6.921 c0-0.659,0.353-1.275,0.922-1.603l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.794,5.082c0.57,0.329,0.924,0.944,0.924,1.603 v10.15c0,0.659-0.354,1.273-0.924,1.604l-8.794,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-2.763c-2.731-0.361-3.009-0.548-3.009-1.187c0-0.528,0.235-1.233,2.258-1.233 c1.807,0,2.473,0.389,2.747,1.607c0.024,0.115,0.129,0.199,0.247,0.199h1.141c0.071,0,0.138-0.031,0.186-0.081 c0.048-0.054,0.074-0.123,0.067-0.196c-0.177-2.098-1.571-3.076-4.388-3.076c-2.508,0-4.004,1.058-4.004,2.833 c0,1.925,1.488,2.457,3.895,2.695c2.88,0.282,3.103,0.703,3.103,1.269c0,0.983-0.789,1.402-2.642,1.402 c-2.327,0-2.839-0.584-3.011-1.742c-0.02-0.124-0.126-0.215-0.253-0.215h-1.137c-0.141,0-0.254,0.112-0.254,0.253 c0,1.482,0.806,3.248,4.655,3.248C17.501,17.007,19.099,15.91,19.099,13.993z"/></symbol>
-</defs></svg>
+</defs><symbol id="l-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+<symbol id="l-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+<symbol id="l-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></symbol>
+<symbol id="l-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/></g><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-go" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M7 7l10 10M17 7 7 17"/></symbol></svg>
 <canvas id="brain" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"><span></span></div>
-<header class="nav">
-  <a class="brand" href="index.html"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Open Agentic Brain and Memory</a>
-  <nav><a href="blog/index.html">Blog</a><a href="privacy.html">Privacy</a><a href="contact.html" aria-current="page">Contact</a><a class="gh" href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" aria-label="Open Agentic Brain and Memory on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a><span class="soon-pill live"><i></i>Open source · Apache-2.0</span></nav>
-</header>
+
+<div class="annc" role="region" aria-label="Announcement">
+  <span class="annc-long">Open Agentic Brain and Memory scores 94.2% on LongMemEval-S, reading 75% fewer tokens.</span><span class="annc-short">94.2% on LongMemEval-S, 75% fewer tokens.</span>
+  <span class="annc-sep" aria-hidden="true">·</span>
+  <a href="index.html#numbers">Read results <svg aria-hidden="true"><use href="#i-go"/></svg></a>
+</div>
+<header class="nav topnav"><div class="tn-in">
+  <a class="brand" href="index.html"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span><span class="tn-name">Open Agentic Brain and Memory</span></a>
+  <nav class="tn-links" id="tn-links" aria-label="Main"><a href="index.html">Home</a><a href="connect.html">Connect</a><a href="story.html">Story</a><a href="blog/index.html">Blog</a><a href="contact.html" aria-current="page">Contact</a><a class="tn-gh" href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" rel="noopener" aria-label="GitHub"><svg aria-hidden="true"><use href="#l-github"/></svg><span>GitHub</span></a></nav>
+  <a class="go sm tn-cta" href="index.html#install">Install free <svg aria-hidden="true"><use href="#i-go"/></svg></a>
+  <button type="button" class="menu" aria-controls="tn-links" aria-expanded="false" aria-label="Menu"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+</div></header>
+<div class="page">
 <main>
 
 <section class="doc" data-b="0.78 0.5 0.32 0.35 0.6">
@@ -83,15 +103,28 @@ try{if(localStorage.getItem('ab-consent')==='granted')abLoadGA();}catch(e){}</sc
 
 </main>
 
-<footer class="foot">
-  <span class="brand small"><svg class="mark"><use href="#i-mark"/></svg>Open Agentic Brain and Memory</span>
-  <span>Built by Rohith, Chandan and Sushmita</span>
-  <span>Open source (Apache-2.0), self-hosted memory for AI coding tools.</span>
-  <a class="gh" href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" aria-label="Open Agentic Brain and Memory on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a>
-  <a href="mailto:agenticbrain@zohomail.in">agenticbrain@zohomail.in</a>
+<footer class="foot2">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="index.html"><span class="logo"><svg class="mark"><use href="#i-mark"/></svg></span>Open Agentic Brain and Memory</a>
+      <p>One private memory for every AI coding tool. Open source, self-hosted, encrypted with your key.</p>
+      <div class="social"><a href="https://www.youtube.com/@OpenABandM" aria-label="YouTube" title="YouTube" rel="me noopener" target="_blank"><svg aria-hidden="true"><use href="#l-youtube"/></svg></a><a href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" aria-label="GitHub" title="GitHub" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="#l-github"/></svg></a></div>
+    </div>
+    <div><p>Product</p><a href="index.html#install">Install</a><a href="index.html#numbers">Benchmarks</a><a href="index.html#video">Launch video</a><a href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" rel="noopener" target="_blank">Source code</a><a href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory/releases" rel="noopener" target="_blank">Releases</a></div>
+    <div><p>Connect</p><a href="connect-claude-code.html">Claude Code</a><a href="connect-codex.html">Codex</a><a href="connect-cursor.html">Cursor</a><a href="connect-antigravity.html">Antigravity CLI</a><a href="connect-kilo-code.html">Kilo Code</a><a href="connect-claude-desktop.html">Claude Desktop</a><a href="connect-chatgpt-desktop.html">ChatGPT desktop</a><a href="connect.html">All tools</a></div>
+    <div><p>Stories</p><a href="story.html">The full story</a><a href="week.html">A week</a><a href="voice.html">I remember</a><a href="journey.html">One memory</a></div>
+    <div><p>Resources</p><a href="blog/index.html">Blog</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a><a href="mailto:agenticbrain@zohomail.in">Email us</a></div>
+    <div><p>Community</p><a href="https://www.youtube.com/@OpenABandM" rel="noopener" target="_blank">YouTube</a><a href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" rel="noopener" target="_blank">GitHub</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 Built by Rohith, Chandan and Sushmita. Apache-2.0.</span><span>No account, no server of ours.</span></div>
 </footer>
+</div>
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Launch video" hidden data-id="hHqga63iSIg">
+  <div class="vmodal-box"><button type="button" class="vmodal-x" aria-label="Close video"><svg aria-hidden="true"><use href="#i-close"/></svg></button><div class="vframe"></div></div>
+</div>
 <script src="brain.js"></script>
 <script src="story.js"></script>
+<script src="shell.js"></script>
 <div class="ab-consent" role="dialog" aria-live="polite" aria-label="Cookie choice" hidden>
 <p>We use cookies to count visits and see which pages are read. Nothing else, and only if you agree. <a href="privacy.html">Privacy</a></p>
 <div><button type="button" data-c="denied">Decline</button><button type="button" data-c="granted" class="ok">Accept</button></div>

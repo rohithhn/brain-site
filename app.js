@@ -241,7 +241,8 @@
     } else if (mode === "tools") {
       const core = $(".core");
       const r = core.getBoundingClientRect();
-      Brain.setTarget({ x: (r.left + r.width / 2) / innerWidth, y: (r.top + r.height / 2) / innerHeight,
+      const side = Brain.side || 0;
+      Brain.setTarget({ x: (r.left + r.width / 2 - side) / (innerWidth - side), y: (r.top + r.height / 2) / innerHeight,
         scale: small() ? 0.13 : 0.15, alpha: 1, region: -1 });
     } else {
       Brain.setTarget({ ...(SPOTS[mode] || SPOTS.dim)(), region: mode === "loop" ? LOOP_REGION[Math.max(0, step)] : -1 });
