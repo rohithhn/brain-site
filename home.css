@@ -236,4 +236,10 @@
   /* phones: never hide content behind scroll-in animations */
   .home .fade { opacity: 1 !important; transform: none !important; transition: none !important; }
   .home .kg-stage { height: 360px; }
+  .story[id="top"] .story-pin { align-items: start !important; }
+  .story[id="top"] .narr { align-self: start; }
+  .story[id="top"] .narr .beat { align-self: start; }
+  .story[id="top"] .scrollcue { display: none; }
+  .story[id="top"] .hero-pill { margin-bottom: 18px; }
+  .story[id="top"] .cta-row { margin-top: 22px; }
 }
