@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LongMemEval and LoCoMo Explained: How to Benchmark AI Memory</title>
+<meta name="description" content="What LongMemEval and LoCoMo measure, how their question types and scores work, retrieval metrics vs answer accuracy, LLM judges, and eight questions to ask before you trust any AI memory benchmark claim.">
+<meta name="keywords" content="LongMemEval, LoCoMo benchmark, AI memory benchmark, LongMemEval-S, LongMemEval-M, LLM as a judge, memory benchmark results, recall@k, agent memory evaluation, long-term memory benchmark">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Rohith, Chandan and Sushmita">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://rohithhn.github.io/brain-site/blog/ai-memory-benchmarks-longmemeval-locomo.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rohithhn.github.io/brain-site/blog/ai-memory-benchmarks-longmemeval-locomo.html">
+<meta property="og:site_name" content="Open Agentic Brain and Memory">
+<meta property="og:title" content="LongMemEval and LoCoMo explained: how to benchmark AI memory">
+<meta property="og:description" content="What the two standard memory benchmarks measure, and how to tell a fair result from a flattering one.">
+<meta property="og:image" content="https://rohithhn.github.io/brain-site/img/og.png">
+<meta property="article:published_time" content="2026-10-26">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rohithhn.github.io/brain-site/img/og.png">
+<meta name="twitter:title" content="LongMemEval and LoCoMo explained: how to benchmark AI memory">
+<meta name="twitter:description" content="Question types, scores, LLM judges, and eight questions to ask of any benchmark claim.">
+{{HEAD}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": "https://rohithhn.github.io/brain-site/blog/ai-memory-benchmarks-longmemeval-locomo.html",
+      "headline": "LongMemEval and LoCoMo explained: how to benchmark AI memory",
+      "description": "What LongMemEval and LoCoMo measure, their question types and scores, retrieval metrics vs answer accuracy, LLM judges, and how to judge benchmark claims.",
+      "datePublished": "2026-10-26",
+      "dateModified": "2026-10-26",
+      "inLanguage": "en",
+      "image": "https://rohithhn.github.io/brain-site/img/og.png",
+      "author": [{ "@type": "Person", "name": "Rohith" }, { "@type": "Person", "name": "Chandan" }, { "@type": "Person", "name": "Sushmita" }],
+      "publisher": { "@type": "Organization", "name": "Open Agentic Brain and Memory", "logo": { "@type": "ImageObject", "url": "https://rohithhn.github.io/brain-site/img/icon-192.png" } },
+      "keywords": "LongMemEval, LoCoMo, AI memory benchmark, LLM as a judge, recall@k"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is LongMemEval?",
+          "acceptedAnswer": { "@type": "Answer", "text": "LongMemEval is a public benchmark of 500 questions about long chat histories between a user and an assistant. It tests extracting facts, reasoning across sessions, handling updated information, reasoning about time, and knowing when to say the answer isn't there. LongMemEval-S puts roughly 50 sessions behind each question; LongMemEval-M puts about 500 sessions, around 1.27 million tokens." } },
+        { "@type": "Question", "name": "What is the LoCoMo benchmark?",
+          "acceptedAnswer": { "@type": "Answer", "text": "LoCoMo is a benchmark of 10 very long conversations between two people, with 1,986 questions in five categories: single-hop, multi-hop, temporal, open-domain and adversarial. Most published results score the first four categories, 1,540 questions, with an LLM judge." } },
+        { "@type": "Question", "name": "What is the difference between retrieval recall and answer accuracy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Retrieval recall asks whether the right evidence was found in the top results. Answer accuracy asks whether a model, given what was retrieved, produced a correct answer, usually graded by an LLM judge. They are different numbers and should not be compared with each other." } },
+        { "@type": "Question", "name": "Are AI memory benchmark scores comparable between products?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only if the answering model, the judge model and prompt, the question set and the scored categories are the same. Scores from different setups can differ by several points for the same system, so read cross-product comparisons as direction rather than a precise ranking." } },
+        { "@type": "Question", "name": "What is a good LongMemEval score?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Published end-to-end results for strong memory systems on LongMemEval-S cluster in the low-to-mid 90s percent in 2026. Our own result is 94.2% with a Claude reader and judge, and 93.4% when the same answers are re-graded by a GPT judge." } }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rohithhn.github.io/brain-site/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rohithhn.github.io/brain-site/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "LongMemEval and LoCoMo explained", "item": "https://rohithhn.github.io/brain-site/blog/ai-memory-benchmarks-longmemeval-locomo.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+{{SPRITE}}
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../img/icon.svg" alt="" width="34" height="34">Open Agentic Brain and Memory</a>
+  <nav><a href="index.html" aria-current="page">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav>
+</header>
+<main>
+  <section class="post-hero">
+    <div>
+      <p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / Guide</p>
+      <p class="kicker">Guide · 26 October 2026 · 9 min read</p>
+      <h1>LongMemEval and LoCoMo explained: how to benchmark AI memory</h1>
+      <p class="lede">Every AI memory product quotes the same two benchmarks. Here's what LongMemEval and LoCoMo actually
+      measure, how their scores work, why two "LoCoMo scores" can mean different things, and eight questions to ask
+      before you trust any number, including ours.</p>
+      <p class="byline">By <b>Rohith</b>, <b>Chandan</b> and <b>Sushmita</b></p>
+      <a class="btn primary" href="#questions">Jump to the 8 questions <span aria-hidden="true">→</span></a>
+    </div>
+    <figure class="ctx" aria-label="Our results on the two benchmarks">
+      <figcaption>Our results <em>all answers published</em></figcaption>
+      <div class="bars" role="table" aria-label="Benchmark results">
+        <div class="bar me" role="row"><span role="rowheader">LongMemEval-S</span><i style="--v:.942"></i><b role="cell">94.2</b></div>
+        <div class="bar me" role="row"><span role="rowheader">LongMemEval-M</span><i style="--v:.83"></i><b role="cell">83.0</b></div>
+        <div class="bar me" role="row"><span role="rowheader">LoCoMo</span><i style="--v:.866"></i><b role="cell">86.6</b></div>
+        <div class="bar" role="row"><span role="rowheader">LoCoMo, full conv.</span><i style="--v:.893"></i><b role="cell">89.3</b></div>
+      </div>
+      <p class="ctx-note">End-to-end answer accuracy, LLM-judged. The last row is the same model reading the whole
+      conversation, the honest baseline to compare against.</p>
+    </figure>
+  </section>
+
+  <section class="tldr" aria-label="Summary">
+    <h2>In short</h2>
+    <dl class="tldr-grid">
+      <div><dt>LongMemEval</dt><dd>500 questions about long user–assistant chat histories, in S (~50 sessions) and M (~500 sessions) sizes.</dd></div>
+      <div><dt>LoCoMo</dt><dd>10 very long two-person conversations; usually 1,540 questions in four categories are scored.</dd></div>
+      <div><dt>Two kinds of score</dt><dd>Retrieval recall (was the evidence found?) and answer accuracy (was the answer right?). Don't mix them.</dd></div>
+      <div><dt>Read carefully</dt><dd>Same models, same judge, same categories, a full-context baseline, published answers. Otherwise it's direction, not a ranking.</dd></div>
+    </dl>
+  </section>
+
+  <div class="post-layout">
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#why">Why benchmark memory</a></li>
+        <li><a href="#longmemeval">LongMemEval</a></li>
+        <li><a href="#locomo">LoCoMo</a></li>
+        <li><a href="#metrics">Recall vs accuracy</a></li>
+        <li><a href="#judges">LLM judges</a></li>
+        <li><a href="#questions">8 questions to ask</a></li>
+        <li><a href="#ours">Our results</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
+    <article class="post">
+      <h2 id="why">Why benchmark AI memory at all?</h2>
+      <p class="answer"><strong>Because "it remembers" is easy to demo and hard to prove.</strong> A memory layer can
+      look great on three hand-picked questions and quietly miss the fourth. Public benchmarks put hundreds of
+      questions with known answers in front of it, so the miss rate shows.</p>
+      <p>Two benchmarks have become the standard for long-term memory: LongMemEval (published at ICLR 2025) and LoCoMo
+      (published at ACL 2024). Almost every memory product quotes one or both.</p>
+
+      <h2 id="longmemeval">What is LongMemEval?</h2>
+      <p class="answer"><strong>500 questions about long chat histories between a user and an assistant</strong>, each
+      with the answer hidden somewhere in dozens or hundreds of past sessions.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Variant</th><th scope="col">History per question</th><th scope="col">Fits in a context window?</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">LongMemEval-S</th><td>About 50 sessions, roughly 500 turns</td><td>In large models, yes</td></tr>
+            <tr><th scope="row">LongMemEval-M</th><td>About 500 sessions, around 1.27 million tokens</td><td>No current model</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The questions cover six kinds of memory work:</p>
+      <div class="feature-grid">
+        <div><h3>Facts the user stated</h3><p>"What's my dog's name?" from one session.</p></div>
+        <div><h3>Facts the assistant said</h3><p>Recalling the assistant's own earlier answer.</p></div>
+        <div><h3>Preferences</h3><p>Using what the user likes when answering.</p></div>
+        <div><h3>Knowledge updates</h3><p>The fact changed later; use the newest version.</p></div>
+        <div><h3>Temporal reasoning</h3><p>"How long after X did Y happen?"</p></div>
+        <div><h3>Multi-session</h3><p>Combining evidence spread across several chats.</p></div>
+      </div>
+      <p>Thirty of the 500 are <strong>abstention</strong> questions: the answer isn't in the history, and the right
+      response is to say so. They catch systems that guess confidently.</p>
+
+      <h2 id="locomo">What is the LoCoMo benchmark?</h2>
+      <p class="answer"><strong>10 very long conversations between two people, with 1,986 questions about them.</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Category</th><th scope="col">Questions</th><th scope="col">What it tests</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Single-hop</th><td>841</td><td>One fact from one turn</td></tr>
+            <tr><th scope="row">Temporal</th><td>321</td><td>When something happened</td></tr>
+            <tr><th scope="row">Multi-hop</th><td>282</td><td>Combining facts across sessions</td></tr>
+            <tr><th scope="row">Open-domain</th><td>96</td><td>Common-sense inference about the people</td></tr>
+            <tr><th scope="row">Adversarial</th><td>446</td><td>Questions with no valid answer</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Most published results score the first four categories, <strong>1,540 questions</strong>, and leave the
+      adversarial category out. One trap: the dataset labels categories with numbers that don't follow the order
+      papers list them in, so it's easy to report "multi-hop" with the wrong questions. Check the mapping against the
+      data itself.</p>
+      <p>Each LoCoMo conversation is about 20,000 tokens, so it fits in any modern model's context. That makes
+      "give the model the whole conversation" a fair and important baseline.</p>
+
+      <h2 id="metrics">Retrieval recall vs answer accuracy: what's the difference?</h2>
+      <p class="answer"><strong>Recall measures the search. Accuracy measures the answer.</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">Retrieval recall (e.g. recall@5)</th><th scope="col">Answer accuracy (QA)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Question asked</th><td>Was the evidence in the top results?</td><td>Was the final answer correct?</td></tr>
+            <tr><th scope="row">Needs an LLM?</th><td>No</td><td>Yes: one to answer, one to judge</td></tr>
+            <tr><th scope="row">Typical numbers</th><td>Often high 90s</td><td>Lower, and depends on the models used</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Both are useful. Recall tells you the memory found the right material; accuracy tells you the whole system
+      worked. Just never compare one product's recall with another's accuracy.</p>
+
+      <h2 id="judges">How do LLM judges work, and can you trust them?</h2>
+      <p class="answer"><strong>A second model compares each answer with the gold answer and labels it right or wrong.</strong></p>
+      <p>LLM judges are lenient on wording (that's the point: "May 7th" and "7 May" are both right), but they're still
+      models with their own biases. Two simple checks make a judged score much more credible: grade the same answers
+      with a judge from a different model family and report how often they agree, and publish every answer and verdict
+      so anyone can re-grade them.</p>
+
+      <h2 id="questions">8 questions to ask before you trust a memory benchmark claim</h2>
+      <p class="answer"><strong>Ask these of every number, ours included.</strong></p>
+      <ol class="timeline">
+        <li><b>Recall or accuracy?</b> Which kind of score is it?</li>
+        <li><b>Which variant and categories?</b> LongMemEval-S or M? LoCoMo with or without adversarial questions?</li>
+        <li><b>Which models answered and judged?</b> A stronger reader raises the score without changing the memory.</li>
+        <li><b>Compared with what?</b> Is there a full-context baseline on the same model, or only other products' self-reported numbers?</li>
+        <li><b>At what cost?</b> Tokens per question and price, not just accuracy.</li>
+        <li><b>Is the judge checked?</b> A second judge from another model family, with agreement reported.</li>
+        <li><b>Was it tuned on the test?</b> Settings chosen on a held-out half are more honest than settings tuned on the whole set.</li>
+        <li><b>Can you verify it?</b> Published harness, per-question answers and verdicts.</li>
+      </ol>
+
+      <h2 id="ours">How does our memory score?</h2>
+      <p class="answer"><strong>Here's ours, held to the same eight questions.</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Benchmark</th><th scope="col">Score</th><th scope="col">Setup</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">LongMemEval-S, accuracy</th><td class="yes">94.2%</td><td>Claude Sonnet reads and judges; 93.4% with a GPT judge, 98.8% agreement</td></tr>
+            <tr><th scope="row">LongMemEval-S, recall@5</th><td class="yes">98.3%</td><td>Session with the answer in the top five, 470 answerable questions</td></tr>
+            <tr><th scope="row">LongMemEval-M, accuracy</th><td class="yes">83.0%</td><td>~1.27M tokens per question; reader sees about 98% less text</td></tr>
+            <tr><th scope="row">LoCoMo, accuracy</th><td class="yes">86.6</td><td>1,540 questions; same model reading the whole conversation scores 89.3</td></tr>
+            <tr><th scope="row">LoCoMo, cost</th><td class="yes">$0.73</td><td>vs $3.36 for the whole conversation, same model</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Full context beats memory on LoCoMo when the conversation fits, and we say so: memory reaches 97% of that
+      score with 18% of the tokens. On LongMemEval-M the history doesn't fit at all, and memory is the only option.
+      The harness, every answer and every verdict are in our repository. More on the trade-off in
+      <a href="long-context-vs-rag-vs-memory.html">long context vs RAG vs memory</a>.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>What is LongMemEval?</summary>
+          <p>A benchmark of 500 questions about long user–assistant chat histories, in an S size (~50 sessions per question) and an M size (~500 sessions, ~1.27M tokens).</p></details>
+        <details><summary>What is the LoCoMo benchmark?</summary>
+          <p>10 very long two-person conversations with 1,986 questions in five categories; most results score four categories, 1,540 questions, with an LLM judge.</p></details>
+        <details><summary>What's the difference between recall and answer accuracy?</summary>
+          <p>Recall: was the evidence found? Accuracy: was the final answer right? Don't compare one with the other.</p></details>
+        <details><summary>Are scores comparable between products?</summary>
+          <p>Only with the same answering model, judge, question set and categories. Otherwise read them as direction, not a precise ranking.</p></details>
+        <details><summary>What is a good LongMemEval score?</summary>
+          <p>Strong memory systems published in 2026 cluster in the low-to-mid 90s on LongMemEval-S. Ours is 94.2% (93.4% with a GPT judge).</p></details>
+      </div>
+      <p class="fine">Our figures: LongMemEval (cleaned release) and LoCoMo, measured October 2026 with the same model answering and judging within each comparison. Dataset sizes and categories as published by the benchmarks' authors.</p>
+
+      <section class="cta-box">
+        <span class="soon live"><i></i>Open source · Apache-2.0</span>
+        <h2>Benchmarked in public. Every answer published.</h2>
+        <p>Open Agentic Brain and Memory is an open-source, self-hosted memory for AI coding agents. The benchmark scripts,
+        per-question answers and judge prompts ship in the repo, so you can rerun every number on this page.</p>
+        <div class="cmd"><code>curl -fsSL https://raw.githubusercontent.com/rohithhn/Open-Agentic-Brain-and-Memory/main/install.sh | bash</code><button class="copy" type="button" aria-label="Copy the install command" onclick="var b=this,c=b.previousElementSibling,d=function(){b.textContent='Copied';b.classList.add('ok');setTimeout(function(){b.textContent='Copy';b.classList.remove('ok')},1600)},f=function(){var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r);try{if(document.execCommand('copy'))d()}catch(e){}};navigator.clipboard&&window.isSecureContext?navigator.clipboard.writeText(c.textContent).then(d,f):f()">Copy</button></div>
+        <div class="row"><a class="btn primary" href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory"><svg><use href="#l-github"/></svg>Get it on GitHub</a><a class="btn ghost" href="../index.html">See how it works</a><a class="btn ghost" href="index.html">More from the blog</a></div>
+      </section>
+    </article>
+  </div>
+</main>
+<footer class="blog-foot">
+  <a href="../index.html">Home</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><a class="gh" href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" aria-label="Open Agentic Brain and Memory on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a><span>Built by Rohith, Chandan and Sushmita</span>
+</footer>
+<script>
+  (() => {
+    const links = [...document.querySelectorAll(".toc a")];
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll(".post h2[id]").forEach((h) => io.observe(h));
+  })();
+</script>
+</body>
+</html>
