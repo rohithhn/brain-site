@@ -25,6 +25,7 @@ Built by Rohith, Chandan and Sushmita. Source code: https://github.com/rohithhn/
 
 ## Guides
 
+- [Shared AI memory for engineering teams](https://rohithhn.github.io/brain-site/blog/shared-ai-memory-for-engineering-teams.html): explains how a persistent, reviewable store of decisions, conventions, and pitfalls lets every developer's AI agent share context, with owners, review, expiry, and access control.
 - [LongMemEval and LoCoMo explained](https://rohithhn.github.io/brain-site/blog/ai-memory-benchmarks-longmemeval-locomo.html): what the two standard AI memory benchmarks test, dataset sizes and question types, recall vs answer accuracy, LLM judges, common comparison traps and our measured results
 - [Using multiple AI coding agents without losing context](https://rohithhn.github.io/brain-site/blog/use-multiple-ai-coding-agents.html): why developers use several agents, four ways to share context between tools, a handoff checklist and multi-agent workflows
 - [MCP memory server](https://rohithhn.github.io/brain-site/blog/mcp-memory-server.html): what an MCP memory server is, push vs pull memory, which apps can use it (Claude Desktop, Claude Code, Cursor, Codex, ChatGPT desktop) and how to set one up
