@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to Find and Fix a Wrong Memory Your AI Coding Agents Repeat</title>
+<meta name="description" content="Search the shared memory for a bad decision, see which tools picked it up, edit or delete it, and confirm the fix reached Claude Code, Codex and Cursor, with a worked Redis example and how to stop it coming back.">
+<meta name="keywords" content="wrong AI agent memory, fix wrong memory AI coding agent, stale memory AI coding agents, outdated AI memory, incorrect agent memory, edit or delete AI memory, shared memory Claude Code Codex Cursor, Memory view localhost, search agent memory, AI agent keeps repeating wrong answer">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Rohith, Chandan and Sushmita">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://rohithhn.github.io/brain-site/blog/how-to-find-and-fix-a-wrong-memory-your-ai-coding-agents-repeat.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rohithhn.github.io/brain-site/blog/how-to-find-and-fix-a-wrong-memory-your-ai-coding-agents-repeat.html">
+<meta property="og:site_name" content="Open Agentic Brain and Memory">
+<meta property="og:title" content="How to Find and Fix a Wrong Memory Your AI Coding Agents Repeat">
+<meta property="og:description" content="Search the shared memory, find the bad decision, correct it, and check Claude Code, Codex and Cursor all see the fix.">
+<meta property="og:image" content="https://rohithhn.github.io/brain-site/img/og.png">
+<meta property="article:published_time" content="2026-10-28">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rohithhn.github.io/brain-site/img/og.png">
+<meta name="twitter:title" content="How to Find and Fix a Wrong Memory Your AI Coding Agents Repeat">
+<meta name="twitter:description" content="Find a wrong memory in the Memory view, fix it once, and every coding agent sees the fix.">
+{{HEAD}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "mainEntityOfPage": "https://rohithhn.github.io/brain-site/blog/how-to-find-and-fix-a-wrong-memory-your-ai-coding-agents-repeat.html",
+      "headline": "How to Find and Fix a Wrong Memory Your AI Coding Agents Repeat",
+      "description": "Search the shared memory for a bad decision, see which tools picked it up, edit or delete it, and confirm the fix reached Claude Code, Codex and Cursor, with a worked Redis example and how to stop it coming back.",
+      "datePublished": "2026-10-28",
+      "dateModified": "2026-10-28",
+      "inLanguage": "en",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Rohith"
+        },
+        {
+          "@type": "Person",
+          "name": "Chandan"
+        },
+        {
+          "@type": "Person",
+          "name": "Sushmita"
+        }
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Open Agentic Brain and Memory",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://rohithhn.github.io/brain-site/img/icon-192.png"
+        }
+      },
+      "keywords": "wrong AI agent memory, fix wrong memory AI coding agent, stale memory AI coding agents, outdated AI memory, incorrect agent memory, edit or delete AI memory, shared memory Claude Code Codex Cursor, Memory view localhost, search agent memory, AI agent keeps repeating wrong answer"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Wrong memory",
+      "description": "A stored decision, fact or lesson that no longer matches your codebase, and that every connected AI coding agent keeps reading as if it were true."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can an agent re-create a memory I deleted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, if the same decision is stated again in a later session, it can be captured again. Correcting and pinning the right version works better than a bare delete, because it gives agents the true answer to find first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I edit or delete a wrong memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Edit it when the topic is still relevant and only the facts changed. Delete it when it is a duplicate, an echo of a removed feature, or was never correct. Deletes can be undone, so a mistake costs little."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does deleting a memory affect past sessions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It changes what future sessions are told, not what an earlier conversation already read. Start a new session in each tool to see the corrected memory."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I stop agents from inferring bad lessons?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Review drafted learnings in the Memory view and dismiss any that overgeneralise from one project or one bug. Approved lessons can be marked not helpful later if they turn out to mislead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my memory data sent anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no account and no server of ours. Memory is stored locally in memory.db . Optional backups are age-encrypted, with the key kept in your OS Keychain, and go only to your own private GitHub repo."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rohithhn.github.io/brain-site/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://rohithhn.github.io/brain-site/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to Find and Fix a Wrong Memory Your AI Coding Agents Repeat",
+          "item": "https://rohithhn.github.io/brain-site/blog/how-to-find-and-fix-a-wrong-memory-your-ai-coding-agents-repeat.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+{{SPRITE}}
+<header class="site">
+  <a class="brand" href="../index.html"><img src="../img/icon.svg" alt="" width="34" height="34">Open Agentic Brain and Memory</a>
+  <nav><a href="index.html" aria-current="page">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a></nav>
+</header>
+<main>
+  <section class="post-hero">
+    <div>
+      <p class="crumbs"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / Guide</p>
+      <p class="kicker">Guide · 28 October 2026 · 15 min read</p>
+      <h1>How to Find and Fix a Wrong Memory Your AI Coding Agents Repeat</h1>
+      <p class="lede">Your agents keep suggesting Redis for sessions, but the team dropped it weeks ago. The bad entry sits in shared memory and gets read at the start of every session. Here is how to search for it, edit or delete it, and check that Claude Code, Codex and Cursor all pick up the fix.</p>
+      <p class="byline">By <b>Rohith</b>, <b>Chandan</b> and <b>Sushmita</b></p>
+      <a class="btn primary" href="#worked-example">Jump to the worked example <span aria-hidden="true">→</span></a>
+    </div>
+        <div class="files flow">
+      <div class="file"><b>1</b><code>Search</code></div>
+      <div class="file"><b>2</b><code>Trace</code></div>
+      <div class="file"><b>3</b><code>Correct</code></div>
+      <div class="file"><b>4</b><code>Pin</code></div>
+      <div class="file hot"><b>5</b><code>Verify</code></div>
+    </div>
+  </section>
+
+  <section class="tldr" aria-label="Summary">
+    <h2>In short</h2>
+    <dl class="tldr-grid">
+      <div><dt>Wrong memory</dt><dd>A stored decision, fact or lesson that no longer matches your code but is still read by every connected agent.</dd></div>
+      <div><dt>Find it</dt><dd>Search the Memory view for the noun the agent keeps repeating, then filter by project or tool to find the origin entry.</dd></div>
+      <div><dt>Fix it</dt><dd>Edit the origin when the topic still matters, delete echoes and noise, and pin the corrected decision.</dd></div>
+      <div><dt>Verify it</dt><dd>Check that the corrected entry shows up in Claude Code, Codex and Cursor.</dd></div>
+    </dl>
+  </section>
+
+  <div class="post-layout">
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#what-is-a-wrong-memory">What a wrong memory is</a></li>
+        <li><a href="#why-agents-repeat-it">Why agents repeat it</a></li>
+        <li><a href="#find-the-memory">Find it in Memory</a></li>
+        <li><a href="#which-tools-picked-it-up">Which tools picked it up</a></li>
+        <li><a href="#worked-example">Worked example</a></li>
+        <li><a href="#edit-or-delete">Edit or delete</a></li>
+        <li><a href="#verify-the-fix">Verify the fix</a></li>
+        <li><a href="#stop-it-coming-back">Stop it coming back</a></li>
+        <li><a href="#where-the-data-lives">Where the data lives</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#one-wrong-memory-one-place-to-fix-it">One place to fix it</a></li>
+      </ol>
+    </nav>
+    <article class="post">
+<h2 id="what-is-a-wrong-memory">What is a wrong memory, and how do you fix one?</h2>
+<p class="answer"><strong>A wrong memory is a stored decision, fact or lesson that no longer matches your codebase, and that every connected AI coding agent keeps reading as if it were true. How to find and fix a wrong memory your AI coding agents keep repeating takes four steps: search the shared memory for the bad entry, see which tools and projects it came from, edit or delete it, then confirm the corrected version shows up in Claude Code, Codex and Cursor.</strong></p>
+
+<p>Stale memory, outdated memory and incorrect AI agent memory all describe the same failure. It is rarely a model bug. Someone said "use Redis for sessions" three weeks ago, the team later dropped Redis, and the memory still says Redis. Now three tools suggest it in three different ways.</p>
+
+<p>The fix is a few minutes in the Memory view, provided your memory sits in one place. If it is scattered across <code>CLAUDE.md</code>, <code>AGENTS.md</code> and Cursor rules, you are editing three files by hand and hoping they agree. Our post on <a href="use-multiple-ai-coding-agents.html">using multiple AI coding agents without losing context</a> covers why that drifts.</p>
+
+<h2 id="why-agents-repeat-it">Why do agents keep repeating the same wrong answer?</h2>
+<p class="answer"><strong>Because memory is read at the start of a session, not re-checked against the code, so a wrong entry gets injected every time until someone changes it.</strong></p>
+
+<p>A memory layer captures, extracts, stores, retrieves and injects. Nothing in that loop asks whether an entry is still true. If the entry is a decision, it reads as an instruction. If it came from a drafted lesson, it may have been inferred from a single bug fix and generalised too far.</p>
+
+<p>One shared memory makes this worse in one way and better in another. A bad entry now reaches every tool, which is why the repeated suggestions feel inescapable. But there is also exactly one place to correct it. The background on how this loop works is in <a href="why-ai-coding-tools-need-memory.html">why your AI coding tools forget everything</a>.</p>
+
+<h2 id="find-the-memory">How do you find the wrong memory in the Memory view?</h2>
+<p class="answer"><strong>Open the Memory view on localhost, search for a keyword from the bad suggestion, and filter by project or tool until only the suspect entries remain.</strong></p>
+<figure>
+      <div class="table-wrap"><img src="https://rohithhn.github.io/brain-site/img/how-to-find-and-fix-a-wrong-memory-your-ai-coding-agents-rep-screen-2.webp" alt="Memory view searching for &#39;redis&#39; with matching decision, bugfix and learning entries filtered by project and tool" width="760" height="475"></div>
+      <figcaption>Search the Memory view for the noun the agent keeps repeating.</figcaption>
+    </figure>
+
+
+<p>The Memory view is the web interface that runs on your own machine. It lists every memory from every tool and every project in one place, with a search box across all of it. You can also filter down to a single project, such as <code>api</code>, <code>web</code> or <code>infra</code>.</p>
+
+<p>Search for the noun the agent keeps repeating, not for the whole sentence. If Cursor keeps importing Redis, search "redis". Expect several hits of different kinds: a decision, a bugfix note and perhaps a learning. Each entry is labelled by type, so you can tell a decision someone made from a lesson the system drafted.</p>
+
+<h2 id="which-tools-picked-it-up">How do you see which tools picked it up?</h2>
+<p class="answer"><strong>Filter the same search to one tool at a time and compare the results; an entry that appears under Claude Code, Codex and Cursor has already spread.</strong></p>
+
+<p>Five tools can read and write this memory: Claude Code, Codex, Cursor, Antigravity and Kilo Code (Kilo Code is in beta). Run the search once per tool you use. You are looking for the origin, the first entry that stated the bad decision, because that is the one to correct. Later entries are usually echoes: a commit note, a health check, a second mention.</p>
+
+<p>If the origin is a decision, fix that first. If the origin is a draft learning you never approved, you have a different problem, and we come back to it below.</p>
+
+<h2 id="worked-example">How to find and fix a wrong memory your AI coding agents keep repeating: a worked example</h2>
+<p class="answer"><strong>Search the term, list the matches, correct the origin, delete the echoes, and pin the corrected decision so every session sees it.</strong></p>
+
+<p>This is an illustrative example, not a benchmark. A team dropped Redis for sessions and moved to SQLite. Redis stayed only for the old job queue. Agents kept suggesting Redis session code anyway. Searching "redis" in the Memory view returned 3 entries, and 2 of them were stale:</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Entry</th><th>Type</th><th>Status</th><th>Action</th></tr>
+</thead>
+<tbody>
+<tr><td>Sessions are stored in Redis</td><td>Decision</td><td>Stale (the origin)</td><td>Edit</td></tr>
+<tr><td>Added Redis health check to deploy.sh</td><td>Bugfix</td><td>Stale (an echo)</td><td>Delete</td></tr>
+<tr><td>Redis only serves the job queue</td><td>Learning</td><td>Correct</td><td>Keep</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The decision gets edited to read "Sessions live in SQLite; Redis only served the old job queue." The health-check note is deleted. The corrected decision is then pinned, which means every session sees it, whatever the task. Three entries, two actions, one pin.</p>
+
+<h2 id="edit-or-delete">Should you edit or delete a wrong memory?</h2>
+<p class="answer"><strong>Edit when the topic still matters and the facts changed; delete when the entry should never have existed.</strong></p>
+
+<p>I lean toward editing. A deleted decision leaves a gap, and the next session may invent the same wrong answer from scratch. A corrected decision states what is true now and often records why the old one was dropped, which is the part agents actually need.</p>
+
+<p>Delete the noise: duplicates, one-off bugfix notes about code that is gone, lessons that were wrong from the start. Deletes can be undone, so the cost of a mistaken delete is low. Use restore if you remove the wrong row.</p>
+
+<h2 id="verify-the-fix">How do you check the fix reached Claude Code, Codex and Cursor?</h2>
+<p class="answer"><strong>Open a fresh session in each tool, ask the question that used to produce the wrong answer, and read the briefing the tool was given.</strong></p>
+
+<p>Do not trust the edit until you have seen it land. For Claude Code, the briefing is written into <code>CLAUDE.md</code> at roughly 2,000 tokens, so open that file and look for the corrected line. For Codex and Cursor, start a new session and ask the same thing: "How do we store sessions?" If any tool still answers Redis, check that its connection is active and that you started a new session rather than resuming an old one. An old session keeps whatever context it already loaded.</p>
+
+<p>$ grep -n -i "redis" CLAUDE.md # expect: the corrected SQLite decision, not "sessions in Redis"</p>
+
+<p>Because there is one memory and not three copies, a single correct entry is all each tool needs. If you want the plumbing, <a href="mcp-memory-server.html">how an MCP memory server connects to your tools</a> explains how they read it.</p>
+
+<h2 id="stop-it-coming-back">How do you stop agents from inferring bad lessons?</h2>
+<p class="answer"><strong>Review drafted learnings before they become memory: approve the ones that generalise correctly, dismiss the ones that don't.</strong></p>
+<figure>
+      <div class="table-wrap"><img src="https://rohithhn.github.io/brain-site/img/how-to-find-and-fix-a-wrong-memory-your-ai-coding-agents-rep-screen-3.webp" alt="Learnings view listing drafted lessons awaiting review beside the list of accepted learnings" width="760" height="475"></div>
+      <figcaption>Review drafted lessons before they become memory every agent reads.</figcaption>
+    </figure>
+
+
+<p>The system drafts lessons from problems it sees, such as "When a cache layer is removed, also remove its health checks and env vars." Drafts sit in the Memory view marked as drafts, with Approve and Dismiss buttons. That step is your quality gate. A lesson inferred from one project can be wrong for another, so dismiss anything that reads as broader than the evidence.</p>
+
+<p>You can also rate approved learnings as helpful or not helpful. A short weekly pass over drafts and anything rated unhelpful keeps incorrect AI agent memory from building up. At Open Agentic Brain and Memory, we keep that review in your hands on purpose, because only you know which decisions are still current. The <a href="../story.html">story of the brain</a> shows the full Memory view with these controls.</p>
+
+<h2 id="where-the-data-lives">Where does this data live while you edit it?</h2>
+<p class="answer"><strong>On your machine: the memory is a local SQLite database, <code>memory.db</code>, served to you on localhost, with no account and no server of ours.</strong></p>
+
+<p>When you search or edit, you are working against that local file. Backups are a compact snapshot, encrypted with age, with the key held only in your OS Keychain. The snapshot goes to a release asset on your own private GitHub repo, and your other machines restore from it. Whether edits propagate to a second laptop depends on that restore, so after a big cleanup, take a fresh snapshot. For the threat model, read our <a href="self-hosted-ai-memory-privacy-security.html">self-hosted AI memory privacy and security guide</a>, or see <a href="../">how Open Agentic Brain and Memory works</a>.</p>
+
+<h2 id="faq">FAQ</h2>
+<div class="faq">
+<details>
+<summary>Can an agent re-create a memory I deleted?</summary>
+<p><span>Yes, if the same decision is stated again in a later session, it can be captured again. Correcting and pinning the right version works better than a bare delete, because it gives agents the true answer to find first.</span></p>
+</details>
+<details>
+<summary>Should I edit or delete a wrong memory?</summary>
+<p><span>Edit it when the topic is still relevant and only the facts changed. Delete it when it is a duplicate, an echo of a removed feature, or was never correct. Deletes can be undone, so a mistake costs little.</span></p>
+</details>
+<details>
+<summary>Does deleting a memory affect past sessions?</summary>
+<p><span>No. It changes what future sessions are told, not what an earlier conversation already read. Start a new session in each tool to see the corrected memory.</span></p>
+</details>
+<details>
+<summary>How do I stop agents from inferring bad lessons?</summary>
+<p><span>Review drafted learnings in the Memory view and dismiss any that overgeneralise from one project or one bug. Approved lessons can be marked not helpful later if they turn out to mislead.</span></p>
+</details>
+<details>
+<summary>Is my memory data sent anywhere?</summary>
+<p><span>There is no account and no server of ours. Memory is stored locally in <code>memory.db</code>. Optional backups are age-encrypted, with the key kept in your OS Keychain, and go only to your own private GitHub repo.</span></p>
+</details>
+</div>
+
+<section class="cta-box">
+        <span class="soon live"><i></i>Open source · Apache-2.0</span>
+        <h2 id="one-wrong-memory-one-place-to-fix-it">One wrong memory, one place to fix it.</h2>
+        <p>Open Agentic Brain and Memory is an open-source, self-hosted memory for AI coding agents. Search it, correct it, and every connected tool reads the fix. Self-host it in one command.</p>
+        <div class="cmd"><code>curl -fsSL https://raw.githubusercontent.com/rohithhn/Open-Agentic-Brain-and-Memory/main/install.sh | bash</code><button class="copy" aria-label="Copy the install command">Copy</button></div>
+        <div class="row"><svg><use href="#l-github"></use></svg>Get it on GitHub<a class="btn ghost" href="../index.html">See how it works</a><a class="btn ghost" href="index.html">More from the blog</a></div>
+      </section>
+    </article>
+  </div>
+</main>
+<footer class="blog-foot">
+  <a href="../index.html">Home</a><a href="index.html">Blog</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><a class="gh" href="https://github.com/rohithhn/Open-Agentic-Brain-and-Memory" aria-label="Open Agentic Brain and Memory on GitHub"><svg><use href="#l-github"/></svg><span>GitHub</span></a><span>Built by Rohith, Chandan and Sushmita</span>
+</footer>
+<script>
+  (() => {
+    const links = [...document.querySelectorAll(".toc a")];
+    const io = new IntersectionObserver((es) => {
+      for (const e of es) if (e.isIntersecting) links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll(".post h2[id]").forEach((h) => io.observe(h));
+  })();
+</script>
+</body>
+</html>
