@@ -99,17 +99,18 @@ TOOLS = [
 # Basic consent mode: gtag.js is only fetched once the visitor has accepted (now or on an earlier visit),
 # so nothing reaches Google before Accept. The banner below calls abLoadGA() on Accept.
 GA_ID = "G-DXSD8QT2SN"
-GTM_HEAD = """<!-- Google tag (gtag.js), loaded only after cookie consent -->
+GTM_HEAD = """<!-- Google tag and Meta pixel, loaded only after cookie consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
 window.abLoadGA=function(){if(window.abGA)return;window.abGA=1;gtag('consent','update',{analytics_storage:'granted'});
 var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-DXSD8QT2SN';document.head.appendChild(s);
-gtag('js',new Date());gtag('config','G-DXSD8QT2SN');};
+gtag('js',new Date());gtag('config','G-DXSD8QT2SN');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1684013769805184');fbq('track','PageView');};
 try{if(localStorage.getItem('ab-consent')==='granted')abLoadGA();}catch(e){}</script>"""
 # Cookie banner: shown until the visitor chooses; Accept grants analytics_storage, Decline keeps it denied.
 # Any element with data-consent-reset (e.g. on the privacy page) clears the choice and shows it again.
 CONSENT = """<div class="ab-consent" role="dialog" aria-live="polite" aria-label="Cookie choice" hidden>
-<p>We use cookies to count visits and see which pages are read. Nothing else, and only if you agree. <a href="{root}privacy.html">Privacy</a></p>
+<p>We use cookies to count visits, see which pages are read and measure our ads. Only if you agree. <a href="{root}privacy.html">Privacy</a></p>
 <div><button type="button" data-c="denied">Decline</button><button type="button" data-c="granted" class="ok">Accept</button></div>
 </div>
 <style>
